@@ -1,0 +1,6 @@
+<config>
+    <route>
+        <dir>todolist/controller</dir>
+        <uri>todolist</uri>
+    </route>
+</config>

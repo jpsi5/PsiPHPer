@@ -1,0 +1,6 @@
+<config>
+    <route>
+        <dir>db/controller</dir>
+        <uri>db</uri>
+    </route>
+</config>

@@ -1,0 +1,6 @@
+<config>
+    <route>
+        <dir>cms/controller</dir>
+        <uri>cms</uri>
+    </route>
+</config>

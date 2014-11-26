@@ -1,0 +1,6 @@
+<config>
+    <route>
+        <dir>contact/controller</dir>
+        <uri>contact</uri>
+    </route>
+</config>

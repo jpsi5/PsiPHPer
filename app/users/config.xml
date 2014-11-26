@@ -1,0 +1,6 @@
+<config>
+    <route>
+        <dir>users/controller</dir>
+        <uri>users</uri>
+    </route>
+</config>
