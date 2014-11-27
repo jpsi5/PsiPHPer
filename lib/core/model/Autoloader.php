@@ -3,6 +3,17 @@
 class Autoloader {
 
     public function __constructor() {
+
+        # Define and set the the include paths
+        $allPaths = array(
+            ROOT . DS,
+            ROOT . 'lib/',
+            ROOT . 'app/',
+            get_include_path()
+        );
+
+        set_include_path(implode(PATH_SEPARATOR,$allPaths));
+                
         $this->register();
     }
 

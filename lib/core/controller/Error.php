@@ -1,6 +1,6 @@
 <?php
 # Move to model directory
-class Core_Controller_Error extends Core_Controller_Core{
+class Core_Controller_Error extends Core_Controller_Base{
 
     function __construct() {
         parent::__construct();

@@ -2,63 +2,48 @@
 
 class Core_Controller_Router {
 
-    private $url;
-    private $urlArray;
-
     function __construct($url) {
-
-        $this->url = $url . '/';
-
-        # Remove any extra directory separators
-        rtrim($this->url, '/');
-
-        # Expand the url [module, controller, action, params,...]
-        $this->urlArray = explode('/', $url);
+      // Do nothing
     }
 
-    function dispatch(){
+    function route($url) {
 
-        # Set the module, controller, action, and query string
-        if(isset($this->urlArray[0])) {
-            $module = $this->urlArray[0];
-            array_shift($this->urlArray);
-            if(isset($this->urlArray[0])) {
-                $controllerName = ucfirst($this->urlArray[0]);
-                array_shift($this->urlArray);
-                if(isset($this->urlArray[0])) {
-                    $action = $this->urlArray[0];
-                    array_shift($this->urlArray);
-                    if(isset($this->urlArray[0])) {
-                        $queryString = $this->urlArray;
-                    }
-                }
-            }
-        }
+      $urlArray = explode('/',$url);
 
-        $ctrlClassName = Core_Model_Helper::map_route($this->url) . $controllerName;
+      # The first part of the url is the module
+      $module = isset($urlArray[0]) ? ucfirst$urlArray[0] : '';
+      array_shift($urlArray);
 
-        # Create the controller
-        if(class_exists($ctrlClassName)) {
-           if(isset($queryString) && isset($action) && isset($controllerName) && isset($module)) {
-               $controller = new $ctrlClassName;
-               if(method_exists($controller, $action)) {
-                   call_user_func_array(array($controller, $action),$queryString);
-               }
-           } else if (isset($action) && isset($controllerName) && isset($module)) {
-               $controller = new $ctrlClassName;
-               if(method_exists($controller, $action)) {
-                   $controller->{$action}();
-               }
-           } else if (isset($controllerName) && isset($module)) {
-               $controller = new $ctrlClassName;
-               $controller->view();
-           }
-        }
+      # The second part of the url is the controller
+      $controller = isset($urlArray[0]) ? $urlArray[0] : '';
+      array_shift($urlArray);
 
+      # The third part of the url is the action
+      $action = isset($urlArray[0]) ? $urlArray[0] : '';
+      array_shift($urlArray);
 
-        else {
-            # May need to create a error page view here
-            echo 'The requested url cannot be found';
-        }
-    }
+      # The final part of the url ar the parameters
+      $query = $urlArray;
+
+      if(empty($controller)) {
+        # Redirect to the default controller
+        $controller = 'index';
+      }
+
+      if(empty($action)) {
+        # Redirect to the index page
+        $action = 'index';
+      }
+
+      $controllerName = $controller;
+      $validController = (int) class_exists(ucfirst($module) . '_Controller_' . ucfirst($controllerName));
+      $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : Core_Model_Helper::map_route($url) . ucfirst($controllerName);
+      $dispatch = new $controller($controllerName, $action);
+
+      if(method_exists($controller, $action)) {
+        call_user_func_array(array($dispatch, $action), $query);
+      }else {
+        # Error genration code here
+      }
+  }
 }

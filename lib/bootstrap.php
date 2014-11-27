@@ -22,24 +22,14 @@ else {
     $url = 'admin/error/view';
 }
 
-# Define and set the the include paths
-$allPaths = array(
-    ROOT . DS,
-    ROOT . 'lib/',
-    ROOT . 'app/',
-    get_include_path()
-);
-
-set_include_path(implode(PATH_SEPARATOR,$allPaths));
-
 # Include autoloader and register example Core_Model_Autoloader::register()
 require('core/model/Autoloader.php');
 $autoloader = new Autoloader();
 $autoloader->register();
 
 # Create the router that will load the appropriate controller
-$router = new Core_Controller_Router($url);
-$router->dispatch();
+$router = new Core_Controller_Router();
+$router->route($url);
 
 
 
