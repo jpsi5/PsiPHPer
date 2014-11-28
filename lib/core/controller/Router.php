@@ -2,7 +2,7 @@
 
 class Core_Controller_Router {
 
-    function __construct($url) {
+    function __construct() {
       // Do nothing
     }
 
@@ -11,7 +11,7 @@ class Core_Controller_Router {
       $urlArray = explode('/',$url);
 
       # The first part of the url is the module
-      $module = isset($urlArray[0]) ? ucfirst$urlArray[0] : '';
+      $module = isset($urlArray[0]) ? ucfirst($urlArray[0]) : '';
       array_shift($urlArray);
 
       # The second part of the url is the controller
@@ -37,7 +37,7 @@ class Core_Controller_Router {
 
       $controllerName = $controller;
       $validController = (int) class_exists(ucfirst($module) . '_Controller_' . ucfirst($controllerName));
-      $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : Core_Model_Helper::map_route($url) . ucfirst($controllerName);
+      $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : Core_Model_Helper::map_route($url) . 'Index';
       $dispatch = new $controller($controllerName, $action);
 
       if(method_exists($controller, $action)) {

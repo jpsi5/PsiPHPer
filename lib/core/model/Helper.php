@@ -2,7 +2,7 @@
 # Move to model or helper directory. Your choice for processing helpers.
 class Core_Model_Helper {
 
-    static public $all_configs;
+    static public $all_configs = array();
 	
 	public function __construct() {
 		//echo 'We are inside helper' . '<br />';
@@ -47,7 +47,15 @@ class Core_Model_Helper {
         }
         return $partialClassName;
         //$className = $className . $controllerName;
+    }
 
+    public static function load_configs() {
 
+        # Get all the config files
+        $configFileList = glob('[app|lib]*/*/config.xml');
+
+        foreach($configFileList as $file) {
+            self::$all_configs[] = simplexml_load_file($file);
+        }
     }
 }

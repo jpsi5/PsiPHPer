@@ -25,12 +25,10 @@ else {
 # Include autoloader and register example Core_Model_Autoloader::register()
 require('core/model/Autoloader.php');
 $autoloader = new Autoloader();
-$autoloader->register();
+
+# Load all the configuration files into a single variable
+Core_Model_Helper::load_configs();
 
 # Create the router that will load the appropriate controller
 $router = new Core_Controller_Router();
 $router->route($url);
-
-
-
-

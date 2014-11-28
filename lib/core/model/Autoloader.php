@@ -2,7 +2,7 @@
 
 class Autoloader {
 
-    public function __constructor() {
+    public function __construct() {
 
         # Define and set the the include paths
         $allPaths = array(
@@ -13,7 +13,7 @@ class Autoloader {
         );
 
         set_include_path(implode(PATH_SEPARATOR,$allPaths));
-                
+
         $this->register();
     }
 
