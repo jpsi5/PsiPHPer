@@ -42,7 +42,7 @@ class Core_Model_Helper {
                 return $partialClassName;
             }
             else {
-                $partialClassName = "Core_Controller";
+                $partialClassName = "Core_Controller_";
             }
         }
         return $partialClassName;

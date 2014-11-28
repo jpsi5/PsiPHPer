@@ -19,7 +19,7 @@ if(isset($_GET['url'])) {
 else {
     # *!* REMEMBER *!* Change this sooner or later to avoid instantiating
     # an abstract class.
-    $url = 'admin/error/view';
+    $url = '';
 }
 
 # Include autoloader and register example Core_Model_Autoloader::register()
