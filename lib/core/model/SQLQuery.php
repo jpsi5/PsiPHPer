@@ -29,43 +29,21 @@ class Core_Model_SQLQuery {
 
     function query($query, $singleResult = 0) {
 
-        //$this->result = $this->dbHandle->query($query);
-        $this->result = $this->dbHandle->prepare($query);
-        $this->result->execute();
-        $result = $this->result->fetchAll(PDO::FETCH_ASSOC);
-
-//        if (preg_match("/select/i",$query)) {
-//            $result = array();
-//            $table = array();
-//            $field = array();
-//            $tempResults = array();
-//            $numOfFields = $this->result->rowCount();
-//            for ($i = 0; $i < $numOfFields; ++$i) {
-//                array_push($table,mysqli_field_table($this->result, $i));
-//                array_push($field,mysqli_field_name($this->result, $i));
-//            }
-//
-//
-//            while ($row = $this->result->fetch()) {
-//                for ($i = 0;$i < $numOfFields; ++$i) {
-//                    $table[$i] = trim(ucfirst($table[$i]),"s");
-//                    $tempResults[$table[$i]][$field[$i]] = $row[$i];
-//                }
-//                if ($singleResult == 1) {
-//                    //mysqli_free_result($this->result);
-//                    return $tempResults;
-//                }
-//                array_push($result,$tempResults);
-//            }
-//            //mysqli_free_result($this->result);
-            return($result);
-//        }
-
-
+        # SELECT statement
+        if(preg_match("/select/i",$query)) {
+            $this->result = $this->dbHandle->prepare($query);
+            $this->result->execute();
+            $result = $this->result->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else {
+            $affected_rows = $this->dbHandle->exec($query);
+            return ($affected_rows);
+        }
+        return($result);
     }
 
     function getNumRows() {
-        return mysqli_num_rows($this->result);
+        return count($this->selectAll());
     }
 
     function freeResult() {
