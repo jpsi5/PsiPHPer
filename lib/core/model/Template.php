@@ -13,6 +13,7 @@ class Core_Model_Template {
     # Set variables
     function set($name,$value) {
         $this->variables[$name] = $value;
+
     }
 
     # Display template

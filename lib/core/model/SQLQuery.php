@@ -11,25 +11,10 @@ class Core_Model_SQLQuery {
         $this->dbHandle = new PDO('mysql:host=' . DB_HOST . '; dbname=' . DB_NAME .'; charset=utf8', DB_USER, DB_PASSWORD);
         $this->dbHandle->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->dbHandle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-//        if ($this->dbHandle != 0) {
-//            if (mysqli_select_db($name, $this->dbHandle)) {
-//                return 1;
-//            } else {
-//                return 0;
-//            }
-//        } else {
-//            return 0;
-//        }
     }
 
 
     function disconnect() {
-//        if (mysqli_close($this->dbHandle) != 0) {
-//            return 1;
-//        }
-//        else {
-//            return 0;
-//        }
     }
 
     function selectAll() {
@@ -38,7 +23,7 @@ class Core_Model_SQLQuery {
     }
 
     function select($id) {
-        $query = 'select * from `'.$this->table.'` where `id` = \''.mysql_real_escape_string($id).'\'';
+        $query = 'select * from `'.$this->table.'` where `id` = \''.$id.'\'';
         return $this->query($query, 1);
     }
 
