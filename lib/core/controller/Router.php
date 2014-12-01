@@ -2,10 +2,6 @@
 
 class Core_Controller_Router {
 
-    function __construct() {
-        // Do nothing
-    }
-
     function route($url) {
 
         $urlArray = explode('/',$url);
@@ -18,16 +14,15 @@ class Core_Controller_Router {
         $controller = isset($urlArray[0]) ? $urlArray[0] : '';
         array_shift($urlArray);
 
-
-
-        $model = ucfirst($module) . '_Model_' .trim(ucfirst($controller),'s');
-
         # The third part of the url is the action
         $action = isset($urlArray[0]) ? $urlArray[0] : '';
         array_shift($urlArray);
 
         # The final part of the url ar the parameters
         $query = $urlArray;
+
+        # Build the model name
+        $model = ucfirst($module) . '_Model_' .trim(ucfirst($controller),'s');
 
         if(empty($controller)) {
             # Redirect to the default controller
@@ -36,15 +31,23 @@ class Core_Controller_Router {
 
         if(empty($action)) {
             # Redirect to the index page
-            $action = 'error';
+            $action = 'index';
         }
 
         $controllerName = $controller;
-        $validController = (int) class_exists(ucfirst($module) . '_Controller_' . ucfirst($controllerName));
+
+        # Validate the controller
+        $validController = (int) class_exists(ucfirst($module) . '_Controller_' . ucfirst($controller));
+        $validMapping = (int) class_exists(Core_Model_Helper::map_route($url) . ucfirst($controller));
+
+        if(!$validController) {
+
+        }
         $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : Core_Model_Helper::map_route($url) . 'Error';
-        $dispatch = new $controller($model,$controllerName, $action);
+        $dispatch = new $controller;
 
         if(method_exists($controller, $action)) {
+            #TODO: Change this line to $dispatch->$action. What if the action required arguments
             call_user_func_array(array($dispatch, $action), $query);
         }else {
             # Error generation code here

@@ -8,12 +8,8 @@ abstract Class Core_Controller_Base {
     protected $template;
 
 
-	function __construct($model,$controller,$action) {
-		$this->controller = $controller;
-		$this->action = $action;
-        $this->model = $model;
-        $this->$model = new $model;
-        $this->template = new Core_View_Template($controller,$action);
+	function __construct() {
+
 	}
 
     function set($name, $value) {
@@ -22,9 +18,5 @@ abstract Class Core_Controller_Base {
 
     function __destruct() {
         $this->template->render();
-    }
-
-    function error() {
-    	echo "hello world";
     }
 }

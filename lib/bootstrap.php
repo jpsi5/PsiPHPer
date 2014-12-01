@@ -1,15 +1,13 @@
 <?php
 
 # Set error reporting if the environment is development
-if (DEVELOPMENT_ENVIRONMENT == true) {
-    error_reporting(E_ALL);
+error_reporting(E_ALL);
+if (DEVELOPMENT_ENVIRONMENT) {
     ini_set('display_errors','On');
-
 } else {
-    error_reporting(E_ALL);
     ini_set('display_errors','Off');
     ini_set('log_errors', 'On');
-    # *!* REMEMBER *!* to create or set the log file here
+    # TODO: create or set the log file here
 }
 
 # Get the url if it is set, otherwise work your magic
@@ -17,7 +15,7 @@ if(isset($_GET['url'])) {
     $url = $_GET['url'];
 }
 else {
-    # *!* REMEMBER *!* Change this sooner or later to avoid instantiating
+    # TODO: Change this sooner or later to avoid instantiating
     # an abstract class.
     $url = '';
 }
