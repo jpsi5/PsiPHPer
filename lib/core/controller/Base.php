@@ -13,7 +13,7 @@ abstract Class Core_Controller_Base {
 		$this->action = $action;
         $this->model = $model;
         $this->$model = new $model;
-        $this->template = new Core_Model_Template($controller,$action);
+        $this->template = new Core_View_Template($controller,$action);
 	}
 
     function set($name, $value) {
@@ -24,7 +24,7 @@ abstract Class Core_Controller_Base {
         $this->template->render();
     }
 
-    function index() {
+    function error() {
     	echo "hello world";
     }
 }

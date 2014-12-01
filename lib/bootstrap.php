@@ -29,6 +29,9 @@ $autoloader = new Autoloader();
 # Load all the configuration files into a single variable
 Core_Model_Helper::load_configs();
 
+# Set the module for the current application;
+Core_Model_Helper::set_module($url);
+
 # Create the router that will load the appropriate controller
 $router = new Core_Controller_Router();
 $router->route($url);

@@ -3,6 +3,7 @@
 class Core_Model_Helper {
 
     static public $all_configs = array();
+    static public $working_module;
 	
 	public function __construct() {
 		//echo 'We are inside helper' . '<br />';
@@ -15,7 +16,8 @@ class Core_Model_Helper {
 
     public static function map_route($url) {
 
-        $module = explode(DS, $url);
+        $urlArray = explode(DS, $url);
+        $module = $urlArray[0];
 
         # Get all the config.xml files from each module
         $configFileList = glob('[app|lib]*/*/config.xml');
@@ -23,7 +25,7 @@ class Core_Model_Helper {
         # Search each config file for the requested uri
         foreach($configFileList as $file) {
             $xmlFile = simplexml_load_file($file);
-            if($module[0] == $xmlFile->route->uri) {
+            if($module == $xmlFile->route->uri) {
 
                 # Retrieve the directory for the controllers in config.xml
                 $dir = $xmlFile->route->dir;
@@ -57,5 +59,10 @@ class Core_Model_Helper {
         foreach($configFileList as $file) {
             self::$all_configs[] = simplexml_load_file($file);
         }
+    }
+
+    public static function set_module($url) {
+        $urlArray = explode(DS, $url);
+        self::$working_module = $urlArray[0];
     }
 }

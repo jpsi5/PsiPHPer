@@ -1,5 +1,5 @@
 <?php
-class Todo_Model_Template extends Core_Model_Template{
+class Todo_View_Template extends Core_View_Template{
 
     # Display template
     function render() {

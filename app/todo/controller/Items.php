@@ -7,7 +7,7 @@ class Todo_Controller_Items extends Core_Controller_Base {
         $this->action = $action;
         $this->model = $model;
         $this->$model = new $model;
-        $this->template = new Todo_Model_Template($controller,$action);
+        $this->template = new Todo_View_Template($controller,$action);
     }
 
     function view($id = null,$name = null) {

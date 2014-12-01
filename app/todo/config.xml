@@ -1,6 +1,9 @@
 <config>
     <route>
-        <dir>todolist/controller</dir>
-        <uri>todolist</uri>
+        <dir>todo/controller</dir>
+        <uri>todo</uri>
     </route>
+    <template>
+        <name>todo</name>
+    </template>
 </config>

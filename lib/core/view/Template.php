@@ -1,5 +1,5 @@
 <?php
-class Core_Model_Template {
+class Core_View_Template {
 
     protected $variables = array();
     protected $controller;
