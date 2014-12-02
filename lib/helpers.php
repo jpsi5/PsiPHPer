@@ -24,3 +24,11 @@ function getModel($path) {
         echo 'Caught exception: ' . $e->getMessage() . '<br />';
     }
 }
+
+function getHelper($path){
+    try {
+
+    } catch(Exception $e) {
+        echo 'Caught exception: ' . $e->getMessage() . '<br />';
+    }
+}

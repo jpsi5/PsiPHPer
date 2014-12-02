@@ -21,7 +21,7 @@ class Core_Controller_Router {
             array_shift($urlArray);
 
             # The final part of the url ar the parameters
-            $query = $urlArray;
+            $queryString = count($urlArray) == 1 ? $urlArray[0] : $urlArray;
 
             if (empty($controllerName)) {
                 # Redirect to the default controller
@@ -38,10 +38,15 @@ class Core_Controller_Router {
             $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : Core_Model_Helper::map_route($url);
 
             # Dispatch the valid controller
-            $dispatch = class_exists($controller) ? new $controller : '';
+            $dispatch = class_exists($controller) ? new $controller : null;
 
             if(method_exists($controller, $action)) {
-                $dispatch->$action($query);
+                if(empty($queryString))
+                {
+                    $dispatch->$action();
+                } else {
+                    $dispatch->$action($queryString);
+                }
             }else {
                 # TODO: Error generation code here
             }
