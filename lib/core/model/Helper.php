@@ -38,7 +38,6 @@ class Core_Model_Helper {
                 if(isset($urlArray[1])) {
                     return $partialClassName . ucfirst($urlArray[1]);
                 }
-
             }
             else {
                 $partialClassName = "Core_Controller_Error";

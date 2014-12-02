@@ -10,4 +10,7 @@ class Core_Controller_Index extends Core_Controller_Base{
     {
         echo 'This is a view: ' . $arg . '<br />';
     }
+    function other() {
+        echo 'This is a view from other <br/>';
+    }
 }

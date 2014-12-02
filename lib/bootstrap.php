@@ -1,18 +1,18 @@
 <?php
 
 # Set error reporting if the environment is development
-error_reporting(E_ALL);
+error_reporting(E_ALL | E_STRICT);
 if (DEVELOPMENT_ENVIRONMENT) {
     ini_set('display_errors','On');
 } else {
     ini_set('display_errors','Off');
     ini_set('log_errors', 'On');
-    # TODO: create or set the log file here
+    ini_set('error_log',ROOT . 'lib/error.log');
 }
 
 # Get the url if it is set, otherwise work your magic
 if(isset($_GET['url'])) {
-    $url = $_GET['url'];
+    $url = rtrim($_GET['url'],'/');
 }
 else {
     # TODO: Change this sooner or later to avoid instantiating
