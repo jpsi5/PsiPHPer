@@ -24,6 +24,9 @@ else {
 require('core/model/Autoloader.php');
 $autoloader = new Autoloader();
 
+# Include helper functions that will be used throughout the application
+require('helpers.php');
+
 # Load all the configuration files into a single variable
 Core_Model_Helper::load_configs();
 

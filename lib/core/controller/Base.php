@@ -16,7 +16,7 @@ abstract Class Core_Controller_Base {
         $this->template->set($name,$value);
     }
 
-    function __destruct() {
-        $this->template->render();
-    }
+//    function __destruct() {
+//        $this->template->render();
+//    }
 }

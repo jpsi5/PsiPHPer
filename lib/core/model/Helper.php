@@ -4,15 +4,6 @@ class Core_Model_Helper {
 
     static public $all_configs = array();
     static public $working_module;
-	
-	public function __construct() {
-		//echo 'We are inside helper' . '<br />';
-	}
-
-	public function other($arg = false) {
-		echo 'We are in other' . '<br />';
-		echo 'Optional: ' . $arg . '<br />'; 
-	}
 
     public static function map_route($url) {
 
@@ -39,17 +30,23 @@ class Core_Model_Helper {
                 $partialClassName = '';
 
                 foreach($partialClassNameArray as $part) {
+                    $part = strtolower($part);
                     $partialClassName = $partialClassName . ucfirst($part) . '_';
                 }
-                return $partialClassName;
+
+                # Return the complete name if the controller name (urlArray[1]) is set
+                if(isset($urlArray[1])) {
+                    return $partialClassName . ucfirst($urlArray[1]);
+                }
+
             }
             else {
-                $partialClassName = "Core_Controller_";
+                $partialClassName = "Core_Controller_Error";
             }
         }
         return $partialClassName;
-        //$className = $className . $controllerName;
     }
+
 
     public static function load_configs() {
 

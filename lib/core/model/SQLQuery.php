@@ -7,7 +7,6 @@ class Core_Model_SQLQuery {
 
     function connect($address, $account, $pwd, $name)
     {
-
         $this->dbHandle = new PDO('mysql:host=' . DB_HOST . '; dbname=' . DB_NAME .'; charset=utf8', DB_USER, DB_PASSWORD);
         $this->dbHandle->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->dbHandle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);

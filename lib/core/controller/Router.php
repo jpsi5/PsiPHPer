@@ -7,11 +7,11 @@ class Core_Controller_Router {
         $urlArray = explode('/',$url);
 
         # The first part of the url is the module
-        $module = isset($urlArray[0]) ? ucfirst($urlArray[0]) : '';
+        $module = isset($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : '';
         array_shift($urlArray);
 
         # The second part of the url is the controller
-        $controller = isset($urlArray[0]) ? $urlArray[0] : '';
+        $controllerName = isset($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : '';
         array_shift($urlArray);
 
         # The third part of the url is the action
@@ -21,12 +21,9 @@ class Core_Controller_Router {
         # The final part of the url ar the parameters
         $query = $urlArray;
 
-        # Build the model name
-        $model = ucfirst($module) . '_Model_' .trim(ucfirst($controller),'s');
-
-        if(empty($controller)) {
+        if(empty($controllerName)) {
             # Redirect to the default controller
-            $controller = 'error';
+            $controllerName = 'Error';
         }
 
         if(empty($action)) {
@@ -34,23 +31,16 @@ class Core_Controller_Router {
             $action = 'index';
         }
 
-        $controllerName = $controller;
-
         # Validate the controller
-        $validController = (int) class_exists(ucfirst($module) . '_Controller_' . ucfirst($controller));
-        $validMapping = (int) class_exists(Core_Model_Helper::map_route($url) . ucfirst($controller));
-
-        if(!$validController) {
-
-        }
-        $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : Core_Model_Helper::map_route($url) . 'Error';
+        $validController = (int) class_exists(ucfirst($module) . '_Controller_' . ucfirst($controllerName));
+        $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : Core_Model_Helper::map_route($url);
         $dispatch = new $controller;
 
         if(method_exists($controller, $action)) {
-            #TODO: Change this line to $dispatch->$action. What if the action required arguments
+            # TODO: Change this line to $dispatch->$action. What if the action required arguments?
             call_user_func_array(array($dispatch, $action), $query);
         }else {
-            # Error generation code here
+            # TODO: Error generation code here
         }
   }
 }

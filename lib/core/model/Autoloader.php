@@ -32,7 +32,7 @@ class Autoloader {
 
             $classPath = '';
             foreach($paths as $path) {
-                $classPath .= lcfirst($path) . DS;
+                $classPath .= strtolower($path) . DS;
             }
 
             # Combine the class file name with its path
