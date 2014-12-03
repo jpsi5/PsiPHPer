@@ -5,10 +5,8 @@ class Core_Controller_Router {
     function route($url) {
 
         try {
-
             $urlArray = explode('/', $url);
             $helper = getHelper('core/base');
-
 
             # The first part of the url is the module
             $module = isset($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : '';
@@ -53,7 +51,6 @@ class Core_Controller_Router {
             }else {
                 # TODO: Error generation code here
             }
-
         } catch (Exception $e) {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
         }

@@ -16,6 +16,7 @@ abstract Class Core_Controller_Base {
         #Default view to generate
 
         #Generate this view if bad_request_handle is set in config.xml
+        echo 'Default action';
     }
 
     function set($name, $value) {

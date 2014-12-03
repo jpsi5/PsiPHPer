@@ -1,6 +1,6 @@
 <?php
 
-class Core_Model_Base extends Core_Model_SQLQuery {
+class Db_Model_Base extends Db_Model_SQLQuery {
 
     private $model;
     private static $instance;
