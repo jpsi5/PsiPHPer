@@ -7,6 +7,8 @@ class Core_Controller_Router {
         try {
 
             $urlArray = explode('/', $url);
+            $helper = getHelper('core/base');
+
 
             # The first part of the url is the module
             $module = isset($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : '';
@@ -35,12 +37,13 @@ class Core_Controller_Router {
 
             # Validate the controller and use mapping in case of differing module names between the url and directory
             $validController = (int)class_exists(ucfirst($module) . '_Controller_' . ucfirst($controllerName));
-            $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : Core_Model_Helper::map_route($url);
+            $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : $helper->map_route($url);
 
             # Dispatch the valid controller
             $dispatch = class_exists($controller) ? new $controller : null;
 
-            if(method_exists($controller, $action)) {
+            # TODO change this implementation in order to remove concern of valid actions
+            if(method_exists($controller, $action) && $dispatch != null) {
                 if(empty($queryString))
                 {
                     $dispatch->$action();

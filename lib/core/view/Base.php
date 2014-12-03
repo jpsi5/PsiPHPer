@@ -1,6 +1,6 @@
 <?php
 # Move to view directory
-class Core_View_View {
+class Core_View_Base {
 
 	function __construct() {
 		echo 'this is the view<br/>';

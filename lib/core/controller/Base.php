@@ -12,6 +12,12 @@ abstract Class Core_Controller_Base {
 
 	}
 
+    function __call($name, $arguments) {
+        #Default view to generate
+
+        #Generate this view if bad_request_handle is set in config.xml
+    }
+
     function set($name, $value) {
         $this->template->set($name,$value);
     }
