@@ -1,6 +1,6 @@
 <?php
 
-class Db_Model_SQLQuery {
+abstract class Db_Model_SQLQuery {
     protected $dbHandle;
     protected $result;
     protected $table;
@@ -46,11 +46,11 @@ class Db_Model_SQLQuery {
     }
 
     function freeResult() {
-        mysqli_free_result($this->result);
+
     }
 
     function getError() {
-        return mysqli_error($this->dbHandle);
+
     }
 
 

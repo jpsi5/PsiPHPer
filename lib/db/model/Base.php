@@ -13,13 +13,9 @@ class Db_Model_Base extends Db_Model_SQLQuery {
         return self::$instance;
     }
 
-    public function set($arg) {
-        $this->model = $arg;
-    }
+    public function __get() {}
 
-    public function get() {
-        return $this->model;
-    }
+    public function __set() {}
 
     private function __construct() {
 

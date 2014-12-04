@@ -19,7 +19,7 @@ class Core_Helper_Base {
     public function map_route($url) {
 
         $urlArray = explode(DS, $url);
-        $module = $urlArray[0];
+        $module = strtolower($urlArray[0]);
 
         # Get all the config.xml files from each module
         $configFileList = glob('[app|lib]*/*/config.xml');
@@ -65,6 +65,23 @@ class Core_Helper_Base {
         foreach($configFileList as $file) {
             $this->all_configs[] = simplexml_load_file($file);
         }
+    }
+
+    public function getConfig($module) {
+        # Get all config file paths
+        $configFileList = glob('[app|lib]*/*/config.xml');
+
+        foreach($configFileList as $path) {
+            $pathArray = explode(DS,$path);
+            if(strtolower($module) == strtolower($pathArray[1])) {
+                return simplexml_load_file($path);
+            }
+        }
+        return null;
+    }
+
+    public function badRequestController() {
+
     }
 
     public function set_module($url) {

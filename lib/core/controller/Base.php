@@ -2,28 +2,25 @@
 # Move to controller directory
 abstract Class Core_Controller_Base {
 
-	protected $controller;
-	protected $action;
-    protected $model;
     protected $template;
 
-
-	function __construct() {
-
-	}
+	function __construct() {}
 
     function __call($name, $arguments) {
-        #Default view to generate
 
-        #Generate this view if bad_request_handle is set in config.xml
-        echo 'Default action';
+        # Get the config file for the working module
+        $helper = getHelper('core/base');
+        $module = array_shift(explode('_',get_class($this)));
+        $config = $helper->getConfig($module);
+
+        if($config->bad_request->dir) {
+            # Generate this view if bad_request is set in config.xml
+            //$view = ucfirst($module) . '_View_' . ucfirst($config->bad_request->dir);
+            echo 'Custom View For Bad Request <br/>';
+        }
+        else {
+            #Default view to generate
+            echo 'Default View For Bad Url Request: ' . $name . '<br/>';
+        }
     }
-
-    function set($name, $value) {
-        $this->template->set($name,$value);
-    }
-
-//    function __destruct() {
-//        $this->template->render();
-//    }
 }

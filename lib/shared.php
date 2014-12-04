@@ -1,7 +1,7 @@
 <?php
 
 # Set error reporting if the environment is development
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL);
 if (DEVELOPMENT_ENVIRONMENT) {
     ini_set('display_errors','On');
 } else {

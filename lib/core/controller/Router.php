@@ -25,7 +25,7 @@ class Core_Controller_Router {
 
             if (empty($controllerName)) {
                 # Redirect to the default controller
-                $controllerName = 'Error';
+                $controllerName = 'index';
             }
 
             if (empty($action)) {
@@ -40,17 +40,13 @@ class Core_Controller_Router {
             # Dispatch the valid controller
             $dispatch = class_exists($controller) ? new $controller : null;
 
-            # TODO change this implementation in order to remove concern of valid actions
-            if(method_exists($controller, $action) && $dispatch != null) {
-                if(empty($queryString))
-                {
-                    $dispatch->$action();
-                } else {
-                    $dispatch->$action($queryString);
-                }
-            }else {
-                # TODO: Error generation code here
+            if(empty($queryString))
+            {
+                $dispatch->$action();
+            } else {
+                $dispatch->$action($queryString);
             }
+
         } catch (Exception $e) {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
         }
