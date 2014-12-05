@@ -5,28 +5,32 @@ abstract class Db_Model_SQLQuery {
     protected $result;
     protected $table;
 
-    function connect($address, $account, $pwd, $name)
+    public function connect($address, $account, $pwd, $name)
     {
-        $this->dbHandle = new PDO('mysql:host=' . DB_HOST . '; dbname=' . DB_NAME .'; charset=utf8', DB_USER, DB_PASSWORD);
+        $this->dbHandle = new PDO('mysql:host=' . $address . '; dbname=' . $name .'; charset=utf8', $account, $pwd);
         $this->dbHandle->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->dbHandle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
 
-    function disconnect() {
+    public function disconnect() {
     }
 
-    function selectAll() {
+    public function selectAll() {
         $query = 'select * from `'.$this->table.'`';
         return $this->query($query);
     }
 
-    function select($id) {
-        $query = 'select * from `'.$this->table.'` where `id` = \''.$id.'\'';
+    public function select($field, $value) {
+        $query = 'select * from `'.$this->table. '` where `'. $field .'` = \''.$value.'\'';
         return $this->query($query, 1);
     }
 
-    function query($query, $singleResult = 0) {
+    public function getNumRows() {
+        return count($this->selectAll());
+    }
+
+    protected function query($query, $singleResult = 0) {
 
         # SELECT statement
         if(preg_match("/select/i",$query)) {
@@ -41,15 +45,11 @@ abstract class Db_Model_SQLQuery {
         return($result);
     }
 
-    function getNumRows() {
-        return count($this->selectAll());
-    }
-
-    function freeResult() {
+    protected function freeResult() {
 
     }
 
-    function getError() {
+    protected function getError() {
 
     }
 

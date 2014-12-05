@@ -2,11 +2,12 @@
 
 class Core_Controller_Router {
 
-    function route($url) {
+    public function __route($url) {
 
         try {
+
             $urlArray = explode('/', $url);
-            $helper = getHelper('core/base');
+            $helper = App::getHelper('core/base');
 
             # The first part of the url is the module
             $module = isset($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : '';
@@ -17,7 +18,7 @@ class Core_Controller_Router {
             array_shift($urlArray);
 
             # The third part of the url is the action
-            $action = isset($urlArray[0]) ? $urlArray[0] : '';
+            $action = isset($urlArray[0]) ? $urlArray[0] . 'Action' : '';
             array_shift($urlArray);
 
             # The final part of the url ar the parameters
@@ -30,21 +31,33 @@ class Core_Controller_Router {
 
             if (empty($action)) {
                 # Redirect to the index page
-                $action = 'index';
+                $action = 'indexAction';
             }
 
-            # Validate the controller and use mapping in case of differing module names between the url and directory
-            $validController = (int)class_exists(ucfirst($module) . '_Controller_' . ucfirst($controllerName));
-            $controller = $validController ? ucfirst($module) . '_Controller_' . ucfirst($controllerName) : $helper->map_route($url);
+            # Mapping url to the user configuration
+            $controller = $helper->mapRoute($url);
+
+            if(!class_exists($controller)) {
+                $nonRewrittenClass =  ucfirst($module) . '_Controller_' . ucfirst($controllerName);
+
+                # Validate the controller and use mapping in case of differing module names between the url and directory
+                $validController = (int)class_exists($nonRewrittenClass);
+                $controller = $validController ? $nonRewrittenClass : null;
+            }
 
             # Dispatch the valid controller
             $dispatch = class_exists($controller) ? new $controller : null;
 
-            if(empty($queryString))
-            {
-                $dispatch->$action();
-            } else {
-                $dispatch->$action($queryString);
+            if($dispatch) {
+                if (empty($queryString)) {
+                    $dispatch->$action();
+                } else {
+                    $dispatch->$action($queryString);
+                }
+            }
+            else {
+                # Error generation
+                header('Location: ' . ROOT . '404.php');
             }
 
         } catch (Exception $e) {

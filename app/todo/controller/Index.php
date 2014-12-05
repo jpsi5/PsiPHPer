@@ -1,22 +1,22 @@
 <?php
 # Move to model directory
-class Core_Controller_Index extends Core_Controller_Base{
+class Todo_Controller_Index extends Core_Controller_Base{
 
-    public function __construct() {}
+    function __construct() {}
 
     #*******************************************#
     # Test actions                              #
     #*******************************************#
-    public function viewAction($arg = false)
+    function view($arg = false)
     {
         echo 'This is a view: ' . $arg . '<br />';
     }
 
-    public function otherAction() {
+    function other() {
         echo 'This is a view from other <br/>';
     }
 
-    public function indexAction() {
+    function index() {
         echo 'Welcome to the index page!';
     }
 }

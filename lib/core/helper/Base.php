@@ -2,8 +2,8 @@
 # Move to model or helper directory. Your choice for processing helpers.
 class Core_Helper_Base {
 
-    private $all_configs = array();
-    private $working_module;
+    private $allConfigs = array();
+    private $workingModule;
     private static $instance;
 
     private function __construct() {}
@@ -16,7 +16,7 @@ class Core_Helper_Base {
         return self::$instance;
     }
 
-    public function map_route($url) {
+    public function mapRoute($url) {
 
         $urlArray = explode(DS, $url);
         $module = strtolower($urlArray[0]);
@@ -49,6 +49,9 @@ class Core_Helper_Base {
                 if(isset($urlArray[1])) {
                     return $partialClassName . ucfirst($urlArray[1]);
                 }
+                else {
+                    return $partialClassName . 'Index';
+                }
             }
             else {
                 $partialClassName = "Core_Controller_Error";
@@ -57,13 +60,13 @@ class Core_Helper_Base {
         return $partialClassName;
     }
 
-    public function load_configs() {
+    public function loadConfigs() {
 
         # Get all the config files
         $configFileList = glob('[app|lib]*/*/config.xml');
 
         foreach($configFileList as $file) {
-            $this->all_configs[] = simplexml_load_file($file);
+            $this->allConfigs[] = simplexml_load_file($file);
         }
     }
 
@@ -84,8 +87,8 @@ class Core_Helper_Base {
 
     }
 
-    public function set_module($url) {
+    public function setModule($url) {
         $urlArray = explode(DS, $url);
-        $this->working_module = $urlArray[0];
+        $this->workingModule = $urlArray[0];
     }
 }

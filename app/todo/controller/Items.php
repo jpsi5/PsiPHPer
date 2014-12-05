@@ -2,12 +2,7 @@
 
 class Todo_Controller_Items extends Core_Controller_Base {
 
-    function __construct($model,$controller,$action) {
-        $this->controller = $controller;
-        $this->action = $action;
-        $this->model = $model;
-        $this->$model = new $model;
-        $this->template = new Todo_View_Template($controller,$action);
+    function __construct() {
     }
 
     function view($id = null,$name = null) {
@@ -32,6 +27,10 @@ class Todo_Controller_Items extends Core_Controller_Base {
     function delete($id = null) {
         $this->set('title','Success - My Todo List App');
         $this->set('todo',$this->Todo_Model_Item->query('delete from items where id = \''.$id.'\''));
+    }
+
+    function other(){
+        echo 'hey';
     }
 
 }
