@@ -2,8 +2,6 @@
 # Move to model directory
 class Core_Controller_Index extends Core_Controller_Base{
 
-    public function __construct() {}
-
     #*******************************************#
     # Test actions                              #
     #*******************************************#

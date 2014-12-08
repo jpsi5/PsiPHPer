@@ -15,7 +15,6 @@ if(isset($_GET['url'])) {
     $url = rtrim($_GET['url'],'/');
 }
 else {
-    # TODO: Change this sooner or later to avoid instantiating an abstract class.
     $url = '';
 }
 
