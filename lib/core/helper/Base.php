@@ -54,7 +54,7 @@ class Core_Helper_Base {
                 }
             }
             else {
-                $partialClassName = "Core_Controller_Error";
+                $partialClassName = "Core_Controller_Index";
             }
         }
         return $partialClassName;
@@ -71,20 +71,25 @@ class Core_Helper_Base {
     }
 
     public function getConfig($module) {
-        # Get all config file paths
-        $configFileList = glob('[app|lib]*/*/config.xml');
 
-        foreach($configFileList as $path) {
-            $pathArray = explode(DS,$path);
-            if(strtolower($module) == strtolower($pathArray[1])) {
-                return simplexml_load_file($path);
+        foreach($this->allConfigs as $config) {
+            if(strtolower($module) == strtolower($config->route->uri)) {
+                return $config;
             }
         }
         return null;
     }
 
-    public function badRequestController() {
+    public function getControllerClass($config,$actionControllerName) {
+        $dir = $config->route->dir;
+        $pathArray = explode(DS,$dir);
+        $actionController = '';
+        foreach($pathArray as $path) {
+            $actionController = $actionController . ucfirst($path) . '_';
+        }
+        $actionController .= ucfirst($actionControllerName);
 
+        return $actionController;
     }
 
     public function setModule($url) {

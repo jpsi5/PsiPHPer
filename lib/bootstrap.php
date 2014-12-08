@@ -3,13 +3,19 @@
 include (ROOT. 'lib/shared.php');
 
 # Create the router that will load the appropriate controller
-$router = new Core_Controller_Router();
-$router->__route($url);
+$app = new App();
+$app->map($url);
 
 #############################################################
 # Utility Class                                             #
 #############################################################
 class App {
+    private $router;
+
+    public function map($url) {
+        $this->router = new Core_Controller_Router();
+        $this->router->route($url);
+    }
 
     public static function getModel($path) {
         return self::_getClass($path,'Model');

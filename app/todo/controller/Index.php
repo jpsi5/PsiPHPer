@@ -7,16 +7,16 @@ class Todo_Controller_Index extends Core_Controller_Base{
     #*******************************************#
     # Test actions                              #
     #*******************************************#
-    function view($arg = false)
+    function viewAction($arg = false)
     {
         echo 'This is a view: ' . $arg . '<br />';
     }
 
-    function other() {
+    function otherAction() {
         echo 'This is a view from other <br/>';
     }
 
-    function index() {
-        echo 'Welcome to the index page!';
+    function indexAction() {
+        echo 'Todo List: Welcome to the index page!';
     }
 }

@@ -2,66 +2,58 @@
 
 class Core_Controller_Router {
 
-    public function __route($url) {
-
+    public function route($url) {
         try {
-
             $urlArray = explode('/', $url);
             $helper = App::getHelper('core/base');
 
             # The first part of the url is the module
-            $module = isset($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : '';
+            $module = !empty($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : 'Core';
             array_shift($urlArray);
 
             # The second part of the url is the controller
-            $controllerName = isset($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : '';
+            $controllerName = isset($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : 'Index';
             array_shift($urlArray);
 
             # The third part of the url is the action
-            $action = isset($urlArray[0]) ? $urlArray[0] . 'Action' : '';
+            $actionMethod = isset($urlArray[0]) ? $urlArray[0] . 'Action' : 'indexAction';
             array_shift($urlArray);
 
             # The final part of the url ar the parameters
             $queryString = count($urlArray) == 1 ? $urlArray[0] : $urlArray;
 
-            if (empty($controllerName)) {
-                # Redirect to the default controller
-                $controllerName = 'index';
+            $config = $helper->getConfig($module);
+
+            if($config) {
+                $actionController = $helper->getControllerClass($config,$controllerName);
+                if(!class_exists($actionController)) {
+                    header('Location: /' . strtolower($module));
+                }
+            }
+            else {
+                $actionController = $module . '_Controller_' . $controllerName;
+                if(!class_exists($actionController)) {
+                    # Don't know what the fuck to do here
+                    header('Location: /admin');
+                }
             }
 
-            if (empty($action)) {
-                # Redirect to the index page
-                $action = 'indexAction';
-            }
+            $dispatch = new $actionController;
 
-            # Mapping url to the user configuration
-            $controller = $helper->mapRoute($url);
-
-            if(!class_exists($controller)) {
-                $nonRewrittenClass =  ucfirst($module) . '_Controller_' . ucfirst($controllerName);
-
-                # Validate the controller and use mapping in case of differing module names between the url and directory
-                $validController = (int)class_exists($nonRewrittenClass);
-                $controller = $validController ? $nonRewrittenClass : null;
-            }
-
-            # Dispatch the valid controller
-            $dispatch = class_exists($controller) ? new $controller : null;
-
-            if($dispatch) {
+            if($dispatch && method_exists($dispatch,$actionMethod)) {
                 if (empty($queryString)) {
-                    $dispatch->$action();
+                    $dispatch->$actionMethod();
                 } else {
-                    $dispatch->$action($queryString);
+                    $dispatch->$actionMethod($queryString);
                 }
             }
             else {
                 # Error generation
-                header('Location: ' . ROOT . '404.php');
+                header('Location: /'  . strtolower($module));
             }
 
         } catch (Exception $e) {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
         }
-  }
+    }
 }

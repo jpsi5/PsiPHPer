@@ -26,5 +26,4 @@ $autoloader = new Autoloader();
 # Load all the configuration files and set the module for the current application
 $helper = App::getHelper('core/base');
 $helper->loadConfigs();
-$helper->setModule($url);
 
