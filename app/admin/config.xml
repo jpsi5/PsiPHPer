@@ -3,6 +3,11 @@
         <dir>admin/controller</dir>
         <uri>admin</uri>
     </route>
+    <layout>
+        <default>
+            <block></block>
+        </default>
+    </layout>
     <database>
         <host>localhost</host>
         <user>root</user>
