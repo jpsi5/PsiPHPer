@@ -8,7 +8,11 @@ class Core_Helper_Base {
 
     private function __construct() {}
 
-    # Returns the singleton instance of this class
+    /**
+     * Returns a singleton instance of this class
+     *
+     * @return Core_Helper_Base
+     */
     public static function getInstance(){
         if(is_null(self::$instance)) {
             self::$instance = new self();
@@ -16,50 +20,12 @@ class Core_Helper_Base {
         return self::$instance;
     }
 
-    public function mapRoute($url) {
-
-        $urlArray = explode(DS, $url);
-        $module = strtolower($urlArray[0]);
-
-        # Get all the config.xml files from each module
-        $configFileList = glob('[app|lib]*/*/config.xml');
-
-        # Search each config file for the requested uri
-        foreach($configFileList as $file) {
-            $xmlFile = simplexml_load_file($file);
-            if($module == $xmlFile->route->uri) {
-
-                # Retrieve the directory for the controllers in config.xml
-                $dir = $xmlFile->route->dir;
-
-                # Ignoring any appending or prepending directory separators (pre-caution)
-                rtrim($dir,'/');
-                ltrim($dir,'/');
-
-                # Building the class name of the controller
-                $partialClassNameArray = explode(DS, $dir);
-                $partialClassName = '';
-
-                foreach($partialClassNameArray as $part) {
-                    $part = strtolower($part);
-                    $partialClassName = $partialClassName . ucfirst($part) . '_';
-                }
-
-                # Return the complete name if the controller name (urlArray[1]) is set
-                if(isset($urlArray[1])) {
-                    return $partialClassName . ucfirst($urlArray[1]);
-                }
-                else {
-                    return $partialClassName . 'Index';
-                }
-            }
-            else {
-                $partialClassName = "Core_Controller_Index";
-            }
-        }
-        return $partialClassName;
-    }
-
+    /**
+     * Loads all the the configuration files into an array
+     *
+     * @param void
+     * @return void
+     */
     public function loadConfigs() {
 
         # Get all the config files
@@ -70,6 +36,12 @@ class Core_Helper_Base {
         }
     }
 
+    /**
+     * Returns the configuration file of the $module
+     *
+     * @param string $module String used to find appropriate config file
+     * @return SimpleXMLElement $config, NULL if no module is found
+     */
     public function getConfig($module) {
 
         foreach($this->allConfigs as $config) {
@@ -80,6 +52,13 @@ class Core_Helper_Base {
         return null;
     }
 
+    /**
+     * Builds the class name of the controller
+     *
+     * @param SimpleXMLElement $config
+     * @param string $actionControllerName
+     * @return string Returns a class name of the controller
+     */
     public function getControllerClass($config,$actionControllerName) {
         $dir = $config->route->dir;
         $pathArray = explode(DS,$dir);
@@ -92,8 +71,29 @@ class Core_Helper_Base {
         return $actionController;
     }
 
-    public function setModule($url) {
-        $urlArray = explode(DS, $url);
-        $this->workingModule = $urlArray[0];
+    /**
+     * Gets the database credentials from the configuration file
+     *
+     * @param string $module
+     * @return array|null Returns null if the module does not exist or database configuration not present
+     */
+    public function getDbCredentials($module) {
+        $db = array();
+        $config = $this->getConfig($module);
+        try {
+            if ($config && $config->database) {
+                $db["host"] = $config->database->host->__toString();
+                $db["user"] = $config->database->user->__toString();
+                $db["password"] = $config->database->key->__toString();
+                $db["name"] = $config->database->name->__toString();
+            } else {
+                $db = null;
+                Throw new Exception('Cannot find database for the module: ' . $module);
+            }
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . '<br />';
+        }
+
+        return $db;
     }
 }

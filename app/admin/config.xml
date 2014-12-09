@@ -1,0 +1,12 @@
+<config>
+    <route>
+        <dir>admin/controller</dir>
+        <uri>admin</uri>
+    </route>
+    <database>
+        <host>localhost</host>
+        <user>root</user>
+        <key>M@ster87!</key>
+        <name>admin</name>
+    </database>
+</config>

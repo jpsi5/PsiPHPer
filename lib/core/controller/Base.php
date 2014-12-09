@@ -6,5 +6,7 @@ abstract Class Core_Controller_Base {
 
     public function indexAction() {}
 
-    public function loadLayout() {}
+    protected function loadLayout() {}
+
+    protected function renderLayout() {}
 }

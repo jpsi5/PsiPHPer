@@ -29,6 +29,13 @@ class App {
         return self::_getClass($path,'View');
     }
 
+    /**
+     * Gets a singleton instance of the specified class
+     *
+     * @param string $path
+     * @param string $type
+     * @return object Returns an instance of the requested class
+     */
     protected static function _getClass($path = null, $type = null) {
         if($type && $path) {
             try {

@@ -16,6 +16,12 @@ abstract class Db_Model_SQLQuery {
     public function disconnect() {
     }
 
+    public function insert() {
+        # TODO: create convention for getting field names
+        $query = 'insert into `' . $this->table . '`(' . ') values(' . ')';
+        $this->query($query);
+    }
+
     public function selectAll() {
         $query = 'select * from `'.$this->table.'`';
         return $this->query($query);

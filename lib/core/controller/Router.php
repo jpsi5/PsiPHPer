@@ -2,13 +2,18 @@
 
 class Core_Controller_Router {
 
+    /**
+     * Maps the request url to the appropriate action controller and its method
+     *
+     * @param $url String to be used for mapping
+     */
     public function route($url) {
         try {
             $urlArray = explode('/', $url);
             $helper = App::getHelper('core/base');
 
             # The first part of the url is the module
-            $module = !empty($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : 'Core';
+            $module = !empty($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : 'Admin';
             array_shift($urlArray);
 
             # The second part of the url is the controller
