@@ -1,5 +1,4 @@
 <?php
-# Move to model directory
 class Todo_Controller_Index extends Core_Controller_Base{
 
     function __construct() {}

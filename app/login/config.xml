@@ -1,0 +1,6 @@
+<config>
+    <route>
+        <dir>login/controller</dir>
+        <uri>login</uri>
+    </route>
+</config>

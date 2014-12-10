@@ -5,7 +5,7 @@
     </route>
     <layout>
         <default>
-            <block></block>
+            <block type="admin/template" template="app/admin/view/template/test_page.phtml"></block>
         </default>
     </layout>
     <database>
