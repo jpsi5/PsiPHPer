@@ -3,7 +3,4 @@
         <dir>core/controller</dir>
         <uri>core</uri>
     </route>
-    <bad_request>
-        <dir>error</dir>
-    </bad_request>
 </config>

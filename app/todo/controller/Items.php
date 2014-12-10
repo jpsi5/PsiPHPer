@@ -2,9 +2,6 @@
 
 class Todo_Controller_Items extends Core_Controller_Base {
 
-    function __construct() {
-    }
-
     function view($id = null,$name = null) {
 
         $this->set('title',$name.' - My Todo List App');

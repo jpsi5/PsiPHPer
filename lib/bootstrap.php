@@ -25,8 +25,12 @@ class App {
         return self::_getClass($path,'Helper');
     }
 
-    public static function getView($path) {
-        return self::_getClass($path,'View');
+    public static function getLayout($path) {
+        return self::_getClass($path,'View_Layout');
+    }
+
+    public static function getBlock($path) {
+        return self::_getClass($path, 'View_Block');
     }
 
     /**

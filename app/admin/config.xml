@@ -4,9 +4,11 @@
         <uri>admin</uri>
     </route>
     <layout>
-        <default>
-            <block type="admin/template" template="app/admin/view/template/test_page.phtml"></block>
-        </default>
+        <admin_index_index>
+            <block type="core/base" name="root" template="test_page.phtml">
+                <block type="" name="content" template="content.phtml"></block>
+            </block>
+        </admin_index_index>
     </layout>
     <database>
         <host>localhost</host>

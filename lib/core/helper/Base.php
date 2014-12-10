@@ -4,7 +4,7 @@ class Core_Helper_Base {
 
     private $allConfigs = array();
     private $workingModule;
-    private static $instance;
+    private static $_instance;
 
     private function __construct() {}
 
@@ -14,10 +14,10 @@ class Core_Helper_Base {
      * @return Core_Helper_Base
      */
     public static function getInstance(){
-        if(is_null(self::$instance)) {
-            self::$instance = new self();
+        if(is_null(self::$_instance)) {
+            self::$_instance = new self();
         }
-        return self::$instance;
+        return self::$_instance;
     }
 
     /**

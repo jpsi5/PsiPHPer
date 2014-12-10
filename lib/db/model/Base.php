@@ -3,14 +3,14 @@
 class Db_Model_Base extends Db_Model_SQLQuery {
 
     private $model;
-    private static $instance;
+    private static $_instance;
 
     # Returns the singleton instance of this class
     public static function getInstance(){
-        if(is_null(self::$instance)) {
-            self::$instance = new self();
+        if(is_null(self::$_instance)) {
+            self::$_instance = new self();
         }
-        return self::$instance;
+        return self::$_instance;
     }
 
     public function __get() {}
