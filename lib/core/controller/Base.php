@@ -6,23 +6,48 @@ abstract Class Core_Controller_Base {
     private $_action;
     private $_name;
 
-	final public function __construct() {
+	public function __construct() {
         $class = get_class($this);
         $classNameArray = explode('_',$class);
         $this->_module = strtolower($classNameArray[0]);
         $this->_name = strtolower(end($classNameArray));
     }
 
-    public function indexAction() {
-    }
+    public function indexAction() {}
 
     protected function loadLayout(/* possible args */) {
 
+        # Get help quick
+        $helper = App::getHelper('core/base');
+
+        # Get the calling action method name
         $this->_action = $this->getCallingMethodName();
+
+        # Build the layout handle
         $layoutHandle = $this->_module . '_' . $this->_name . '_' . $this->_action;
-        echo '<br/>'. $layoutHandle;
+
+        # Validate the config file exists
+        $config = $helper->getConfig($this->_module);
+        $baseConfig = $helper->getConfig('core');
 
         # Generate layout XML
+        if($config) {
+            $layout = App::getLayout('core/base');
+            $layoutXmlNode = $config->layout->$layoutHandle;
+            $defaultLayoutXmlNode = $config->layout->default;
+            if($layoutXmlNode){
+                $blocks = new SimpleXMLIterator($layoutXmlNode->asXML());
+                $layout->loadBlocks($blocks);
+            }
+            else if ($defaultLayoutXmlNode){
+
+            }
+            else {
+
+            }
+        } else {
+
+        }
 
         # Instantiate a block class foreach </block> tag
 
@@ -32,6 +57,7 @@ abstract Class Core_Controller_Base {
     }
 
     protected function renderLayout() {}
+
 
     protected function getCallingMethodName() {
         $e = new Exception();

@@ -54,7 +54,12 @@ class App {
 
                 # Verify that $model is a valid class name.
                 if (class_exists($className)) {
-                    return $className::getInstance();
+                    if(method_exists($className,'getInstance')) {
+                        return $className::getInstance();
+                    }
+                    else {
+                        return new $className;
+                    }
                 } else {
                     throw new Exception('Class [' . $className . '] not found.');
                 }

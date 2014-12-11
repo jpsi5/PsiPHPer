@@ -4,9 +4,16 @@
         <uri>admin</uri>
     </route>
     <layout>
+        <default>
+            <block type="core/page" name="root" template=""></block>
+        </default>
         <admin_index_index>
-            <block type="core/base" name="root" template="test_page.phtml">
-                <block type="" name="content" template="content.phtml"></block>
+            <block type="core/page" name="root" template="test_page.phtml">
+                <block type="core/header" name="header" template="test_header.phtml"></block>
+                <block type="core/content" name="content" template="test_content.phtml">
+                    <block type="core/form" name="form" template="test_form.phtml"></block>
+                </block>
+                <block type="core/footer" name="footer" template="test_footer.phtml"></block>
             </block>
         </admin_index_index>
     </layout>

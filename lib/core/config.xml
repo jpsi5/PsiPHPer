@@ -3,4 +3,9 @@
         <dir>core/controller</dir>
         <uri>core</uri>
     </route>
+    <layout>
+        <default>
+            <block type="core/base" name="root" template="core_test_page.phtml"></block>
+        </default>
+    </layout>
 </config>
