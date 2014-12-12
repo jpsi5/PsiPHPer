@@ -15,7 +15,7 @@ abstract Class Core_Controller_Base {
 
     public function indexAction() {}
 
-    protected function loadLayout(/* possible args */) {
+    final protected function loadLayout(/* possible args */) {
 
         # Get help quick
         $helper = App::getHelper('core/base');
@@ -28,36 +28,39 @@ abstract Class Core_Controller_Base {
 
         # Validate the config file exists
         $config = $helper->getConfig($this->_module);
-        $baseConfig = $helper->getConfig('core');
 
         # Generate layout XML
-        if($config) {
-            $layout = App::getLayout('core/base');
-            $layoutXmlNode = $config->layout->$layoutHandle;
-            $defaultLayoutXmlNode = $config->layout->default;
-            if($layoutXmlNode){
-                $blocks = new SimpleXMLIterator($layoutXmlNode->asXML());
+        try {
+            if ($config) {
+                $layout = App::getLayout('core/base');
+                $layoutXmlNode = $config->layout->$layoutHandle;
+                $defaultLayoutXmlNode = $config->layout->default;
+
+                # Search for the module specific layout, then fall back to default if
+                # it can't be found. If neither are present, fall back to core layout
+                if ($layoutXmlNode) {
+                    $blocks = new SimpleXMLIterator($layoutXmlNode->asXML());
+                } else if ($defaultLayoutXmlNode) {
+                    $blocks = new SimpleXMLIterator($defaultLayoutXmlNode->asXML());
+                } else {
+                    $baseConfig = $helper->getConfig('core');
+                    $coreLayoutXmlNode = $baseConfig->layout->default;
+                    $blocks = new SimpleXMLIterator($coreLayoutXmlNode->asXML());
+                }
+
+                # Load the blocks
                 $layout->loadBlocks($blocks);
-            }
-            else if ($defaultLayoutXmlNode){
 
+            } else {
+                throw new Exception('Layout retrieval failed');
             }
-            else {
 
-            }
-        } else {
-
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . '<br />';
         }
-
-        # Instantiate a block class foreach </block> tag
-
-        # Use tag's type attribute to get class name of the block
-
-        # Store the block
     }
 
     protected function renderLayout() {}
-
 
     protected function getCallingMethodName() {
         $e = new Exception();
