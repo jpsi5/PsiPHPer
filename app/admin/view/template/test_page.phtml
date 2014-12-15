@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin: Hello World</title>
+    <title>Core: Hello World</title>
     <style type="text/css">
         body {
-            background-color:#f00;
+            background-color:#fff;
         }
     </style>
 </head>
 <body>
-
+<?php $this->getChildHtml('header'); ?>
+<?php $this->getChildHtml('content'); ?>
+<?php $this->getChildHtml('footer'); ?>
 </body>
 </html>

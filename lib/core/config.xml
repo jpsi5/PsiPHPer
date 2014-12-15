@@ -5,7 +5,11 @@
     </route>
     <layout>
         <default>
-            <block type="core/base" name="root" template="core_test_page.phtml"></block>
+            <block type="core/page" name="root" template="core_test_page.phtml">
+                <block type="core/header" name="header" template="core_test_header.phtml"></block>
+                <block type="core/content" name="content" template="core_test_content.phtml"></block>
+                <block type="core/footer" name="footer" template="core_test_footer.phtml"></block>
+            </block>
         </default>
     </layout>
 </config>

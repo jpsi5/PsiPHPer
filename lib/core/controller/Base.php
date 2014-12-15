@@ -50,6 +50,9 @@ abstract Class Core_Controller_Base {
 
                 # Load the blocks
                 $layout->loadBlocks($blocks);
+                echo "<pre>";
+                print_r($layout);
+                echo "</pre>";
 
             } else {
                 throw new Exception('Layout retrieval failed');
@@ -60,7 +63,11 @@ abstract Class Core_Controller_Base {
         }
     }
 
-    protected function renderLayout() {}
+    protected function renderLayout() {
+        $layout = App::getLayout('core/base');
+        $rootBlock = $layout->getBlock('root');
+        $rootBlock->getHtml();
+    }
 
     protected function getCallingMethodName() {
         $e = new Exception();

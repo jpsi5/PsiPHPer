@@ -5,7 +5,7 @@
     </route>
     <layout>
         <default>
-            <block type="core/page" name="root" template=""></block>
+            <block type="core/page" name="root" template="test_page.phtml"></block>
         </default>
         <admin_index_index>
             <block type="core/page" name="root" template="test_page.phtml">

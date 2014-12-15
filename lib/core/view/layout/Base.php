@@ -21,7 +21,7 @@ class Core_View_Layout_Base {
         return false;
     }
 
-    public function loadBlocks($xmlIterator) {
+    public function loadBlocks($xmlIterator,$parent = false) {
         $i = 0;
         for( $xmlIterator->rewind(); $xmlIterator->valid(); $xmlIterator->next() ) {
 
@@ -32,13 +32,36 @@ class Core_View_Layout_Base {
                 $attributes[$attribute] = $value->__toString();
             }
 
-            # Add to $_blocks of the layout object
-            $this->_blocks[$attributes['name']] = App::getBlock($attributes['type']);
+            # Add to $_blocks of the layout object and initialize the block
+            $currentBlock = $attributes['name'];
+            $this->_blocks[$currentBlock] = App::getBlock($attributes['type']);
+            $this->_blocks[$currentBlock]->_name = $currentBlock;
+            $this->_blocks[$currentBlock]->_template = $attributes['template'];
+
+            # Referencing the current block to its parent
+            if($parent) {
+                $this->_blocks[$currentBlock]->_parent = $parent;
+            }
 
             if($xmlIterator->hasChildren()) {
-                $this->loadBlocks($xmlIterator->block[$i]);
+                $this->loadBlocks($xmlIterator->block[$i],$currentBlock);
             }
             $i++;
         }
+    }
+
+    public function getBlock($name) {
+        if(array_key_exists($name, $this->_blocks)) {
+            return($this->_blocks[$name]);
+        }
+
+        $trace = debug_backtrace();
+        trigger_error(
+            'Undefined property via getBlock(): ' . $name .
+            ' in ' . $trace[0]['file'] .
+            ' on line ' . $trace[0]['line'],
+            E_USER_NOTICE);
+        return null;
+
     }
 }

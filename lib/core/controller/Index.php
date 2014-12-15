@@ -16,5 +16,7 @@ class Core_Controller_Index extends Core_Controller_Base{
 
     public function indexAction() {
         echo 'Core: Welcome to the index page!';
+        $this->loadLayout();
+        $this->renderLayout();
     }
 }

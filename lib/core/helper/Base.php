@@ -2,8 +2,8 @@
 # Move to model or helper directory. Your choice for processing helpers.
 class Core_Helper_Base {
 
-    private $allConfigs = array();
-    private $workingModule;
+    private $_allConfigs = array();
+    private $_workingModule;
     private static $_instance;
 
     private function __construct() {}
@@ -32,7 +32,7 @@ class Core_Helper_Base {
         $configFileList = glob('[app|lib]*/*/config.xml');
 
         foreach($configFileList as $file) {
-            $this->allConfigs[] = simplexml_load_file($file);
+            $this->_allConfigs[] = simplexml_load_file($file);
         }
     }
 
@@ -44,7 +44,7 @@ class Core_Helper_Base {
      */
     public function getConfig($module) {
 
-        foreach($this->allConfigs as $config) {
+        foreach($this->_allConfigs as $config) {
             if(strtolower($module) == strtolower($config->route->uri)) {
                 return $config;
             }
@@ -95,5 +95,19 @@ class Core_Helper_Base {
         }
 
         return $db;
+    }
+
+    public function getModule() {
+        return $this->_workingModule;
+    }
+    public function setModule($url) {
+        if($url){
+            $urlArray = explode(DS,$url);
+            $module = $urlArray[0];
+            $this->_workingModule = $module;
+        }
+        else {
+           $this->_workingModule = 'admin';
+        }
     }
 }

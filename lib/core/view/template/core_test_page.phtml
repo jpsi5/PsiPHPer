@@ -4,11 +4,13 @@
     <title>Core: Hello World</title>
     <style type="text/css">
         body {
-            background-color:#0f0;
+            background-color:#6bf;
         }
     </style>
 </head>
 <body>
-
+<?php $this->getChildHtml('header'); ?>
+<?php $this->getChildHtml('content'); ?>
+<?php $this->getChildHtml('footer'); ?>
 </body>
 </html>
