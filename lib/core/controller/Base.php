@@ -15,7 +15,7 @@ abstract Class Core_Controller_Base {
 
     public function indexAction() {}
 
-    final protected function loadLayout(/* possible args */) {
+    final protected function loadLayout() {
 
         # Get help quick
         $helper = App::getHelper('core/base');
@@ -50,22 +50,18 @@ abstract Class Core_Controller_Base {
 
                 # Load the blocks
                 $layout->loadBlocks($blocks);
-                echo "<pre>";
-                print_r($layout);
-                echo "</pre>";
 
             } else {
                 throw new Exception('Layout retrieval failed');
             }
-
         } catch (Exception $e) {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
         }
     }
 
-    protected function renderLayout() {
+    final protected function renderLayout() {
         $layout = App::getLayout('core/base');
-        $rootBlock = $layout->getBlock('root');
+        $rootBlock = $layout->getLayoutBlock('root');
         $rootBlock->getHtml();
     }
 

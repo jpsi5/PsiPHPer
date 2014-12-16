@@ -1,6 +1,5 @@
 <?php
 class Core_View_Layout_Base {
-    private $_output = array();
     private $_blocks = array();
     private static $_instance;
 
@@ -11,14 +10,6 @@ class Core_View_Layout_Base {
             self::$_instance = new self();
         }
         return self::$_instance;
-    }
-
-    public function addBlock($block) {
-        if($block) {
-            $this->_blocks[] = $block;
-            return true;
-        }
-        return false;
     }
 
     public function loadBlocks($xmlIterator,$parent = false) {
@@ -33,35 +24,35 @@ class Core_View_Layout_Base {
             }
 
             # Add to $_blocks of the layout object and initialize the block
-            $currentBlock = $attributes['name'];
-            $this->_blocks[$currentBlock] = App::getBlock($attributes['type']);
-            $this->_blocks[$currentBlock]->_name = $currentBlock;
-            $this->_blocks[$currentBlock]->_template = $attributes['template'];
+            $currentBlockName = $attributes['name'];
+            $this->_blocks[$currentBlockName] = App::getBlock($attributes['type']);
+            $this->_blocks[$currentBlockName]->_name = $currentBlockName;
+            $this->_blocks[$currentBlockName]->_template = $attributes['template'];
 
             # Referencing the current block to its parent
             if($parent) {
-                $this->_blocks[$currentBlock]->_parent = $parent;
+                $this->_blocks[$currentBlockName]->_parent = $parent;
             }
 
+            # Checking the existence of child nodes
             if($xmlIterator->hasChildren()) {
-                $this->loadBlocks($xmlIterator->block[$i],$currentBlock);
+                $this->loadBlocks($xmlIterator->block[$i],$currentBlockName);
             }
             $i++;
         }
     }
 
-    public function getBlock($name) {
+    public function getLayoutBlock($name) {
         if(array_key_exists($name, $this->_blocks)) {
             return($this->_blocks[$name]);
         }
 
         $trace = debug_backtrace();
         trigger_error(
-            'Undefined property via getBlock(): ' . $name .
+            'Undefined block via getLayoutBlock(): ' . $name .
             ' in ' . $trace[0]['file'] .
             ' on line ' . $trace[0]['line'],
             E_USER_NOTICE);
         return null;
-
     }
 }

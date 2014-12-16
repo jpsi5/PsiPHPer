@@ -1,6 +1,6 @@
 <?php
 
-include (ROOT. 'lib/shared.php');
+require (ROOT. 'lib/shared.php');
 
 # Create the router that will load the appropriate controller
 $app = new App();
