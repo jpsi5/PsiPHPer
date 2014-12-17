@@ -17,8 +17,11 @@ abstract class Db_Model_SQLQuery {
     }
 
     public function insert() {
-        # TODO: create convention for getting field names
-        $query = 'insert into `' . $this->table . '`(' . ') values(' . ')';
+        # TODO: create convention for to handle numbers
+        $
+        $fields = implode("', '", $values);
+        # $query = 'insert into `' . $this->table . '`' . ' values(' . ')';
+        $query = "insert into `" . $this->table . "`" . "values('" . $fields . "')";
         $this->query($query);
     }
 

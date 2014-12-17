@@ -40,6 +40,7 @@ class Core_Controller_Router {
                 if(!class_exists($actionController)) {
                     # Don't know what the fuck to do here
                     header('Location: /admin');
+                    die();
                 }
             }
 

@@ -1,0 +1,30 @@
+[17-Dec-2014 19:16:44 UTC] PHP Fatal error:  Class 'Tester_Controller_Index' not found in /home/jsimon/sites/psiphper.dev/lib/core/controller/Router.php on line 46
+[17-Dec-2014 19:16:44 UTC] PHP Stack trace:
+[17-Dec-2014 19:16:44 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[17-Dec-2014 19:16:44 UTC] PHP   2. require_once() /home/jsimon/sites/psiphper.dev/index.php:7
+[17-Dec-2014 19:16:44 UTC] PHP   3. App->map() /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:7
+[17-Dec-2014 19:16:44 UTC] PHP   4. Core_Controller_Router->route() /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:17
+[17-Dec-2014 19:17:37 UTC] PHP Fatal error:  Class 'Tester_Controller_Index' not found in /home/jsimon/sites/psiphper.dev/lib/core/controller/Router.php on line 46
+[17-Dec-2014 19:17:37 UTC] PHP Stack trace:
+[17-Dec-2014 19:17:37 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[17-Dec-2014 19:17:37 UTC] PHP   2. require_once() /home/jsimon/sites/psiphper.dev/index.php:7
+[17-Dec-2014 19:17:37 UTC] PHP   3. App->map() /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:7
+[17-Dec-2014 19:17:37 UTC] PHP   4. Core_Controller_Router->route() /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:17
+[17-Dec-2014 19:19:01 UTC] PHP Fatal error:  Class 'Tester_Controller_Index' not found in /home/jsimon/sites/psiphper.dev/lib/core/controller/Router.php on line 46
+[17-Dec-2014 19:19:01 UTC] PHP Stack trace:
+[17-Dec-2014 19:19:01 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[17-Dec-2014 19:19:01 UTC] PHP   2. require_once() /home/jsimon/sites/psiphper.dev/index.php:7
+[17-Dec-2014 19:19:01 UTC] PHP   3. App->map($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:7
+[17-Dec-2014 19:19:01 UTC] PHP   4. Core_Controller_Router->route($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:17
+[17-Dec-2014 19:20:17 UTC] PHP Fatal error:  Class 'Tester_Controller_Index' not found in /home/jsimon/sites/psiphper.dev/lib/core/controller/Router.php on line 47
+[17-Dec-2014 19:20:17 UTC] PHP Stack trace:
+[17-Dec-2014 19:20:17 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[17-Dec-2014 19:20:17 UTC] PHP   2. require_once() /home/jsimon/sites/psiphper.dev/index.php:7
+[17-Dec-2014 19:20:17 UTC] PHP   3. App->map($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:7
+[17-Dec-2014 19:20:17 UTC] PHP   4. Core_Controller_Router->route($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:17
+[17-Dec-2014 19:20:20 UTC] PHP Fatal error:  Class 'Tester_Controller_Index' not found in /home/jsimon/sites/psiphper.dev/lib/core/controller/Router.php on line 47
+[17-Dec-2014 19:20:20 UTC] PHP Stack trace:
+[17-Dec-2014 19:20:20 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[17-Dec-2014 19:20:20 UTC] PHP   2. require_once() /home/jsimon/sites/psiphper.dev/index.php:7
+[17-Dec-2014 19:20:20 UTC] PHP   3. App->map($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:7
+[17-Dec-2014 19:20:20 UTC] PHP   4. Core_Controller_Router->route($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:17

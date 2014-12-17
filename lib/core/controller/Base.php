@@ -21,7 +21,7 @@ abstract Class Core_Controller_Base {
         $helper = App::getHelper('core/base');
 
         # Get the calling action method name
-        $this->_action = $this->getCallingMethodName();
+        $this->_action = App::getHelper('core/base')->getCallingMethodName();
 
         # Build the layout handle
         $layoutHandle = $this->_module . '_' . $this->_name . '_' . $this->_action;
@@ -65,12 +65,5 @@ abstract Class Core_Controller_Base {
         $rootBlock->getHtml();
     }
 
-    protected function getCallingMethodName() {
-        $e = new Exception();
-        $trace = $e->getTrace();
-        $last_call = $trace[2];
-        $func = $last_call['function'];
-        $actionName = strtolower(str_replace('Action','',$func));
-        return $actionName;
-    }
+
 }

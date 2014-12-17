@@ -1,7 +1,12 @@
 RewriteEngine On
 
+# REDIRECT REQUESTS
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
-
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+# REDIRECT FAVICON
+RewriteCond %{THE_REQUEST} !^/favicon\.ico [NC]
+RewriteCond %{THE_REQUEST} favicon\.ico [NC]
+RewriteRule ^(.+)$ assets/favicon.ico [R=301,L]

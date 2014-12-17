@@ -100,6 +100,7 @@ class Core_Helper_Base {
     public function getModule() {
         return $this->_workingModule;
     }
+
     public function setModule($url) {
         if($url){
             $urlArray = explode(DS,$url);
@@ -109,5 +110,21 @@ class Core_Helper_Base {
         else {
            $this->_workingModule = 'admin';
         }
+    }
+
+    public function getCallingClass() {
+        $e = new Exception();
+        $trace = $e->getTrace();
+        $callingClass = $trace[2]['class'];
+        return $callingClass;
+    }
+
+    public function getCallingMethodName() {
+        $e = new Exception();
+        $trace = $e->getTrace();
+        $last_call = $trace[2];
+        $func = $last_call['function'];
+        $actionName = strtolower(str_replace('Action','',$func));
+        return $actionName;
     }
 }

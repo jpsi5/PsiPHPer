@@ -68,4 +68,11 @@ class App {
             }
         }
     }
+
+    public static function getModuleDirectory($moduleName) {
+        $modulePath = glob('[app|lib]*' . DS . $moduleName . DS);
+        if(count($modulePath) == 1) {
+            return ROOT . $modulePath[0];
+        }
+    }
 }
