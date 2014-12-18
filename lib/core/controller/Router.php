@@ -10,7 +10,7 @@ class Core_Controller_Router {
     public function route($url) {
         try {
             $urlArray = explode('/', $url);
-            $helper = App::getHelper('core/base');
+            $helper = App::getHelper();
 
             # The first part of the url is the module
             $module = !empty($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : 'Admin';

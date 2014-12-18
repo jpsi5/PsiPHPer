@@ -4,27 +4,37 @@ abstract class Core_View_Block_Base {
 
     private $_name;
     private $_template;
-    private $_parent;
+    protected $_parent;
     protected $_templateDirectory;
+    protected $_coreTemplateDirectory;
 
     public function __construct(){
         $this->_templateDirectory = 'view' . DS . 'template' . DS;
+        $this->_coreTemplateDirectory = ROOT . 'lib' . DS . 'core' . DS . 'view' . DS . 'template' . DS;
     }
 
+    /**
+     * Magic method used to retrieve property data from this class
+     *
+     * @param $name The name of the property being referenced
+     * @return mixed The property to be returned. Returns null if the property does not exist
+     */
     public function __get($name) {
         if(property_exists($this,$name)) {
             return $this->$name;
         }
 
-        $trace = debug_backtrace();
-        trigger_error(
-            'Undefined property via __get(): ' . $name .
-            ' in ' . $trace[0]['file'] .
-            ' on line ' . $trace[0]['line'],
-            E_USER_NOTICE);
+        # Trigger an error if the property cannot be referenced
+        App::getHelper('core/base')->triggerReferenceError($name);
         return null;
     }
 
+    /**
+     * Sets the value of a referenced property in this class
+     *
+     * @param $property The name of the property being referenced
+     * @param $value The value to be assigned to the property
+     */
     public function __set($property,$value) {
 
         try {
@@ -45,7 +55,7 @@ abstract class Core_View_Block_Base {
                 if(file_exists($template)) {
                     $this->_template = $template;
                 } else {
-                    $template = ROOT . 'lib/core/view/template/' . $value;
+                    $template = $this->_coreTemplateDirectory . $value;
                     if(file_exists($template)) {
                         $this->_template = $template;
                     } else {
@@ -62,12 +72,24 @@ abstract class Core_View_Block_Base {
 
     }
 
+    /**
+     * Returns the html from the template linked to the block
+     *
+     * @param void
+     * @return void
+     */
     public function getHtml() {
         if(isset($this->_template)) {
             include($this->_template);
         }
     }
 
+    /**
+     * Gets the phtml template of the child block
+     *
+     * @param $name The name of the child block to be retrieved
+     * @return void
+     */
     protected function getChildHtml($name) {
         $layout = App::getLayout('core/base');
         $childBlock = $layout->getLayoutBlock($name);
@@ -77,8 +99,15 @@ abstract class Core_View_Block_Base {
         }
     }
 
+    /**
+     * Gets the path of the template file
+     *
+     * @param null $moduleName The module directory to search for the template file
+     * @param null $fileName The name of the template file
+     * @return string Returns the path of the template file
+     */
     protected function getTemplateFilePath($moduleName = null, $fileName = null){
-        $templateFilePathSuffix = DS . $this->_templateDirectory . $fileName;
+        $templateFilePathSuffix = $this->_templateDirectory . $fileName;
         $templateFilePath = App::getModuleDirectory($moduleName) . $templateFilePathSuffix;
         $fallbackTemplateFilePath = App::getModuleDirectory('core') . $templateFilePathSuffix;
         return file_exists($templateFilePath) ? $templateFilePath : $fallbackTemplateFilePath;

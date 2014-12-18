@@ -26,8 +26,7 @@ class Db_Model_Base extends Db_Model_SQLQuery {
 
         # Use config.xml in order access database
         $module = $temp[0];
-        $helper = App::getHelper('core/base');
-        $db = $helper->getDbCredentials($module);
+        $db = App::getHelper('core/base')->getDbCredentials($module);
         $this->connect($db["host"],$db["user"],$db["password"],$db["name"]);
     }
 }

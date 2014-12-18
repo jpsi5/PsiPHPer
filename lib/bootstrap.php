@@ -21,8 +21,8 @@ class App {
         return self::_getClass($path,'Model');
     }
 
-    public static function getHelper($path) {
-        return self::_getClass($path,'Helper');
+    public static function getHelper($path = false) {
+        return $path ? self::_getClass($path,'Helper') : self::_getClass('core/base','Helper');
     }
 
     public static function getLayout($path) {

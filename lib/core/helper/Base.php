@@ -60,8 +60,7 @@ class Core_Helper_Base {
      * @return string Returns a class name of the controller
      */
     public function getControllerClass($config,$actionControllerName) {
-        $dir = $config->route->dir;
-        $pathArray = explode(DS,$dir);
+        $pathArray = explode(DS,$config->route->dir);
         $actionController = '';
         foreach($pathArray as $path) {
             $actionController = $actionController . ucfirst($path) . '_';
@@ -97,10 +96,22 @@ class Core_Helper_Base {
         return $db;
     }
 
+    /**
+     * Returns the name of the current module
+     *
+     * @param void
+     * @return string Return the name of the current module specified by the url
+     */
     public function getModule() {
         return $this->_workingModule;
     }
 
+    /**
+     * Sets the _workingModule to the current module specified by the url
+     *
+     * @param string $url
+     * @return void
+     */
     public function setModule($url) {
         if($url){
             $urlArray = explode(DS,$url);
@@ -112,19 +123,49 @@ class Core_Helper_Base {
         }
     }
 
-    public function getCallingClass() {
-        $e = new Exception();
-        $trace = $e->getTrace();
-        $callingClass = $trace[2]['class'];
-        return $callingClass;
+    public function triggerReferenceError($name) {
+        $trace = debug_backtrace();
+        trigger_error(
+            'Undefined property via ' . $trace[1]['function'] . ': ' . $name .
+            ' in ' . $trace[1]['file'] .
+            ' on line ' . $trace[1]['line'],
+            E_USER_NOTICE);
     }
 
+    /**
+     * Gets the name of the class the method is called in
+     *
+     * @param void
+     * @return string Returns the class name
+     */
+    public function getCallingClass() {
+        return $this->_getCalling('class');
+    }
+
+    /**
+     * Gets the name of the action method that the current method
+     * is called in.
+     *
+     * @param void
+     * @return string Returns the action method name
+     */
     public function getCallingMethodName() {
-        $e = new Exception();
-        $trace = $e->getTrace();
-        $last_call = $trace[2];
-        $func = $last_call['function'];
-        $actionName = strtolower(str_replace('Action','',$func));
+        $callingFunc = $this->_getCalling('function');
+        $actionName = strtolower(str_replace('Action','',$callingFunc));
         return $actionName;
     }
+
+    /**
+     * Returns the name of the calling class or method
+     *
+     * @param bool|string $type
+     * @return string Returns the value at the specified key [$type]
+     */
+    protected function _getCalling($type = false) {
+        $e = new Exception();
+        $trace = $e->getTrace();
+        return $trace[3][$type];
+    }
+
+
 }

@@ -5,6 +5,12 @@ class Core_View_Layout_Base {
 
     private function __construct(){}
 
+    /**
+     * Returns the singleton instance of this class
+     *
+     * @param void
+     * @return Core_View_Layout_Base Return a singleton instance
+     */
     public static function getInstance(){
         if(is_null(self::$_instance)) {
             self::$_instance = new self();
@@ -12,6 +18,13 @@ class Core_View_Layout_Base {
         return self::$_instance;
     }
 
+    /**
+     * Uses the SimpleXMLIterator layout object to instantiate a block object
+     * for each block it finds in the layout node of an xml config file
+     *
+     * @param $xmlIterator The the layout object that will be traversed
+     * @param bool $parent The name of the parent block
+     */
     public function loadBlocks($xmlIterator,$parent = false) {
         $i = 0;
         for( $xmlIterator->rewind(); $xmlIterator->valid(); $xmlIterator->next() ) {
@@ -42,17 +55,20 @@ class Core_View_Layout_Base {
         }
     }
 
+    /**
+     * Gets the block specified by $name
+     *
+     * @param $name The name of the block to be retrieved
+     * @return Core_View_Block_[Name] Returns the block object if found in the array
+     * @return null Returns null if a block cannot be found
+     */
     public function getLayoutBlock($name) {
         if(array_key_exists($name, $this->_blocks)) {
             return($this->_blocks[$name]);
         }
 
-        $trace = debug_backtrace();
-        trigger_error(
-            'Undefined block via getLayoutBlock(): ' . $name .
-            ' in ' . $trace[0]['file'] .
-            ' on line ' . $trace[0]['line'],
-            E_USER_NOTICE);
+        # Trigger an error if the property cannot be referenced
+        App::getHelper('core/base')->triggerReferenceError($name);
         return null;
     }
 }
