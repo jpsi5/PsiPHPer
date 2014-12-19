@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <config>
     <route>
         <dir>admin/controller</dir>
@@ -5,15 +6,15 @@
     </route>
     <layout>
         <default>
-            <block type="core/page" name="root" template="test_page.phtml"></block>
+            <block type="core/page" name="root" template="test_page.phtml"/>
         </default>
         <admin_index_index>
             <block type="core/page" name="root" template="test_page.phtml">
-                <block type="core/header" name="header" template="test_header.phtml"></block>
+                <block type="core/header" name="header" template="test_header.phtml"/>
                 <block type="core/content" name="content" template="test_content.phtml">
-                    <block type="core/form" name="form" template="test_form.phtml"></block>
+                    <block type="core/form" name="form" template="test_form.phtml"/>
                 </block>
-                <block type="core/footer" name="footer" template="test_footer.phtml"></block>
+                <block type="core/footer" name="footer" template="test_footer.phtml"/>
             </block>
         </admin_index_index>
     </layout>
