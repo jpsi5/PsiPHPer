@@ -3,4 +3,32 @@
         <dir>contact/controller</dir>
         <uri>contact</uri>
     </route>
+    <layout>
+        <default>
+            <block type="contact/list" name="root" template="contact-list.phtml">
+                <block type="core/header" name="header" template="contact-header.phtml"/>
+            </block>
+        </default>
+        <contact_customer_create>
+            <block type="core/page" name="root" template="contact-create-page.phtml">
+                <block type="core/header" name="header" template="contact-header.phtml"/>
+                <block type="core/form" name="form" template="contact-create-form.phtml"/>
+            </block>
+        </contact_customer_create>
+        <contact_customer_read>
+            <block type="core/page" name="root" template=""></block>
+        </contact_customer_read>
+        <contact_customer_update>
+            <block type="core/page" name="root" template=""></block>
+        </contact_customer_update>
+        <contact_customer_delete>
+            <block type="core/page" name="root" template=""></block>
+        </contact_customer_delete>
+    </layout>
+    <database>
+        <host>localhost</host>
+        <user>root</user>
+        <key>M@ster87!</key>
+        <name>store</name>
+    </database>
 </config>

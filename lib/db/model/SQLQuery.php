@@ -4,6 +4,7 @@ abstract class Db_Model_SQLQuery {
     protected $dbHandle;
     protected $result;
     protected $table;
+    protected $data = array();
 
     public function connect($address, $account, $pwd, $name)
     {
@@ -14,14 +15,23 @@ abstract class Db_Model_SQLQuery {
 
 
     public function disconnect() {
+        $this->dbHandle = null;
     }
 
     public function insert() {
-        # TODO: create convention for to handle numbers
-        $
-        $fields = implode("', '", $values);
-        # $query = 'insert into `' . $this->table . '`' . ' values(' . ')';
-        $query = "insert into `" . $this->table . "`" . "values('" . $fields . "')";
+        $fieldValues = '';
+        foreach(func_get_args() as $fieldValue) {
+            $fieldValues = is_numeric($fieldValue) ? $fieldValues . $fieldValue . "," : $fieldValues . "'" . $fieldValue . "',";
+        }
+        $fieldValues = rtrim($fieldValues,',');
+
+        $q = $this->dbHandle->prepare("DESCRIBE " . $this->table);
+        $q->execute();
+        $table_fields = $q->fetchAll(PDO::FETCH_COLUMN);
+        array_shift($table_fields);
+        $fields = implode(",",$table_fields );
+
+        $query = "insert into `" . $this->table . "` (" . $fields . ") values(" . $fieldValues . ")";
         $this->query($query);
     }
 
@@ -53,6 +63,8 @@ abstract class Db_Model_SQLQuery {
         }
         return($result);
     }
+
+
 
     protected function freeResult() {
 
