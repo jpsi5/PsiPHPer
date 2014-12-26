@@ -11,50 +11,69 @@ class Contact_Controller_Customer extends Core_Controller_Base {
     public function createAction() {
 
         if (!empty($_POST)) {
-            # Keep track validation errors
-            $nameError = null;
-            $emailError = null;
-            $mobileError = null;
 
             # Keep track post values
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $mobile = $_POST['mobile'];
+            $customer = App::getModel('contact/customer');
+            $customer->setName($_POST['name']);
+            $customer->setEmail($_POST['email']);
+            $customer->setMobile($_POST['mobile']);
 
             # Validate input
             $valid = true;
-            if (empty($name)) {
-                $nameError = 'Please enter Name';
+            if (empty($_POST['name'])) {
+                $customer->setNameError('Please enter Name');
                 $valid = false;
             }
 
-            if (empty($email)) {
-                $emailError = 'Please enter Email Address';
+            if (empty($_POST['email'])) {
+                $customer->setEmailError('Please enter Email Address');
                 $valid = false;
-            } else if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
-                $emailError = 'Please enter a valid Email Address';
+            } else if ( !filter_var($customer->getEmail(),FILTER_VALIDATE_EMAIL) ) {
+                $customer->setEmailError('Please enter a valid Email Address');
                 $valid = false;
             }
 
-            if (empty($mobile)) {
-                $mobileError = 'Please enter Mobile Number';
+            if (empty($_POST['mobile'])) {
+                $customer->setMobileError('Please enter Mobile Number');
                 $valid = false;
             }
 
             # Insert data
             if ($valid) {
-                $customer = App::getModel('contact/customer');
-                $customer->insert($name,$email,$mobile);
+                $customer->insert($customer->name,$customer->email,$customer->mobile);
                 $customer->disconnect();
                 header("Location: /contact");
             }
         }
-
         $this->loadLayout();
         $this->renderLayout();
     }
 
-    public function updateAction() {}
+    public function readAction($customerId = false) {
+        $customer = App::getModel('contact/customer');
+        $customer->load($customerId);
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+    public function updateAction($customerId = false) {
+
+        $customer = App::getModel('contact/customer');
+        $customer->load($customerId);
+
+        if(!empty($_POST)) {
+            $customer->setName($_POST['name']);
+            $customer->setEmail($_POST['email']);
+            $customer->setMobile($_POST['mobile']);
+            $customer->save();
+            //$customer->update($_POST['name'],$_POST['email'],$_POST['mobile'],$customerId);
+            header("Location: /contact");
+        }
+        else {
+            $this->loadLayout();
+            $this->renderLayout();
+        }
+    }
 
     public function deleteAction() {}
 }

@@ -4,7 +4,6 @@ abstract class Db_Model_SQLQuery {
     protected $dbHandle;
     protected $result;
     protected $table;
-    protected $data = array();
 
     public function connect($address, $account, $pwd, $name)
     {
@@ -34,6 +33,22 @@ abstract class Db_Model_SQLQuery {
         $query = "insert into `" . $this->table . "` (" . $fields . ") values(" . $fieldValues . ")";
         $this->query($query);
     }
+
+    public function update() {
+        $q = $this->dbHandle->prepare("DESCRIBE " . $this->table);
+        $q->execute();
+        $table_fields = $q->fetchAll(PDO::FETCH_COLUMN);
+        array_shift($table_fields);
+        $fields = implode("=?, ",$table_fields );
+        $fields = $fields . "=? ";
+
+        # TODO: Change WHERE clause to handle different identifier names
+        $query = "update " . $this->table . " set " . $fields . " where id=?";
+        $result = $this->dbHandle->prepare($query);
+        $result->execute(func_get_args());
+    }
+
+
 
     public function selectAll() {
         $query = 'select * from `'.$this->table.'`';

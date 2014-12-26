@@ -28,3 +28,50 @@
 [17-Dec-2014 19:20:20 UTC] PHP   2. require_once() /home/jsimon/sites/psiphper.dev/index.php:7
 [17-Dec-2014 19:20:20 UTC] PHP   3. App->map($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:7
 [17-Dec-2014 19:20:20 UTC] PHP   4. Core_Controller_Router->route($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:17
+[23-Dec-2014 14:04:14 UTC] PHP Fatal error:  Call to private method C::foo() from context 'A' in /home/jsimon/sites/psiphper.dev/index.php on line 19
+[23-Dec-2014 14:04:14 UTC] PHP Stack trace:
+[23-Dec-2014 14:04:14 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[23-Dec-2014 14:04:14 UTC] PHP   2. A->test() /home/jsimon/sites/psiphper.dev/index.php:37
+[23-Dec-2014 14:05:19 UTC] PHP Fatal error:  Call to private method C::foo() from context 'A' in /home/jsimon/sites/psiphper.dev/index.php on line 19
+[23-Dec-2014 14:05:19 UTC] PHP Stack trace:
+[23-Dec-2014 14:05:19 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[23-Dec-2014 14:05:19 UTC] PHP   2. A->test() /home/jsimon/sites/psiphper.dev/index.php:37
+[23-Dec-2014 14:37:15 UTC] PHP Fatal error:  Call to private method C::foo() from context 'A' in /home/jsimon/sites/psiphper.dev/index.php on line 19
+[23-Dec-2014 14:37:15 UTC] PHP Stack trace:
+[23-Dec-2014 14:37:15 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[23-Dec-2014 14:37:15 UTC] PHP   2. A->test() /home/jsimon/sites/psiphper.dev/index.php:37
+[23-Dec-2014 14:39:03 UTC] PHP Fatal error:  Call to private method C::foo() from context 'A' in /home/jsimon/sites/psiphper.dev/index.php on line 19
+[23-Dec-2014 14:39:03 UTC] PHP Stack trace:
+[23-Dec-2014 14:39:03 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[23-Dec-2014 14:39:03 UTC] PHP   2. A->test() /home/jsimon/sites/psiphper.dev/index.php:37
+[23-Dec-2014 14:40:05 UTC] PHP Fatal error:  Call to private method C::foo() from context 'A' in /home/jsimon/sites/psiphper.dev/index.php on line 19
+[23-Dec-2014 14:40:05 UTC] PHP Stack trace:
+[23-Dec-2014 14:40:05 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[23-Dec-2014 14:40:05 UTC] PHP   2. A->test() /home/jsimon/sites/psiphper.dev/index.php:37
+[23-Dec-2014 14:40:56 UTC] PHP Fatal error:  Call to undefined function self() in /home/jsimon/sites/psiphper.dev/index.php on line 15
+[23-Dec-2014 14:40:56 UTC] PHP Stack trace:
+[23-Dec-2014 14:40:56 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[23-Dec-2014 14:40:56 UTC] PHP   2. A->test() /home/jsimon/sites/psiphper.dev/index.php:35
+[23-Dec-2014 14:40:56 UTC] PHP   3. A->foo() /home/jsimon/sites/psiphper.dev/index.php:18
+[23-Dec-2014 14:41:06 UTC] PHP Fatal error:  Call to private method C::foo() from context 'A' in /home/jsimon/sites/psiphper.dev/index.php on line 19
+[23-Dec-2014 14:41:06 UTC] PHP Stack trace:
+[23-Dec-2014 14:41:06 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[23-Dec-2014 14:41:06 UTC] PHP   2. A->test() /home/jsimon/sites/psiphper.dev/index.php:37
+[23-Dec-2014 14:41:53 UTC] PHP Fatal error:  Call to private method C::foo() from context 'A' in /home/jsimon/sites/psiphper.dev/index.php on line 19
+[23-Dec-2014 14:41:53 UTC] PHP Stack trace:
+[23-Dec-2014 14:41:53 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[23-Dec-2014 14:41:53 UTC] PHP   2. A->test() /home/jsimon/sites/psiphper.dev/index.php:37
+[23-Dec-2014 15:52:55 UTC] PHP Fatal error:  Access level to Db_Model_Base::$data must be protected (as in class Db_Model_SQLQuery) or weaker in /home/jsimon/sites/psiphper.dev/lib/db/model/Base.php on line 3
+[23-Dec-2014 15:52:55 UTC] PHP Stack trace:
+[23-Dec-2014 15:52:55 UTC] PHP   1. {main}() /home/jsimon/sites/psiphper.dev/index.php:0
+[23-Dec-2014 15:52:55 UTC] PHP   2. require_once() /home/jsimon/sites/psiphper.dev/index.php:7
+[23-Dec-2014 15:52:55 UTC] PHP   3. App->map($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:7
+[23-Dec-2014 15:52:55 UTC] PHP   4. Core_Controller_Router->route($url = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:17
+[23-Dec-2014 15:52:55 UTC] PHP   5. Contact_Controller_Customer->createAction() /home/jsimon/sites/psiphper.dev/lib/core/controller/Router.php:51
+[23-Dec-2014 15:52:55 UTC] PHP   6. App::getModel($path = *uninitialized*) /home/jsimon/sites/psiphper.dev/app/contact/controller/Customer.php:46
+[23-Dec-2014 15:52:55 UTC] PHP   7. App::_getClass($path = *uninitialized*, $type = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:21
+[23-Dec-2014 15:52:55 UTC] PHP   8. class_exists(*uninitialized*) /home/jsimon/sites/psiphper.dev/lib/bootstrap.php:56
+[23-Dec-2014 15:52:55 UTC] PHP   9. {closure}($className = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/core/model/Autoloader.php:0
+[23-Dec-2014 15:52:55 UTC] PHP  10. require() /home/jsimon/sites/psiphper.dev/lib/core/model/Autoloader.php:43
+[23-Dec-2014 15:52:55 UTC] PHP  11. {closure}($className = *uninitialized*) /home/jsimon/sites/psiphper.dev/lib/core/model/Autoloader.php:0
+[23-Dec-2014 15:52:55 UTC] PHP  12. require() /home/jsimon/sites/psiphper.dev/lib/core/model/Autoloader.php:43

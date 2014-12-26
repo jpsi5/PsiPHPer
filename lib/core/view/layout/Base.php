@@ -12,10 +12,11 @@ class Core_View_Layout_Base {
      * @return Core_View_Layout_Base Return a singleton instance
      */
     public static function getInstance(){
-        if(is_null(self::$_instance)) {
-            self::$_instance = new self();
+        static $_instance = null;
+        if(is_null($_instance)) {
+            $_instance = new static();
         }
-        return self::$_instance;
+        return $_instance;
     }
 
     /**

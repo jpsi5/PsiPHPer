@@ -13,13 +13,19 @@ class Core_Helper_Base {
      *
      * @return Core_Helper_Base
      */
+//    public static function getInstance(){
+//        if(is_null(self::$_instance)) {
+//            self::$_instance = new self();
+//        }
+//        return self::$_instance;
+//    }
     public static function getInstance(){
-        if(is_null(self::$_instance)) {
-            self::$_instance = new self();
+        static $_instance = null;
+        if(is_null($_instance)) {
+            $_instance = new static();
         }
-        return self::$_instance;
+        return $_instance;
     }
-
     /**
      * Loads all the the configuration files into an array
      *
@@ -147,12 +153,16 @@ class Core_Helper_Base {
      * is called in.
      *
      * @param void
-     * @return string Returns the action method name
+     * @return string Returns the action method name or other method name
      */
     public function getCallingMethodName() {
         $callingFunc = $this->_getCalling('function');
-        $actionName = strtolower(str_replace('Action','',$callingFunc));
-        return $actionName;
+        if(strstr($callingFunc, 'Action')){
+            $actionName = strtolower(str_replace('Action','',$callingFunc));
+            return $actionName;
+        }
+        return $callingFunc;
+
     }
 
     /**

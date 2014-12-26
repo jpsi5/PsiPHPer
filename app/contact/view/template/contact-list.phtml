@@ -21,7 +21,22 @@
             </tr>
             </thead>
             <tbody>
-
+            <?php
+            $customers = $this->getAllLoadedCustomers();
+            foreach($customers as $customer) {
+                echo '<tr>';
+                echo '<td>' . $customer['name'] . '</td>';
+                echo '<td>' . $customer['email'] . '</td>';
+                echo '<td>' . $customer['mobile'] . '</td>';
+                echo '<td width=250>';
+                echo '<a class="btn" href="/contact/customer/read/'.$customer['id'].'/">Read</a>';
+                echo ' ';
+                echo '<a class="btn btn-success" href="/contact/customer/update/'.$customer['id'].'">Update</a>';
+                echo ' ';
+                echo '<a class="btn btn-danger" href="/contact/customer/delete/'.$customer['id'].'">Delete</a>';
+                echo '</td>';
+                echo '</tr>'; }
+            ?>
             </tbody>
         </table>
     </div>

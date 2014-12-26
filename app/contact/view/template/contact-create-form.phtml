@@ -1,33 +1,31 @@
-<form class="form-horizontal" action="/contact/customer/create/" method="post">
-    <div class="control-group <?php echo !empty($nameError)?'error':'';?>">
+<?php $customer = $this->getLoadedCustomer(); ?>
+<form class="form-horizontal" method="post">
+    <div class="control-group <?php echo !empty($customer['nameError'])?'error':'';?>">
         <label class="control-label">Name</label>
         <div class="controls">
-            <input name="name" type="text"  placeholder="Name" value="<?php echo !empty($name)?$name:'';?>">
-            <?php if (!empty($nameError)): ?>
-                <span class="help-inline"><?php echo $nameError;?></span>
+            <input name="name" type="text"  placeholder="Name" value="<?php echo !empty($customer['name'])?$customer['name']:'';?>">
+            <?php if (!empty($customer['nameError'])): ?>
+                <span class="help-inline"><?php echo $customer['nameError'];?></span>
             <?php endif; ?>
         </div>
     </div>
-    <div class="control-group <?php echo !empty($emailError)?'error':'';?>">
+    <div class="control-group <?php echo !empty($customer['emailError'])?'error':'';?>">
         <label class="control-label">Email Address</label>
         <div class="controls">
-            <input name="email" type="text" placeholder="Email Address" value="<?php echo !empty($email)?$email:'';?>">
-            <?php if (!empty($emailError)): ?>
-                <span class="help-inline"><?php echo $emailError;?></span>
+            <input name="email" type="text" placeholder="Email Address" value="<?php echo !empty($customer['email'])?$customer['email']:'';?>">
+            <?php if (!empty($customer['emailError'])): ?>
+                <span class="help-inline"><?php echo $customer['emailError'];?></span>
             <?php endif;?>
         </div>
     </div>
-    <div class="control-group <?php echo !empty($mobileError)?'error':'';?>">
+    <div class="control-group <?php echo !empty($customer['mobileError'])?'error':'';?>">
         <label class="control-label">Mobile Number</label>
         <div class="controls">
-            <input name="mobile" type="text"  placeholder="Mobile Number" value="<?php echo !empty($mobile)?$mobile:'';?>">
-            <?php if (!empty($mobileError)): ?>
-                <span class="help-inline"><?php echo $mobileError;?></span>
+            <input name="mobile" type="text"  placeholder="Mobile Number" value="<?php echo !empty($customer['mobile'])?$customer['mobile']:'';?>">
+            <?php if (!empty($customer['mobileError'])): ?>
+                <span class="help-inline"><?php echo $customer['mobileError'];?></span>
             <?php endif;?>
         </div>
     </div>
-    <div class="form-actions">
-        <button type="submit" class="btn btn-success">Create</button>
-        <a class="btn" href="/contact">Back</a>
-    </div>
+    <?php $this->getChildHtml('button'); ?>
 </form>
