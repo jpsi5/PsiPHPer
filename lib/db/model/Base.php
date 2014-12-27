@@ -27,16 +27,23 @@ class Db_Model_Base extends Db_Model_SQLQuery {
     }
 
     public function __call($name,$arguments) {
+        # Get the method (i.e. get,set,unset...) and the property name
         $matches = preg_split('#([A-Z][^A-Z]*)#', $name , null, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
         $method = array_shift($matches);
         $property = '';
 
+        # Formatting the property name of the object to match the column field
+        # name format in a database
         if(count($matches) == 1) {
             $property = strtolower($matches[0]);
         } else {
             $property = implode('_',$matches);
-            $property = strtolower($property);
+            //$property = strtolower($property);
+            # Validate that property is the name of a column in the table
+            $property = $this->validColumnName(strtolower($property)) ? strtolower($property) : lcfirst(implode('',$matches));
         }
+
+
 
         switch($method) {
             case 'get':
@@ -79,34 +86,27 @@ class Db_Model_Base extends Db_Model_SQLQuery {
 
     public function save() {
         $fields = $this->getColumnNames();
+
+        # Format column order
+        $args = array();
+        foreach($fields as $field) {
+            $args[$field] = $this->data[$field];
+        }
+
+        # Remove the primary key
+        unset($args[$this->primaryKey]);
+
         if(empty($this->origData))
         {
             # Creating a new entry
-            # Remove primary key form table
-            //array_shift($fields);
-            //unset($fields[$this->primaryKey]);
-
-            # Format column order
-            $args = array();
-            foreach($fields as $field) {
-                $args[$field] = $this->data[$field];
-            }
-            unset($args[$this->primaryKey]);
-
-            # Insert the new entry
             $args = implode(',',$args);
             $this->insert($args);
         } else {
-            # Format column order
-            $args = array();
-            foreach($fields as $field) {
-                $args[$field] = $this->data[$field];
-            }
 
-            unset($args[$this->primaryKey]);
+
             $args[$this->primaryKey] = $this->data[$this->primaryKey];
 
-            # Insert the new entry
+            # Updating and existing entry
             $args = implode(',',$args);
             $this->update($args);
         }
@@ -114,7 +114,7 @@ class Db_Model_Base extends Db_Model_SQLQuery {
     }
 
     public function delete() {
-        
+
     }
 
     private function __construct() {

@@ -67,6 +67,7 @@ class Contact_Controller_Customer extends Core_Controller_Base {
             $customer->setEmail($_POST['email']);
             $customer->setMobile($_POST['mobile']);
             $customer->save();
+            //$this->createAction();
             header("Location: /contact");
         }
         else {

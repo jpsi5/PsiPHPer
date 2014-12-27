@@ -105,6 +105,16 @@ abstract class Db_Model_SQLQuery {
         return $pk['Column_name'];
     }
 
+    protected function validColumnName($name) {
+        $fields = $this->getColumnNames();
+        foreach($fields as $field) {
+            if($name == $field) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     protected function freeResult() {
 
