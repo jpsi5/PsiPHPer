@@ -16,7 +16,6 @@ class Db_Model_Base extends Db_Model_SQLQuery {
 
     public function __set($property,$value) {
         $this->data[$property] = $value;
-        $this->origData[$property] = $value;
     }
 
     public function __get($property) {
@@ -31,23 +30,28 @@ class Db_Model_Base extends Db_Model_SQLQuery {
         $matches = preg_split('#([A-Z][^A-Z]*)#', $name , null, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
         $method = array_shift($matches);
         $property = '';
-        foreach($matches as $partialPropertyName) {
-            
-        }
-        if(strstr($name,'get')) {
-            $property = strtolower(str_replace('get','',$name));
-            return $this->$property;
-        }else if(strstr($name,'set')) {
-            $property = strtolower(str_replace('set','',$name));
-            $this->$property = !empty($arguments) ? $arguments[0] : null;
-        }else if(strstr($name,'unset')) {
-            $property = strtolower(str_replace('unset','',$name));
-            $this->$property = null;
-        }else if(strstr($name,'has')) {
-            $property = strtolower(str_replace('has','',$name));
-            return array_key_exists($property, $this->data) ? true : false;
+
+        if(count($matches) == 1) {
+            $property = strtolower($matches[0]);
+        } else {
+            $property = implode('_',$matches);
+            $property = strtolower($property);
         }
 
+        switch($method) {
+            case 'get':
+                return $this->$property;
+                break;
+            case 'set':
+                $this->$property = !empty($arguments) ? $arguments[0] : null;
+                break;
+            case 'unset':
+                $this->$property = null;
+                break;
+            case 'has':
+                return array_key_exists($property, $this->data) ? true : false;
+                break;
+        }
     }
 
     public function getData($key = false) {
@@ -66,13 +70,52 @@ class Db_Model_Base extends Db_Model_SQLQuery {
     }
 
     public function load($id) {
-        $result = $this->select('id', $id);
+        $result = $this->select($this->primaryKey, $id);
         foreach($result[0] as $key => $resultData) {
             $this->data[$key] = $resultData;
+            $this->origData[$key] = $resultData;
         }
     }
 
-    public function save() {}
+    public function save() {
+        $fields = $this->getColumnNames();
+        if(empty($this->origData))
+        {
+            # Creating a new entry
+            # Remove primary key form table
+            //array_shift($fields);
+            //unset($fields[$this->primaryKey]);
+
+            # Format column order
+            $args = array();
+            foreach($fields as $field) {
+                $args[$field] = $this->data[$field];
+            }
+            unset($args[$this->primaryKey]);
+
+            # Insert the new entry
+            $args = implode(',',$args);
+            $this->insert($args);
+        } else {
+            # Format column order
+            $args = array();
+            foreach($fields as $field) {
+                $args[$field] = $this->data[$field];
+            }
+
+            unset($args[$this->primaryKey]);
+            $args[$this->primaryKey] = $this->data[$this->primaryKey];
+
+            # Insert the new entry
+            $args = implode(',',$args);
+            $this->update($args);
+        }
+
+    }
+
+    public function delete() {
+        
+    }
 
     private function __construct() {
 
@@ -85,5 +128,9 @@ class Db_Model_Base extends Db_Model_SQLQuery {
         $module = $temp[0];
         $db = App::getHelper('core/base')->getDbCredentials($module);
         $this->connect($db["host"],$db["user"],$db["password"],$db["name"]);
+
+        # Set the primary key property. This will prevent running more code
+        # during other method calls
+        $this->primaryKey = $this->getPrimaryKeyName();
     }
 }

@@ -14,9 +14,10 @@ class Contact_Controller_Customer extends Core_Controller_Base {
 
             # Keep track post values
             $customer = App::getModel('contact/customer');
+            $customer->setMobile($_POST['mobile']);
             $customer->setName($_POST['name']);
             $customer->setEmail($_POST['email']);
-            $customer->setMobile($_POST['mobile']);
+
 
             # Validate input
             $valid = true;
@@ -40,7 +41,7 @@ class Contact_Controller_Customer extends Core_Controller_Base {
 
             # Insert data
             if ($valid) {
-                $customer->insert($customer->name,$customer->email,$customer->mobile);
+                $customer->save();
                 $customer->disconnect();
                 header("Location: /contact");
             }
@@ -66,7 +67,6 @@ class Contact_Controller_Customer extends Core_Controller_Base {
             $customer->setEmail($_POST['email']);
             $customer->setMobile($_POST['mobile']);
             $customer->save();
-            //$customer->update($_POST['name'],$_POST['email'],$_POST['mobile'],$customerId);
             header("Location: /contact");
         }
         else {
