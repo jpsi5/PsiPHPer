@@ -4,6 +4,7 @@ abstract class Core_View_Block_Base {
 
     private $_name;
     private $_template;
+    protected $_flags = array();
     protected $_parent;
     protected $_templateDirectory;
     protected $_coreTemplateDirectory;
@@ -112,4 +113,21 @@ abstract class Core_View_Block_Base {
         $fallbackTemplateFilePath = App::getModuleDirectory('core') . $templateFilePathSuffix;
         return file_exists($templateFilePath) ? $templateFilePath : $fallbackTemplateFilePath;
     }
+
+    /**
+     * Gets the control flags for display functionality
+     *
+     * @param string $name The name of the flag to retrieve
+     * @return string the value of the flag or an array of all flags if no flag name is specified
+     */
+    protected function getFlag($name = '') {
+        $flagModel = App::getModel('core/flags');
+        if(!empty($name)) {
+            return $flagModel->$name;
+        }
+
+        # Return the array of flags
+        return $flagModel->getData();
+    }
+
 }

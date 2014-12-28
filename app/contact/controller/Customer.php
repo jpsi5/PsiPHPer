@@ -18,11 +18,11 @@ class Contact_Controller_Customer extends Core_Controller_Base {
             $customer->setName($_POST['name']);
             $customer->setEmail($_POST['email']);
 
-
             # Validate input
             $valid = true;
             if (empty($_POST['name'])) {
-                $customer->setNameError('Please enter Name');
+                //$customer->setNameError('Please enter Name');
+                $this->setFlag('nameError','Please enter Name');
                 $valid = false;
             }
 

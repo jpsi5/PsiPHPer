@@ -11,6 +11,7 @@ $app->map($url);
 #############################################################
 class App {
     private $router;
+    private static $flags = array();
 
     public function map($url) {
         $this->router = new Core_Controller_Router();
@@ -69,11 +70,39 @@ class App {
         }
     }
 
+    /**
+     * Returns the directory of the module
+     *
+     * @param $moduleName The name of the module
+     * @return string The directory of the module
+     */
     public static function getModuleDirectory($moduleName) {
         $modulePath = glob('[app|lib]*' . DS . $moduleName . DS);
         if(count($modulePath) == 1) {
             return ROOT . $modulePath[0];
         }
+    }
+
+    public static function getFlag($name = false) {
+        if($name)
+        {
+            return self::$flags[$name];
+        }
+        return self::$flags;
+    }
+
+    public static function setFlag($name = false,$value = false) {
+        try {
+            if($name && $value) {
+                self::$flags[$name] = $value;
+            }
+            else {
+                throw new Exception('App::setFlag(string $name, mixed $value) requires 2 arguments.');
+            }
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . '<br/>';
+        }
+
     }
 }
 

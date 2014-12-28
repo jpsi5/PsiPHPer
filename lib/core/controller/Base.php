@@ -22,6 +22,29 @@ abstract Class Core_Controller_Base {
     public function indexAction() {}
 
     /**
+     * Gets the control flags for display functionality
+     *
+     * @param string $name The name of the flag to retrieve
+     * @return string the value of the flag or an array of all flags if no flag name is specified
+     */
+    protected function getFlag($name = '') {
+        $flagModel = App::getModel('core/flags');
+        if(!empty($name)) {
+            return $flagModel->$name;
+        }
+
+        # Return the array of flags
+        return $flagModel->getData();
+    }
+
+    protected function setFlag($name = '' ,$value = '') {
+        $flagModel = App::getModel('core/flags');
+        if($name && $value) {
+            $flagModel->$name = $value;
+        }
+    }
+
+    /**
      * Generates the core or module's layout xml object
      *
      * @param void

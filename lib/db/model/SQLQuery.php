@@ -34,8 +34,6 @@ abstract class Db_Model_SQLQuery {
                 break;
             }
         }
-        //array_shift($table_fields);
-        //unset($table_fields[$this->primaryKey]);
         $fields = implode(",",$table_fields );
 
         $query = "INSERT INTO `" . $this->table . "` (" . $fields . ") VALUES(" . $fieldValues . ")";
@@ -44,8 +42,6 @@ abstract class Db_Model_SQLQuery {
 
     public function update() {
         $table_fields = $this->getColumnNames();
-        //array_shift($table_fields);
-        //unset($table_fields[$this->primaryKey]);
         foreach($table_fields as $key => $table_field) {
             if($table_field == $this->primaryKey) {
                 unset($table_fields[$key]);
