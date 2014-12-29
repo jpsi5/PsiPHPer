@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <config>
     <route>
         <dir>contact/controller</dir>
@@ -31,7 +32,10 @@
             </block>
         </contact_customer_update>
         <contact_customer_delete>
-            <block type="core/page" name="root" template=""></block>
+            <block type="core/page" name="root" template="contact-delete-page.phtml">
+                <block type="core/header" name="header" template="contact-header.phtml"/>
+                <block type="contact/customer" name="form" template="contact-delete-form.phtml"/>
+            </block>
         </contact_customer_delete>
     </layout>
     <database>

@@ -6,6 +6,6 @@
  * Time: 4:36 PM
  */
 
-class Core_Model_Flags extends Db_Model_Base {
+class Core_Model_Flags extends Core_Model_Singleton {
 
 }

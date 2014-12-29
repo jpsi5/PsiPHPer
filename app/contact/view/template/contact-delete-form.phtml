@@ -1,0 +1,9 @@
+<?php $customer = $this->getLoadedCustomer(); ?>
+<form class="form-horizontal" method="post">
+    <input type="hidden" name="id" value="<?php echo $customer['id'];?>"/>
+    <p class="alert alert-error">Are you sure to delete ?</p>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-danger">Yes</button>
+        <a class="btn" href="/contact">No</a>
+    </div>
+</form>

@@ -1,23 +1,6 @@
 <?php
-class Core_View_Layout_Base {
+class Core_View_Layout_Base extends Core_Model_Singleton {
     private $_blocks = array();
-    private static $_instance;
-
-    private function __construct(){}
-
-    /**
-     * Returns the singleton instance of this class
-     *
-     * @param void
-     * @return Core_View_Layout_Base Return a singleton instance
-     */
-    public static function getInstance(){
-        static $_instance = null;
-        if(is_null($_instance)) {
-            $_instance = new static();
-        }
-        return $_instance;
-    }
 
     /**
      * Uses the SimpleXMLIterator layout object to instantiate a block object

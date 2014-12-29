@@ -1,22 +1,11 @@
 <?php
 
-abstract class Db_Model_SQLQuery {
+abstract class Db_Model_SQLQuery extends Core_Model_Singleton {
     protected $dbHandle;
     protected $result;
     protected $table;
     protected $primaryKey;
-
-    public function connect($address, $account, $pwd, $name)
-    {
-        $this->dbHandle = new PDO('mysql:host=' . $address . '; dbname=' . $name .'; charset=utf8', $account, $pwd);
-        $this->dbHandle->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->dbHandle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    }
-
-
-    public function disconnect() {
-        $this->dbHandle = null;
-    }
+    protected $scriptFileName;
 
     public function insert() {
 
@@ -42,19 +31,25 @@ abstract class Db_Model_SQLQuery {
 
     public function update() {
         $table_fields = $this->getColumnNames();
+
+        # Loop through the array and remove the element containing the primary key name
         foreach($table_fields as $key => $table_field) {
             if($table_field == $this->primaryKey) {
                 unset($table_fields[$key]);
                 break;
             }
         }
+
         $fields = implode("=?, ",$table_fields );
         $fields = $fields . "=? ";
-
-        # TODO: Change WHERE clause to handle different identifier names
         $query = "update " . $this->table . " set " . $fields . " where " . $this->primaryKey . "=?";
         $result = $this->dbHandle->prepare($query);
         $result->execute(explode(',',func_get_arg(0)));
+    }
+
+    protected function remove($id) {
+        $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $this->primaryKey . '=' .$id;
+        $this->query($query);
     }
 
 
@@ -112,12 +107,32 @@ abstract class Db_Model_SQLQuery {
     }
 
 
-    protected function freeResult() {
+    protected function freeResult() {}
 
+    protected function getError() {}
+
+    protected function tableInit() {
+        if(!$this->tableExists()) {
+            if(isset($this->scriptFileName)) {
+                $query = file_get_contents(ROOT . 'assets' . DS . 'sql' . DS . strtolower($this->scriptFileName));
+            }
+            else {
+                $query = file_get_contents(ROOT . 'assets' . DS . 'sql' . DS . $this->table . '.sql');
+            }
+            $results = $this->dbHandle->prepare($query);
+            $results->execute();
+        }
     }
 
-    protected function getError() {
-
+    protected function tableExists() {
+        try {
+            $results = $this->dbHandle->query('SELECT 1 FROM ' . $this->table);
+            if(count($results) > 0) {
+                return true;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
 

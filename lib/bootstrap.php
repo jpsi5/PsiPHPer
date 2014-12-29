@@ -5,13 +5,13 @@ require (ROOT. 'lib/shared.php');
 # Create the router that will load the appropriate controller
 $app = new App();
 $app->map($url);
+$conn = null;
 
 #############################################################
 # Utility Class                                             #
 #############################################################
 class App {
     private $router;
-    private static $flags = array();
 
     public function map($url) {
         $this->router = new Core_Controller_Router();
@@ -44,14 +44,14 @@ class App {
     protected static function _getClass($path = null, $type = null) {
         if($type && $path) {
             try {
-                $str = strtolower($path);
+                $str = $path;
                 $pathArray = explode(DS, $str);
                 if (count($pathArray) < 2) {
                     throw new Exception('Invalid argument. Usage: module/file[_dir_]');
                 }
 
                 # Build the name of the model
-                $className = ucfirst($pathArray[0]) . '_' . ucfirst($type) . '_' . ucfirst($pathArray[1]);
+                $className = ucfirst(strtolower($pathArray[0])) . '_' . ucfirst($type) . '_' . ucfirst($pathArray[1]);
 
                 # Verify that $model is a valid class name.
                 if (class_exists($className)) {
@@ -68,6 +68,7 @@ class App {
                 echo 'Caught exception: ' . $e->getMessage() . '<br />';
             }
         }
+        return null;
     }
 
     /**
@@ -81,28 +82,7 @@ class App {
         if(count($modulePath) == 1) {
             return ROOT . $modulePath[0];
         }
-    }
-
-    public static function getFlag($name = false) {
-        if($name)
-        {
-            return self::$flags[$name];
-        }
-        return self::$flags;
-    }
-
-    public static function setFlag($name = false,$value = false) {
-        try {
-            if($name && $value) {
-                self::$flags[$name] = $value;
-            }
-            else {
-                throw new Exception('App::setFlag(string $name, mixed $value) requires 2 arguments.');
-            }
-        } catch (Exception $e) {
-            echo 'Caught exception: ' . $e->getMessage() . '<br/>';
-        }
-
+        return null;
     }
 }
 

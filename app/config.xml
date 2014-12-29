@@ -1,0 +1,8 @@
+<config>
+    <database>
+        <host>localhost</host>
+        <user>root</user>
+        <key>M@ster87!</key>
+        <name>store</name>
+    </database>
+</config>

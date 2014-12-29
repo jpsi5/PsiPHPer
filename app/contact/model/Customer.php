@@ -7,5 +7,4 @@
  */
 
 class Contact_Model_Customer extends Db_Model_Base {
-
 }

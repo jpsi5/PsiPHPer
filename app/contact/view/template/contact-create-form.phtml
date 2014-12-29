@@ -1,30 +1,30 @@
 <?php $customer = $this->getLoadedCustomer(); ?>
 <?php $flags = $this->getFlag(); ?>
 <form class="form-horizontal" method="post">
-    <div class="control-group <?php echo !empty($customer['nameError'])?'error':'';?>">
+    <div class="control-group <?php echo !empty($flags['nameError'])?'error':'';?>">
         <label class="control-label">Name</label>
         <div class="controls">
             <input name="name" type="text"  placeholder="Name" value="<?php echo !empty($customer['name'])?$customer['name']:'';?>">
-            <?php if (!empty($customer['nameError'])): ?>
-                <span class="help-inline"><?php echo $customer['nameError'];?></span>
+            <?php if (!empty($flags['nameError'])): ?>
+                <span class="help-inline"><?php echo $flags['nameError'];?></span>
             <?php endif; ?>
         </div>
     </div>
-    <div class="control-group <?php echo !empty($customer['emailError'])?'error':'';?>">
+    <div class="control-group <?php echo !empty($flags['emailError'])?'error':'';?>">
         <label class="control-label">Email Address</label>
         <div class="controls">
             <input name="email" type="text" placeholder="Email Address" value="<?php echo !empty($customer['email'])?$customer['email']:'';?>">
-            <?php if (!empty($customer['emailError'])): ?>
-                <span class="help-inline"><?php echo $customer['emailError'];?></span>
+            <?php if (!empty($flags['emailError'])): ?>
+                <span class="help-inline"><?php echo $flags['emailError'];?></span>
             <?php endif;?>
         </div>
     </div>
-    <div class="control-group <?php echo !empty($customer['mobileError'])?'error':'';?>">
+    <div class="control-group <?php echo !empty($flags['mobileError'])?'error':'';?>">
         <label class="control-label">Mobile Number</label>
         <div class="controls">
             <input name="mobile" type="text"  placeholder="Mobile Number" value="<?php echo !empty($customer['mobile'])?$customer['mobile']:'';?>">
-            <?php if (!empty($customer['mobileError'])): ?>
-                <span class="help-inline"><?php echo $customer['mobileError'];?></span>
+            <?php if (!empty($flags['mobileError'])): ?>
+                <span class="help-inline"><?php echo $flags['mobileError'];?></span>
             <?php endif;?>
         </div>
     </div>

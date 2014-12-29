@@ -3,27 +3,15 @@
 class Db_Model_Base extends Db_Model_SQLQuery {
 
     private $model;
-    protected $origData = array();
-    protected $data = array();
 
-    public static function getInstance(){
-        static $_instance = null;
-        if(is_null($_instance)) {
-            $_instance = new static();
-        }
-        return $_instance;
-    }
-
-    public function __set($property,$value) {
-        $this->data[$property] = $value;
-    }
-
-    public function __get($property) {
-        if(array_key_exists($property, $this->data)) {
-            return $this->data[$property];
-        }
-        App::getHelper('core/base')->triggerReferenceError($property);
-        return null;
+    protected function _init() {
+        $className = get_class($this);
+        $temp = explode('_',$className);
+        $this->model = end($temp);
+        $this->table = strtolower($this->model) . 's';
+        $this->dbHandle = App::getModel('db/SQLConn')->getConnection();
+        $this->tableInit();
+        $this->primaryKey = $this->getPrimaryKeyName();
     }
 
     public function __call($name,$arguments) {
@@ -37,13 +25,11 @@ class Db_Model_Base extends Db_Model_SQLQuery {
         if(count($matches) == 1) {
             $property = strtolower($matches[0]);
         } else {
-            $property = implode('_',$matches);
-            //$property = strtolower($property);
+
             # Validate that property is the name of a column in the table
+            $property = implode('_',$matches);
             $property = $this->validColumnName(strtolower($property)) ? strtolower($property) : lcfirst(implode('',$matches));
         }
-
-
 
         switch($method) {
             case 'get':
@@ -59,21 +45,8 @@ class Db_Model_Base extends Db_Model_SQLQuery {
                 return array_key_exists($property, $this->data) ? true : false;
                 break;
         }
-    }
 
-    public function getData($key = false) {
-        return $this->_getData('data',$key);
-    }
-
-    public function getOrigData($key = false) {
-        return $this->_getData('origData',$key);
-    }
-
-    protected function _getData($data,$key = false) {
-        if($key) {
-            return $this->$data[$key];
-        }
-        return $this->$data;
+        return null;
     }
 
     public function load($id) {
@@ -85,12 +58,12 @@ class Db_Model_Base extends Db_Model_SQLQuery {
     }
 
     public function save() {
-        $fields = $this->getColumnNames();
 
         # Format column order
+        $fields = $this->getColumnNames();
         $args = array();
         foreach($fields as $field) {
-            $args[$field] = $this->data[$field];
+            $args[$field] = htmlspecialchars($this->data[$field]);
         }
 
         # Remove the primary key
@@ -103,34 +76,18 @@ class Db_Model_Base extends Db_Model_SQLQuery {
             $this->insert($args);
         } else {
 
-
+            # Append the primary key to the end of the array. This
+            # is done because SQLQuery::update() requires the last
+            # parameter to be the column used in the WHERE clause
             $args[$this->primaryKey] = $this->data[$this->primaryKey];
 
             # Updating and existing entry
             $args = implode(',',$args);
             $this->update($args);
         }
-
     }
 
     public function delete() {
-
-    }
-
-    private function __construct() {
-
-        $className = get_class($this);
-        $temp = explode('_',$className);
-        $this->model = end($temp);
-        $this->table = strtolower($this->model) . 's';
-
-        # Use config.xml in order access database
-        $module = $temp[0];
-        $db = App::getHelper('core/base')->getDbCredentials($module);
-        $this->connect($db["host"],$db["user"],$db["password"],$db["name"]);
-
-        # Set the primary key property. This will prevent running more code
-        # during other method calls
-        $this->primaryKey = $this->getPrimaryKeyName();
+        $this->remove($this->data[$this->primaryKey]);
     }
 }

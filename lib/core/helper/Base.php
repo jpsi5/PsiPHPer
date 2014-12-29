@@ -1,31 +1,10 @@
 <?php
-# Move to model or helper directory. Your choice for processing helpers.
-class Core_Helper_Base {
+
+class Core_Helper_Base extends Core_Model_Singleton{
 
     private $_allConfigs = array();
     private $_workingModule;
-    private static $_instance;
 
-    private function __construct() {}
-
-    /**
-     * Returns a singleton instance of this class
-     *
-     * @return Core_Helper_Base
-     */
-//    public static function getInstance(){
-//        if(is_null(self::$_instance)) {
-//            self::$_instance = new self();
-//        }
-//        return self::$_instance;
-//    }
-    public static function getInstance(){
-        static $_instance = null;
-        if(is_null($_instance)) {
-            $_instance = new static();
-        }
-        return $_instance;
-    }
     /**
      * Loads all the the configuration files into an array
      *

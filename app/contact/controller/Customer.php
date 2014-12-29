@@ -21,21 +21,20 @@ class Contact_Controller_Customer extends Core_Controller_Base {
             # Validate input
             $valid = true;
             if (empty($_POST['name'])) {
-                //$customer->setNameError('Please enter Name');
                 $this->setFlag('nameError','Please enter Name');
                 $valid = false;
             }
 
             if (empty($_POST['email'])) {
-                $customer->setEmailError('Please enter Email Address');
+                $this->setFlag('emailError','Please enter Email Address');
                 $valid = false;
             } else if ( !filter_var($customer->getEmail(),FILTER_VALIDATE_EMAIL) ) {
-                $customer->setEmailError('Please enter a valid Email Address');
+                $this->setFlag('emailError','Please enter a valid Email Address');
                 $valid = false;
             }
 
             if (empty($_POST['mobile'])) {
-                $customer->setMobileError('Please enter Mobile Number');
+                $this->setFlag('mobileError','Please enter Mobile Number');
                 $valid = false;
             }
 
@@ -67,7 +66,6 @@ class Contact_Controller_Customer extends Core_Controller_Base {
             $customer->setEmail($_POST['email']);
             $customer->setMobile($_POST['mobile']);
             $customer->save();
-            //$this->createAction();
             header("Location: /contact");
         }
         else {
@@ -76,5 +74,16 @@ class Contact_Controller_Customer extends Core_Controller_Base {
         }
     }
 
-    public function deleteAction() {}
+    public function deleteAction($customerId = false) {
+        $customer = App::getModel('contact/customer');
+        $customer->load($customerId);
+
+        if(!empty($_POST)) {
+            $customer->delete();
+            header("Location: /contact");
+        } else {
+            $this->loadLayout();
+            $this->renderLayout();
+        }
+    }
 }
