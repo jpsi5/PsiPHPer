@@ -8,7 +8,6 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton {
     protected $scriptFileName;
 
     public function insert() {
-
         $fieldValues = '';
         foreach(explode(',',func_get_arg(0)) as $fieldValue) {
             $fieldValues = is_numeric($fieldValue) ? $fieldValues . $fieldValue . "," : $fieldValues . "'" . $fieldValue . "',";
@@ -105,7 +104,6 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton {
         }
         return false;
     }
-
 
     protected function freeResult() {}
 

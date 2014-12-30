@@ -37,11 +37,82 @@ abstract Class Core_Controller_Base {
         return $flagModel->getData();
     }
 
+    /**
+     * Sets the control flags for display functionality
+     *
+     * @param string $name The name of the flag to set
+     * @param string $value The value of the flag $name
+     */
     protected function setFlag($name = '' ,$value = '') {
         $flagModel = App::getModel('core/flags');
         if($name && $value) {
             $flagModel->$name = $value;
         }
+    }
+
+    /**
+     * Redirects the current controller
+     *
+     * @param string $url The url used to redirect the browser
+     * @throws Exception when the url is invalid
+     */
+    protected function redirect($url) {
+
+        # Clean up the url
+        $cleanedUrl = ltrim($url, '/');
+        $cleanedUrl = rtrim($cleanedUrl, '/');
+
+        # Rules each route must follow
+        $validRoutes = array(
+            'mcai'  => '/^([\w]+|\*?)\/([\w]+|\*?)\/([\w]+|\*?)(\/([\d]+))+$/',
+            'mca'   => '/^([\w]+|\*?)\/([\w]+|\*?)\/([\w]+|\*?)$/',
+            'mc'    => '/^([\w]+|\*?)\/([\w]+|\*?)$/',
+            'm'     => '/^([\w]+|\*)$/'
+        );
+
+        # Verify the format of the format of the url
+        $validUrl = false;
+        foreach($validRoutes as $validRoute) {
+            if(preg_match($validRoute,$cleanedUrl)) {
+                $validUrl = true;
+                break;
+            }
+        }
+
+        if($validUrl){
+            # Split the url to evaluate it by parts
+            $redirectUrl = array();
+            $urlArray = explode('/',$cleanedUrl);
+            foreach ($urlArray as $key => $urlPart) {
+                if($urlPart == '*') {
+                    switch($key) {
+                        case 0:
+                            $redirectUrl[] = App::getHelper()->getModule();
+                            break;
+                        case 1:
+                            $redirectUrl[] = $this->_name;
+                            break;
+                        case 2:
+                            $redirectUrl[] = strtolower(App::getHelper()->getCallingMethodName());
+                            break;
+                        #TODO: Use a default case to get query string values from the requested url
+                    }
+                }
+                else {
+                    $redirectUrl[] = strtolower($urlPart);
+                }
+            }
+
+            # Reconstruct the url
+            $redirectUrl = implode('/',$redirectUrl);
+
+            # Redirect to the requested url
+            header('Location: /' . $redirectUrl);
+        }
+        else {
+            throw new Exception("In method " . get_class($this) . "::redirect(): '" . $url . "' is not a valid url.");
+        }
+
     }
 
     /**

@@ -5,7 +5,7 @@ require (ROOT. 'lib/shared.php');
 # Create the router that will load the appropriate controller
 $app = new App();
 $app->map($url);
-$conn = null;
+
 
 #############################################################
 # Utility Class                                             #
