@@ -50,6 +50,10 @@ abstract Class Core_Controller_Base {
         }
     }
 
+    protected function getRequest() {
+        return App::getModel('core/request');
+    }
+
     /**
      * Redirects the current controller
      *

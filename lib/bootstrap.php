@@ -14,6 +14,7 @@ class App {
     private $router;
 
     public function map($url) {
+        $request = $this->getModel('core/request');
         $this->router = new Core_Controller_Router();
         $this->router->route($url);
     }

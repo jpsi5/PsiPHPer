@@ -16,19 +16,20 @@ class Contact_Controller_Customer extends Core_Controller_Base {
         if (!empty($_POST)) {
 
             # Keep track post values
+            $params = $this->getRequest()->getParams();
             $customer = App::getModel('contact/customer');
-            $customer->setMobile($_POST['mobile']);
-            $customer->setName($_POST['name']);
-            $customer->setEmail($_POST['email']);
+            $customer->setMobile($params['mobile']);
+            $customer->setName($params['name']);
+            $customer->setEmail($params['email']);
 
             # Validate input
             $valid = true;
-            if (empty($_POST['name'])) {
+            if (empty($params['name'])) {
                 $this->setFlag('nameError','Please enter Name');
                 $valid = false;
             }
 
-            if (empty($_POST['email'])) {
+            if (empty($params['email'])) {
                 $this->setFlag('emailError','Please enter Email Address');
                 $valid = false;
             } else if ( !filter_var($customer->getEmail(),FILTER_VALIDATE_EMAIL) ) {
@@ -36,7 +37,7 @@ class Contact_Controller_Customer extends Core_Controller_Base {
                 $valid = false;
             }
 
-            if (empty($_POST['mobile'])) {
+            if (empty($params['mobile'])) {
                 $this->setFlag('mobileError','Please enter Mobile Number');
                 $valid = false;
             }
@@ -55,6 +56,7 @@ class Contact_Controller_Customer extends Core_Controller_Base {
     # READ                                      #
     #*******************************************#
     public function readAction($customerId = false) {
+        $params = $this->getRequest()->getParams();
         $customer = App::getModel('contact/customer');
         $customer->load($customerId);
         $this->loadLayout();
@@ -71,18 +73,19 @@ class Contact_Controller_Customer extends Core_Controller_Base {
 
         if(!empty($_POST)) {
             # Keep track post values
-            $customer->setName($_POST['name']);
-            $customer->setEmail($_POST['email']);
-            $customer->setMobile($_POST['mobile']);
+            $params = $this->getRequest()->getParams();
+            $customer->setMobile($params['mobile']);
+            $customer->setName($params['name']);
+            $customer->setEmail($params['email']);
 
             # Validate input
             $valid = true;
-            if (empty($_POST['name'])) {
+            if (empty($params['name'])) {
                 $this->setFlag('nameError','Please enter Name');
                 $valid = false;
             }
 
-            if (empty($_POST['email'])) {
+            if (empty($params['email'])) {
                 $this->setFlag('emailError','Please enter Email Address');
                 $valid = false;
             } else if ( !filter_var($customer->getEmail(),FILTER_VALIDATE_EMAIL) ) {
@@ -90,7 +93,7 @@ class Contact_Controller_Customer extends Core_Controller_Base {
                 $valid = false;
             }
 
-            if (empty($_POST['mobile'])) {
+            if (empty($params['mobile'])) {
                 $this->setFlag('mobileError','Please enter Mobile Number');
                 $valid = false;
             }

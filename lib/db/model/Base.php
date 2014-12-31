@@ -31,7 +31,7 @@ class Db_Model_Base extends Db_Model_SQLQuery {
             $property = $this->validColumnName(strtolower($property)) ? strtolower($property) : lcfirst(implode('',$matches));
         }
 
-        switch($method) {
+        switch ($method) {
             case 'get':
                 return $this->$property;
                 break;
@@ -44,6 +44,8 @@ class Db_Model_Base extends Db_Model_SQLQuery {
             case 'has':
                 return array_key_exists($property, $this->data) ? true : false;
                 break;
+            default:
+                throw new Exception('In object ' . get_class($this) . ': method \'' . $name . '\' does not exist.');
         }
 
         return null;
