@@ -13,10 +13,13 @@ class Contact_Controller_Customer extends Core_Controller_Base {
     #*******************************************#
     public function createAction() {
 
-        if (!empty($_POST)) {
+        # Get the request object
+        $request = $this->getRequest();
+
+        if ($request->isPost()) {
 
             # Keep track post values
-            $params = $this->getRequest()->getParams();
+            $params = $request->getParams();
             $customer = App::getModel('contact/customer');
             $customer->setMobile($params['mobile']);
             $customer->setName($params['name']);
@@ -56,7 +59,6 @@ class Contact_Controller_Customer extends Core_Controller_Base {
     # READ                                      #
     #*******************************************#
     public function readAction($customerId = false) {
-        $params = $this->getRequest()->getParams();
         $customer = App::getModel('contact/customer');
         $customer->load($customerId);
         $this->loadLayout();
@@ -68,12 +70,16 @@ class Contact_Controller_Customer extends Core_Controller_Base {
     #*******************************************#
     public function updateAction($customerId = false) {
 
+        # Get the request object
+        $request = $this->getRequest();
+
+        # Load the customer model
         $customer = App::getModel('contact/customer');
         $customer->load($customerId);
 
-        if(!empty($_POST)) {
+        if($request->isPost()) {
             # Keep track post values
-            $params = $this->getRequest()->getParams();
+            $params = $request->getParams();
             $customer->setMobile($params['mobile']);
             $customer->setName($params['name']);
             $customer->setEmail($params['email']);

@@ -8,6 +8,9 @@
 
 class Core_Model_Request extends Core_Model_Singleton{
 
+    private $controllerName;
+    private $actionName;
+
     protected function _init() {
         $this->registerGlobals();
     }
@@ -33,6 +36,42 @@ class Core_Model_Request extends Core_Model_Singleton{
                 $this->data[$value][$key] = $var;
             }
         }
+    }
+
+    public function getMethod() {
+        return $this->data['_SERVER']['REQUEST_METHOD'];
+    }
+
+    public function isPost() {
+        return $this->getMethod() == 'POST' ? true : false;
+    }
+
+    public function hasPost() {
+        return empty($this->data['_POST']) ? false : true;
+    }
+
+    public function isGet() {
+        return $this->getMethod() == 'GET' ? true : false;
+    }
+
+    public function hasGet() {
+        return empty($this->data['_GET']) ? false : true;
+    }
+
+    public function getControllerName() {
+        return $this->controllerName;
+    }
+
+    public function setControllerName($name) {
+        $this->controllerName = $name;
+    }
+
+    public function getActionName() {
+        return $this->actionName;
+    }
+
+    public function setActionName($name) {
+        $this->actionName = $name;
     }
 
     public function getParam($key) {

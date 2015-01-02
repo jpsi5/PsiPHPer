@@ -11,6 +11,7 @@ class Core_Controller_Router {
         try {
             $urlArray = explode('/', $url);
             $helper = App::getHelper();
+            $request = App::getModel('core/request');
 
             # The first part of the url is the module
             $module = !empty($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : 'Admin';
@@ -18,10 +19,12 @@ class Core_Controller_Router {
 
             # The second part of the url is the controller
             $controllerName = isset($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : 'Index';
+            $request->setControllerName(strtolower($controllerName));
             array_shift($urlArray);
 
             # The third part of the url is the action
             $actionMethod = isset($urlArray[0]) ? $urlArray[0] . 'Action' : 'indexAction';
+            $request->setActionName($actionMethod);
             array_shift($urlArray);
 
             # The final part of the url ar the parameters
