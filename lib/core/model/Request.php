@@ -13,15 +13,18 @@ class Core_Model_Request extends Core_Model_Singleton{
 
     protected function _init() {
         $this->registerGlobals();
+        $this->unregisterGlobals();
     }
 
     protected function unregisterGlobals() {
         if (ini_get('register_globals')) {
-            $enVars = array('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES');
+            $enVars = array('_SESSION', '_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES');
             foreach ($enVars as $value) {
-                foreach ($GLOBALS[$value] as $key => $var) {
-                    if ($var === $GLOBALS[$key]) {
-                        unset($GLOBALS[$key]);
+                if(array_key_exists($value,$GLOBALS)) {
+                    foreach ($GLOBALS[$value] as $key => $var) {
+                        if ($var === $GLOBALS[$key]) {
+                            unset($GLOBALS[$key]);
+                        }
                     }
                 }
             }
@@ -29,12 +32,15 @@ class Core_Model_Request extends Core_Model_Singleton{
     }
 
     protected function registerGlobals() {
-        $enVars = array('_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES');
+        $enVars = array('_SESSION','_POST', '_GET', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES');
         foreach ($enVars as $value) {
             $this->data[$value] = array();
-            foreach ($GLOBALS[$value] as $key => $var) {
-                $this->data[$value][$key] = $var;
+            if(array_key_exists($value,$GLOBALS)){
+                foreach ($GLOBALS[$value] as $key => $var) {
+                    $this->data[$value][$key] = $var;
+                }
             }
+
         }
     }
 

@@ -48,7 +48,6 @@ abstract class Core_View_Block_Base {
                 throw new Exception("$class member '$property' cannot be accessed by $callingClass");
             }
 
-
             # Don't play games with the MF template
             if($property == '_template') {
                 $module = App::getHelper('core/base')->getModule();
@@ -70,7 +69,6 @@ abstract class Core_View_Block_Base {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
             exit();
         }
-
     }
 
     /**

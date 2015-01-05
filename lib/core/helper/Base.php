@@ -63,7 +63,9 @@ class Core_Helper_Base extends Core_Model_Singleton{
      */
     public function getDbCredentials($module) {
         $db = array();
-        $config = $this->getConfig($module);
+        $configPath = 'app/config.xml';
+        $config = simplexml_load_file($configPath);
+        //$config = $this->getConfig($module);
         try {
             if ($config && $config->database) {
                 $db["host"] = $config->database->host->__toString();

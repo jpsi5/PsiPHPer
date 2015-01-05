@@ -125,7 +125,7 @@ abstract Class Core_Controller_Base {
      * @param void
      * @return void
      */
-    final protected function loadLayout() {
+    final protected function loadLayoutOld() {
 
         # Get help quick
         $helper = App::getHelper();
@@ -146,13 +146,13 @@ abstract Class Core_Controller_Base {
             # the layout object
             if ($config) {
                 $layout = App::getLayout('core/base');
-                $layoutXmlNode = $config->layout->$layoutHandle;
+                $customLayoutXmlNode = $config->layout->$layoutHandle;
                 $defaultLayoutXmlNode = $config->layout->default;
 
                 # Search for the module specific layout, then fall back to default if
                 # it can't be found. If neither are present, fall back to core layout
-                if ($layoutXmlNode) {
-                    $blocks = new SimpleXMLIterator($layoutXmlNode->asXML());
+                if ($customLayoutXmlNode) {
+                    $blocks = new SimpleXMLIterator($customLayoutXmlNode->asXML());
                 } else if ($defaultLayoutXmlNode) {
                     $blocks = new SimpleXMLIterator($defaultLayoutXmlNode->asXML());
                 } else {
@@ -170,6 +170,34 @@ abstract Class Core_Controller_Base {
         } catch (Exception $e) {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
         }
+    }
+    final protected function loadLayout() {
+        # Get help quick
+        $helper = App::getHelper();
+
+        # Get the calling action method name
+        $this->_action = $helper->getCallingMethodName();
+
+        # Build the layout handle
+        $layoutHandle = $this->_module . '_' . $this->_name . '_' . $this->_action;
+
+        # Get the config file
+        $config = $helper->getConfig($this->_module);
+
+        # Generate the layout XML
+        if($config) {
+            $configPath = App::getModuleDirectory($this->_module) . 'config.xml';
+            $layout = App::getLayout('core/base');
+            $customLayoutXmlNode = $config->layout->$layoutHandle;
+            $defaultLayoutXmlNode = $config->layout->default;
+
+            $test = $defaultLayoutXmlNode->asXML();
+            $test = trim(preg_replace('/\s+/', ' ', $test));
+            $test2 = new DOMDocument();
+            $test2->preserveWhiteSpace = false;
+            $test2->loadHTML($test);
+        }
+
     }
 
     /**

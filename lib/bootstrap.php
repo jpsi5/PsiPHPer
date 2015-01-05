@@ -85,5 +85,9 @@ class App {
         }
         return null;
     }
+
+    public static function fireEvent($eventName = false) {
+
+    }
 }
 

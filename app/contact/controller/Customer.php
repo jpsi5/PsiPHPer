@@ -120,7 +120,7 @@ class Contact_Controller_Customer extends Core_Controller_Base {
         $customer = App::getModel('contact/customer');
         $customer->load($customerId);
 
-        if(!empty($_POST)) {
+        if($this->getRequest()->isPost()) {
             $customer->delete();
             $this->redirect('contact');
         } else {
