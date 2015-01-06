@@ -38,10 +38,7 @@
             </block>
         </contact_customer_delete>
     </layout>
-    <database>
-        <host>localhost</host>
-        <user>root</user>
-        <key>M@ster87!</key>
-        <name>store</name>
-    </database>
+    <models>
+
+    </models>
 </config>

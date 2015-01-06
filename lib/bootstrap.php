@@ -32,7 +32,7 @@ class App {
     }
 
     public static function getBlock($path) {
-        return self::_getClass($path, 'View_Block');
+        return self::_getClass($path,'View_Block');
     }
 
     /**
@@ -86,8 +86,6 @@ class App {
         return null;
     }
 
-    public static function fireEvent($eventName = false) {
-
-    }
+    public static function fireEvent($eventName = false) {}
 }
 

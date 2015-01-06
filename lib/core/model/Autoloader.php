@@ -18,29 +18,28 @@ class Autoloader {
     }
 
     public function register() {
-
         spl_autoload_register(function ($className) {
 
             # Expand the class name
-            $paths = explode('_', $className);
+            $pathArray = explode('_', $className);
 
-            # Get the file name of the class and remove
-            # from the path array
-            $classFileName = end($paths);
-            array_pop($paths);
+            $pathLength = count($pathArray);
+            foreach($pathArray as $key => $p) {
 
+                # Get the path and file name
+                $path = $pathLength != 1 ? array_slice($pathArray,0,$key + 1) : array($p);
+                $file = $pathLength != count($path) ? array_slice($pathArray,$key + 1) : array();
 
-            $classPath = '';
-            foreach($paths as $path) {
-                $classPath .= strtolower($path) . DS;
-            }
+                # Format the path and file name string
+                $path = strtolower(implode('/',$path)) . DS;
+                $file = implode('_',$file);
 
-            # Combine the class file name with its path
-            $finalPath = $classPath . $classFileName . '.php';
+                $finalPath = $path . $file . '.php';
 
-            #
-            if(stream_resolve_include_path($finalPath) != false) {
-                require($finalPath);
+                if(stream_resolve_include_path($finalPath) != false) {
+                    require($finalPath);
+                    break;
+                }
             }
         });
     }

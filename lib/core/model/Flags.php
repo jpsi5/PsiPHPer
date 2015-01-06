@@ -7,5 +7,4 @@
  */
 
 class Core_Model_Flags extends Core_Model_Singleton {
-
 }

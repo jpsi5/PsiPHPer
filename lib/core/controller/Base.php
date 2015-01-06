@@ -125,7 +125,7 @@ abstract Class Core_Controller_Base {
      * @param void
      * @return void
      */
-    final protected function loadLayoutOld() {
+    final protected function loadLayout() {
 
         # Get help quick
         $helper = App::getHelper();
@@ -171,7 +171,7 @@ abstract Class Core_Controller_Base {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
         }
     }
-    final protected function loadLayout() {
+    final protected function loadLayoutOld() {
         # Get help quick
         $helper = App::getHelper();
 
@@ -192,10 +192,11 @@ abstract Class Core_Controller_Base {
             $defaultLayoutXmlNode = $config->layout->default;
 
             $test = $defaultLayoutXmlNode->asXML();
-            $test = trim(preg_replace('/\s+/', ' ', $test));
+            //$test = trim(preg_replace('/\s+/', ' ', $test));
             $test2 = new DOMDocument();
             $test2->preserveWhiteSpace = false;
-            $test2->loadHTML($test);
+            $test2->loadXML($test);
+            $test2->saveXML();
         }
 
     }

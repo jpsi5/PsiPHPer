@@ -50,4 +50,8 @@ abstract class Core_Model_Singleton {
         return $this->$data;
     }
 
+    public function load($id) {}
+
+    public function save() {}
+
 }
