@@ -11,18 +11,23 @@ class Db_Model_SQLConn extends Core_Model_Singleton {
 
     public function connect()
     {
-        $module = App::getHelper('core/base')->getModule();
-        $db = App::getHelper('core/base')->getDbCredentials($module);
+        try {
+            # Get the module and database credentials
+            $module = App::getHelper('core/base')->getModule();
+            $db = App::getHelper('core/base')->getDbCredentials($module);
 
-        # Create the database if it does not exist
-        $conn = new PDO('mysql:host=' . $db["host"] . '; dbname=' . 'mysql' .'; charset=utf8', $db["user"], $db["password"]);
-        $conn->query('CREATE DATABASE IF NOT EXISTS ' . $db['name']);
-        $conn = null;
+            # Create the database if it does not exist
+            $conn = new PDO('mysql:host=' . $db["host"] . '; dbname=' . 'mysql' .'; charset=utf8', $db["user"], $db["password"]);
+            $conn->query('CREATE DATABASE IF NOT EXISTS ' . $db['name']);
+            $conn = null;
 
-        # Connect to the database
-        $this->dbHandle = new PDO('mysql:host=' . $db["host"] . '; dbname=' . $db["name"] .'; charset=utf8', $db["user"], $db["password"]);
-        $this->dbHandle->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->dbHandle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            # Connect to the database
+            $this->dbHandle = new PDO('mysql:host=' . $db["host"] . '; dbname=' . $db["name"] .'; charset=utf8', $db["user"], $db["password"]);
+            $this->dbHandle->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->dbHandle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        } catch (Exception $e) {
+            echo 'Caught Exception -> ' . $e->getMessage() . '<br/>';
+        }
     }
 
     public function disconnect() {
@@ -37,10 +42,8 @@ class Db_Model_SQLConn extends Core_Model_Singleton {
                 throw new Excpetion('In method Db_Model_SQLCon::getConnection(): Connection not available');
             }
         } catch (Exception $e) {
-            echo 'Caught Exception' . $e->getMessage() . '<br/>';
+            echo 'Caught Exception -> ' . $e->getMessage() . '<br/>';
         }
         return null;
     }
-
-
 }

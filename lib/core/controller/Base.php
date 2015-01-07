@@ -125,7 +125,7 @@ abstract Class Core_Controller_Base {
      * @param void
      * @return void
      */
-    final protected function loadLayout() {
+    final protected function loadLayoutOld() {
 
         # Get help quick
         $helper = App::getHelper();
@@ -171,7 +171,8 @@ abstract Class Core_Controller_Base {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
         }
     }
-    final protected function loadLayoutOld() {
+    
+    final protected function loadLayout() {
         # Get help quick
         $helper = App::getHelper();
 
@@ -191,12 +192,20 @@ abstract Class Core_Controller_Base {
             $customLayoutXmlNode = $config->layout->$layoutHandle;
             $defaultLayoutXmlNode = $config->layout->default;
 
-            $test = $defaultLayoutXmlNode->asXML();
-            //$test = trim(preg_replace('/\s+/', ' ', $test));
-            $test2 = new DOMDocument();
-            $test2->preserveWhiteSpace = false;
-            $test2->loadXML($test);
-            $test2->saveXML();
+            if($customLayoutXmlNode && $defaultLayoutXmlNode) {
+
+                # Combine the two layout nodes
+                $customLayoutXmlStr = trim(preg_replace('/\s+/', ' ', $customLayoutXmlNode->block->asXML()));
+                $defaultLayoutXmlStr = trim(preg_replace('/\s+/', ' ', $defaultLayoutXmlNode->block->asXML()));
+
+            } else if ($customLayoutXmlNode) {
+                $blocks = new SimpleXMLIterator($customLayoutXmlNode->asXML());
+            } else if ($defaultLayoutXmlNode) {
+                $blocks = new SimpleXMLIterator($defaultLayoutXmlNode->asXML());
+            }
+
+            # Load the blocks
+            $layout->loadBlocks($blocks);
         }
 
     }

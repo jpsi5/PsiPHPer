@@ -16,6 +16,8 @@ class Db_Model_Base extends Db_Model_SQLQuery {
 
     public function __call($name,$arguments) {
         # Get the method (i.e. get,set,unset...) and the property name
+        # The $matches variable is an array containing a method and the property
+        # name.
         $matches = preg_split('#([A-Z][^A-Z]*)#', $name , null, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
         $method = array_shift($matches);
         $property = '';
@@ -26,7 +28,7 @@ class Db_Model_Base extends Db_Model_SQLQuery {
             $property = strtolower($matches[0]);
         } else {
 
-            # Validate that property is the name of a column in the table
+            # Validate that $property is the name of a column in the table
             $property = implode('_',$matches);
             $property = $this->validColumnName(strtolower($property)) ? strtolower($property) : lcfirst(implode('',$matches));
         }

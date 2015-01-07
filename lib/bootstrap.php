@@ -12,11 +12,23 @@ $app->map($url);
 #############################################################
 class App {
     private $router;
+    private $dbConnection;
 
     public function map($url) {
+
+        # Create the request object
         $request = $this->getModel('core/request');
+
+        # Connect with the database
+        $this->dbConnection = App::getModel('db/SQLConn');
+        $this->dbConnection->connect();
+
+        # Routing the url
         $this->router = new Core_Controller_Router();
         $this->router->route($url);
+
+        # Close the database connection
+        $this->dbConnection->disconnect();
     }
 
     public static function getModel($path) {

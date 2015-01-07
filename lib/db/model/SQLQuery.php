@@ -1,6 +1,6 @@
 <?php
 
-abstract class Db_Model_SQLQuery extends Core_Model_Singleton {
+class Db_Model_SQLQuery extends Core_Model_Singleton {
     protected $dbHandle;
     protected $result;
     protected $table;
@@ -46,7 +46,7 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton {
         $result->execute(explode(',',func_get_arg(0)));
     }
 
-    protected function remove($id) {
+    public function remove($id) {
         $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $this->primaryKey . '=' .$id;
         $this->query($query);
     }
@@ -65,6 +65,18 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton {
 
     public function getNumRows() {
         return count($this->selectAll());
+    }
+
+    public function setTableName($name = false) {
+        if($name) {
+            $this->table = $name;
+        }
+    }
+
+    public function setPrimaryKey($name = false) {
+        if($name) {
+            $this->primaryKey = $this->getPrimaryKeyName();
+        }
     }
 
     protected function query($query, $singleResult = 0) {
@@ -95,20 +107,20 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton {
         return $pk['Column_name'];
     }
 
-    protected function isForeignKey($name) {
+    protected function getForeignKeyAssoc($fieldName) {
         $stmt = "SELECT i.TABLE_NAME, i.CONSTRAINT_TYPE, i.CONSTRAINT_NAME, k.REFERENCED_TABLE_NAME, k.REFERENCED_COLUMN_NAME
             FROM information_schema.TABLE_CONSTRAINTS i
             LEFT JOIN information_schema.KEY_COLUMN_USAGE k ON i.CONSTRAINT_NAME = k.CONSTRAINT_NAME
             WHERE i.CONSTRAINT_TYPE = 'FOREIGN KEY'
             AND i.TABLE_SCHEMA = DATABASE()
-            AND i.TABLE_NAME = '" . $this->table ."'" . "AND k.REFERENCED_COLUMN_NAME = '" . $name ."'";
+            AND i.TABLE_NAME = '" . $this->table ."'" . "AND k.REFERENCED_COLUMN_NAME = '" . $fieldName ."'";
 
         $query = $this->dbHandle->prepare($stmt);
         $query->execute();
         $pk = $query->fetch(PDO::FETCH_ASSOC);
 
         if(!empty($pk)) {
-            return true;
+            return $pk;
         }
 
         return false;
@@ -128,7 +140,7 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton {
 
     protected function getError() {}
 
-    protected function tableInit() {
+    public function tableInit() {
         if(!$this->tableExists()) {
             if(isset($this->scriptFileName)) {
                 $query = file_get_contents(ROOT . 'assets' . DS . 'sql' . DS . strtolower($this->scriptFileName));

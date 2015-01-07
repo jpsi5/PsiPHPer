@@ -27,7 +27,3 @@ $helper = App::getHelper('core/base');
 $helper->loadConfigs();
 $helper->setModule($url);
 
-# Connect with the database
-$conn = App::getModel('db/SQLConn');
-$conn->connect();
-

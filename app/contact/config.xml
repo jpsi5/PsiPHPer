@@ -38,7 +38,4 @@
             </block>
         </contact_customer_delete>
     </layout>
-    <models>
-
-    </models>
 </config>
