@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aae62f24-98de-4543-8347-90b6b8096b9b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/core/controller/Base.php" afterPath="$PROJECT_DIR$/lib/core/controller/Base.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/db/model/Base.php" afterPath="$PROJECT_DIR$/lib/db/model/Base.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/db/model/EAV.php" afterPath="$PROJECT_DIR$/lib/db/model/EAV.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/db/model/SQLConn.php" afterPath="$PROJECT_DIR$/lib/db/model/SQLConn.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/db/model/SQLQuery.php" afterPath="$PROJECT_DIR$/lib/db/model/SQLQuery.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap.php" afterPath="$PROJECT_DIR$/lib/bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/core/view/layout/Base.php" afterPath="$PROJECT_DIR$/lib/core/view/layout/Base.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/contact/config.xml" afterPath="$PROJECT_DIR$/app/contact/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/sql/ecommerce.sql" afterPath="$PROJECT_DIR$/assets/sql/ecommerce.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/shared.php" afterPath="$PROJECT_DIR$/lib/shared.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/contact/view/template/contact-create-page.phtml" afterPath="$PROJECT_DIR$/app/contact/view/template/contact-create-page.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/contact/view/template/contact-delete-page.phtml" afterPath="$PROJECT_DIR$/app/contact/view/template/contact-delete-page.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/contact/view/template/contact-list.phtml" afterPath="$PROJECT_DIR$/app/contact/view/template/contact-list.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/contact/view/template/contact-read-page.phtml" afterPath="$PROJECT_DIR$/app/contact/view/template/contact-read-page.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/contact/view/template/contact-update-page.phtml" afterPath="$PROJECT_DIR$/app/contact/view/template/contact-update-page.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/contact/view/template/page.phtml" afterPath="$PROJECT_DIR$/app/contact/view/template/page.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="psiphper.dev.iws" />
@@ -31,92 +31,58 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DockManager">
+    <window id="3">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/app/contact/config.xml">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.2278481" vertical-offset="0" max-vertical-offset="948">
+                    <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="14" selection-end-column="30" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="psiphper.dev" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Base.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Base.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/core/controller/Base.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.10799136" vertical-offset="3214" max-vertical-offset="4158">
-              <caret line="173" column="4" selection-start-line="173" selection-start-column="4" selection-end-line="173" selection-end-column="4" />
+            <state vertical-scroll-proportion="-52.962963" vertical-offset="2296" max-vertical-offset="4140">
+              <caret line="207" column="41" selection-start-line="207" selection-start-column="41" selection-end-line="207" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/contact/config.xml">
+      <file leaf-file-name="Base.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/core/view/block/Base.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
-              <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/contact/controller/Index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="270">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SQLQuery.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/db/model/SQLQuery.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="3114">
-              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-              <folding>
-                <marker date="1420661222424" expanded="true" signature="816:897" placeholder="INSERT INTO ..." />
-                <marker date="1420661222424" expanded="true" signature="1661:1726" placeholder="DELETE FROM ..." />
-                <marker date="1420661222424" expanded="true" signature="1825:1857" placeholder="SELECT * FRO..." />
-                <marker date="1420661222424" expanded="true" signature="1967:2038" placeholder="SELECT * FRO..." />
-                <marker date="1420661222424" expanded="true" signature="3444:3838" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-                <marker date="1420661222424" expanded="true" signature="3444:3858" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-                <marker date="1420661222424" expanded="true" signature="3444:3913" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-                <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-                <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-                <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-                <marker date="1420661222424" expanded="true" signature="5043:5057" placeholder="SELECT 1 FRO..this_table..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="252">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.35853133" vertical-offset="1036" max-vertical-offset="2448">
+              <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Base.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/db/model/Base.php">
+        <entry file="file://$PROJECT_DIR$/lib/core/view/layout/Base.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1836">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state vertical-scroll-proportion="-27.333334" vertical-offset="0" max-vertical-offset="1386">
+              <caret line="41" column="51" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Singleton.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/core/model/Singleton.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.407408" vertical-offset="88" max-vertical-offset="1116">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding>
-                <element signature="e#6#89#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -141,15 +107,12 @@
         <option value="$PROJECT_DIR$/lib/db/model/SQLCon.php" />
         <option value="$PROJECT_DIR$/lib/db/model/Sqlconn.php" />
         <option value="$PROJECT_DIR$/app/contact/view/template/contact-create-form.phtml" />
-        <option value="$PROJECT_DIR$/lib/core/view/layout/Base.php" />
         <option value="$PROJECT_DIR$/app/config.xml" />
         <option value="$PROJECT_DIR$/app/contact/model/Customer.php" />
-        <option value="$PROJECT_DIR$/app/contact/view/template/contact-delete-page.phtml" />
         <option value="$PROJECT_DIR$/app/contact/view/template/contact-delete-form.phtml" />
         <option value="$PROJECT_DIR$/lib/error.log" />
         <option value="$PROJECT_DIR$/lib/core/controller/Request.php" />
         <option value="$PROJECT_DIR$/lib/core/model/Response.php" />
-        <option value="$PROJECT_DIR$/app/contact/view/template/contact-list.phtml" />
         <option value="$PROJECT_DIR$/lib/core/controller/Router.php" />
         <option value="$PROJECT_DIR$/lib/core/helper/Base.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
@@ -170,8 +133,16 @@
         <option value="$PROJECT_DIR$/lib/db/model/Base.php" />
         <option value="$PROJECT_DIR$/lib/db/model/SQLQuery.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/app/contact/config.xml" />
+        <option value="$PROJECT_DIR$/app/contact/view/template/contact-read-page.phtml" />
+        <option value="$PROJECT_DIR$/app/contact/view/template/contact-create-page.phtml" />
+        <option value="$PROJECT_DIR$/app/contact/view/template/contact-update-page.phtml" />
+        <option value="$PROJECT_DIR$/app/contact/view/template/contact-delete-page.phtml" />
         <option value="$PROJECT_DIR$/lib/core/controller/Base.php" />
+        <option value="$PROJECT_DIR$/app/contact/view/template/page.phtml" />
+        <option value="$PROJECT_DIR$/app/contact/config.xml" />
+        <option value="$PROJECT_DIR$/app/contact/view/template/contact-list.phtml" />
+        <option value="$PROJECT_DIR$/test.xml" />
+        <option value="$PROJECT_DIR$/lib/core/view/layout/Base.php" />
       </list>
     </option>
   </component>
@@ -275,72 +246,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="psiphper.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="psiphper.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="psiphper.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="psiphper.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="psiphper.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="psiphper.dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -363,6 +268,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psiphper.dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psiphper.dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -371,6 +298,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../application.dev" />
+    <property name="LayoutCode.rearrangeEntriesXML" value="false" />
+    <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -435,7 +364,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.228125" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22708334" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -462,7 +391,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="112" />
+      <option name="time" value="134" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
@@ -476,66 +405,20 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/db/model/SQLQuery.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="2322">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <marker date="1420661222424" expanded="true" signature="816:897" placeholder="INSERT INTO ..." />
-            <marker date="1420661222424" expanded="true" signature="1661:1726" placeholder="DELETE FROM ..." />
-            <marker date="1420661222424" expanded="true" signature="1825:1857" placeholder="SELECT * FRO..." />
-            <marker date="1420661222424" expanded="true" signature="1967:2038" placeholder="SELECT * FRO..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3838" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3858" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3913" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="5043:5057" placeholder="SELECT 1 FRO..this_table..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/contact/controller/Customer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1458">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#89#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/core/view/block/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1306" max-vertical-offset="2232">
-          <caret line="116" column="35" selection-start-line="116" selection-start-column="35" selection-end-line="116" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1692">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/db/model/SQLQuery.php">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="2394">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1420661222424" expanded="true" signature="816:897" placeholder="INSERT INTO ..." />
-            <marker date="1420661222424" expanded="true" signature="1661:1726" placeholder="DELETE FROM ..." />
-            <marker date="1420661222424" expanded="true" signature="1825:1857" placeholder="SELECT * FRO..." />
-            <marker date="1420661222424" expanded="true" signature="1967:2038" placeholder="SELECT * FRO..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3838" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3858" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3913" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="5043:5057" placeholder="SELECT 1 FRO..this_table..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT 1 FRO..this_table..." />
           </folding>
         </state>
       </provider>
@@ -564,14 +447,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-delete-page.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.039955605" vertical-offset="0" max-vertical-offset="901">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/error.log">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1494">
@@ -583,14 +458,6 @@
     <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-delete-form.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="926">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-read-page.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -608,14 +475,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="306">
           <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/core/controller/Router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.666666" vertical-offset="0" max-vertical-offset="1314">
-          <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -642,33 +501,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-list.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03887689" vertical-offset="0" max-vertical-offset="926">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/core/config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="928">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-update-button.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="953">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-update-page.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="953">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -678,14 +513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="666">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/core/view/block/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.962963" vertical-offset="1522" max-vertical-offset="2448">
-          <caret line="128" column="5" selection-start-line="128" selection-start-column="5" selection-end-line="128" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -806,14 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/core/view/layout/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.019438446" vertical-offset="0" max-vertical-offset="1134">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.53563714" vertical-offset="1036" max-vertical-offset="1962">
@@ -829,14 +648,6 @@
           <folding>
             <element signature="e#6#87#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/core/helper/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2073433" vertical-offset="2080" max-vertical-offset="3006">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -871,42 +682,18 @@
         <state vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="3114">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding>
-            <marker date="1420661222424" expanded="true" signature="816:897" placeholder="INSERT INTO ..." />
-            <marker date="1420661222424" expanded="true" signature="1661:1726" placeholder="DELETE FROM ..." />
-            <marker date="1420661222424" expanded="true" signature="1825:1857" placeholder="SELECT * FRO..." />
-            <marker date="1420661222424" expanded="true" signature="1967:2038" placeholder="SELECT * FRO..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3838" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3858" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3913" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="3444:3916" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
-            <marker date="1420661222424" expanded="true" signature="5043:5057" placeholder="SELECT 1 FRO..this_table..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT i.TAB..TABLE_CONSTRAINTS..." />
+            <marker date="1420661222424" expanded="true" signature="-1:-1" placeholder="SELECT 1 FRO..this_table..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/contact/controller/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="270">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="252">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/contact/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
-          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -926,10 +713,138 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/controller/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="270">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09988901" vertical-offset="0" max-vertical-offset="901">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/core/helper/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32397407" vertical-offset="258" max-vertical-offset="3006">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/core/controller/Router.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.296297" vertical-offset="388" max-vertical-offset="1314">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-create-page.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="216">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-header.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="928">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-read-page.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46652266" vertical-offset="0" max-vertical-offset="926">
+          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-delete-page.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.116630666" vertical-offset="0" max-vertical-offset="926">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-update-button.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="953">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-update-page.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.116630666" vertical-offset="0" max-vertical-offset="926">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/view/template/page.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="270">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/view/template/contact-list.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.0" vertical-offset="0" max-vertical-offset="810">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8851064" vertical-offset="43322" max-vertical-offset="44262">
+          <caret line="2453" column="7" selection-start-line="2453" selection-start-column="7" selection-end-line="2453" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/core/view/layout/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-27.333334" vertical-offset="0" max-vertical-offset="1386">
+          <caret line="41" column="51" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/core/controller/Base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10799136" vertical-offset="3214" max-vertical-offset="4158">
-          <caret line="173" column="4" selection-start-line="173" selection-start-column="4" selection-end-line="173" selection-end-column="4" />
+        <state vertical-scroll-proportion="-52.962963" vertical-offset="2296" max-vertical-offset="4140">
+          <caret line="207" column="41" selection-start-line="207" selection-start-column="41" selection-end-line="207" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/contact/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2278481" vertical-offset="0" max-vertical-offset="948">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="14" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/core/view/block/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35853133" vertical-offset="1036" max-vertical-offset="2448">
+          <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
           <folding />
         </state>
       </provider>

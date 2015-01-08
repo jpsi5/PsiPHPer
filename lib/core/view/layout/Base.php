@@ -39,6 +39,20 @@ class Core_View_Layout_Base extends Core_Model_Singleton {
         }
     }
 
+    public function mergeBlocks(&$parent, &$child){
+        foreach ($child->children() as $block) {
+            $parent->addChild('block');
+            $newBlock = $parent->xpath("block[last()]");
+            $newBlock[0]->addAttribute('type', $block['type']);
+            $newBlock[0]->addAttribute('name', $block['name']);
+            $newBlock[0]->addAttribute('template', $block['template']);
+            if($block->count()) {
+                $this->mergeBlocks($newBlock[0],$block);
+            }
+        }
+        return $parent;
+    }
+
     /**
      * Gets the block specified by $name
      *

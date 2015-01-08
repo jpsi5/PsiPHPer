@@ -171,7 +171,7 @@ abstract Class Core_Controller_Base {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
         }
     }
-    
+
     final protected function loadLayout() {
         # Get help quick
         $helper = App::getHelper();
@@ -186,18 +186,18 @@ abstract Class Core_Controller_Base {
         $config = $helper->getConfig($this->_module);
 
         # Generate the layout XML
+        # Validate the existence of the config file before building
+        # the layout object
         if($config) {
-            $configPath = App::getModuleDirectory($this->_module) . 'config.xml';
             $layout = App::getLayout('core/base');
             $customLayoutXmlNode = $config->layout->$layoutHandle;
             $defaultLayoutXmlNode = $config->layout->default;
 
             if($customLayoutXmlNode && $defaultLayoutXmlNode) {
-
-                # Combine the two layout nodes
-                $customLayoutXmlStr = trim(preg_replace('/\s+/', ' ', $customLayoutXmlNode->block->asXML()));
-                $defaultLayoutXmlStr = trim(preg_replace('/\s+/', ' ', $defaultLayoutXmlNode->block->asXML()));
-
+                $finalLayoutXmlNode = $layout->mergeBlocks($defaultLayoutXmlNode->block,$customLayoutXmlNode);
+                $finalLayoutXmlStr = '<default>' . $finalLayoutXmlNode->asXML() . '</default>';
+                $blocks = new SimpleXMLIterator($finalLayoutXmlStr);
+                $blocks = new SimpleXMLIterator($blocks->asXML());
             } else if ($customLayoutXmlNode) {
                 $blocks = new SimpleXMLIterator($customLayoutXmlNode->asXML());
             } else if ($defaultLayoutXmlNode) {
@@ -207,7 +207,6 @@ abstract Class Core_Controller_Base {
             # Load the blocks
             $layout->loadBlocks($blocks);
         }
-
     }
 
     /**
