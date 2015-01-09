@@ -40,8 +40,9 @@ class Core_Model_Request extends Core_Model_Singleton{
                     $this->data[$value][$key] = $var;
                 }
             }
-
         }
+        $this->data['_STATUS'] = array();
+        $this->data['_STATUS']['FORM_STATUS'] = '';
     }
 
     public function getMethod() {
@@ -90,7 +91,14 @@ class Core_Model_Request extends Core_Model_Singleton{
         return false;
     }
 
-    public function setParam($key, $value) {}
+    public function setParam($key, $value) {
+        foreach($this->data as $enVar => $array)
+        {
+            if(array_key_exists($key,$array)) {
+                $array[$key] = $value;
+            }
+        }
+    }
 
     public function getParams() {
 

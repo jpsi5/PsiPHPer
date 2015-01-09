@@ -1,151 +1,167 @@
 <?php
 
-class Db_Model_SQLQuery extends Core_Model_Singleton {
+abstract class Db_Model_SQLQuery extends Core_Model_Singleton
+{
     protected $dbHandle;
     protected $result;
     protected $table;
     protected $primaryKey;
     protected $scriptFileName;
 
-    public function insert() {
+    public function insert()
+    {
         $fieldValues = '';
-        foreach(explode(',',func_get_arg(0)) as $fieldValue) {
+        foreach (explode(',', func_get_arg(0)) as $fieldValue) {
             $fieldValues = is_numeric($fieldValue) ? $fieldValues . $fieldValue . "," : $fieldValues . "'" . $fieldValue . "',";
         }
-        $fieldValues = rtrim($fieldValues,',');
+        $fieldValues = rtrim($fieldValues, ',');
 
         $table_fields = $this->getColumnNames();
 
-        foreach($table_fields as $key => $table_field) {
-            if($table_field == $this->primaryKey) {
+        foreach ($table_fields as $key => $table_field) {
+            if ($table_field == $this->primaryKey) {
                 unset($table_fields[$key]);
                 break;
             }
         }
-        $fields = implode(",",$table_fields );
+        $fields = implode(",", $table_fields);
 
         $query = "INSERT INTO `" . $this->table . "` (" . $fields . ") VALUES(" . $fieldValues . ")";
         $this->query($query);
     }
 
-    public function update() {
+    public function update()
+    {
         $table_fields = $this->getColumnNames();
 
         # Loop through the array and remove the element containing the primary key name
-        foreach($table_fields as $key => $table_field) {
-            if($table_field == $this->primaryKey) {
+        foreach ($table_fields as $key => $table_field) {
+            if ($table_field == $this->primaryKey) {
                 unset($table_fields[$key]);
                 break;
             }
         }
 
-        $fields = implode("=?, ",$table_fields );
+        $fields = implode("=?, ", $table_fields);
         $fields = $fields . "=? ";
         $query = "update " . $this->table . " set " . $fields . " where " . $this->primaryKey . "=?";
         $result = $this->dbHandle->prepare($query);
-        $result->execute(explode(',',func_get_arg(0)));
+        $result->execute(explode(',', func_get_arg(0)));
     }
 
-    public function remove($id) {
-        $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $this->primaryKey . '=' .$id;
+    public function remove($id)
+    {
+        $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $this->primaryKey . '=' . $id;
         $this->query($query);
     }
 
 
-
-    public function selectAll() {
-        $query = 'SELECT * FROM `'.$this->table.'`';
+    public function selectAll()
+    {
+        $query = 'SELECT * FROM `' . $this->table . '`';
         return $this->query($query);
     }
 
-    public function select($field, $value) {
-        $query = 'SELECT * FROM `'.$this->table. '` WHERE `'. $field .'` = \''.$value.'\'';
+    public function select($field, $value)
+    {
+        $query = 'SELECT * FROM `' . $this->table . '` WHERE `' . $field . '` = \'' . $value . '\'';
         return $this->query($query, 1);
     }
 
-    public function getNumRows() {
+    public function getNumRows()
+    {
         return count($this->selectAll());
     }
 
-    public function setTableName($name = false) {
-        if($name) {
+    public function setTableName($name = false)
+    {
+        if ($name) {
             $this->table = $name;
         }
     }
 
-    public function setPrimaryKey($name = false) {
-        if($name) {
+    public function setPrimaryKey($name = false)
+    {
+        if ($name) {
             $this->primaryKey = $this->getPrimaryKeyName();
         }
     }
 
-    protected function query($query, $singleResult = 0) {
+    protected function query($query, $singleResult = 0)
+    {
 
         # SELECT statement
-        if(preg_match("/select/i",$query)) {
+        if (preg_match("/select/i", $query)) {
             $this->result = $this->dbHandle->prepare($query);
             $this->result->execute();
             $result = $this->result->fetchAll(PDO::FETCH_ASSOC);
-        }
-        else {
+        } else {
             $affected_rows = $this->dbHandle->exec($query);
             return ($affected_rows);
         }
-        return($result);
+        return ($result);
     }
 
-    protected function getColumnNames() {
+    protected function getColumnNames()
+    {
         $query = $this->dbHandle->prepare("DESCRIBE " . $this->table);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_COLUMN);
     }
 
-    protected function getPrimaryKeyName() {
-        $query = $this->dbHandle->prepare("SHOW KEYS FROM " . $this->table .  " WHERE Key_name = 'PRIMARY'");
+    protected function getPrimaryKeyName()
+    {
+        $query = $this->dbHandle->prepare("SHOW KEYS FROM " . $this->table . " WHERE Key_name = 'PRIMARY'");
         $query->execute();
         $pk = $query->fetch(PDO::FETCH_ASSOC);
         return $pk['Column_name'];
     }
 
-    protected function getForeignKeyAssoc($fieldName) {
+    protected function getForeignKeyAssoc($fieldName)
+    {
         $stmt = "SELECT i.TABLE_NAME, i.CONSTRAINT_TYPE, i.CONSTRAINT_NAME, k.REFERENCED_TABLE_NAME, k.REFERENCED_COLUMN_NAME
             FROM information_schema.TABLE_CONSTRAINTS i
             LEFT JOIN information_schema.KEY_COLUMN_USAGE k ON i.CONSTRAINT_NAME = k.CONSTRAINT_NAME
             WHERE i.CONSTRAINT_TYPE = 'FOREIGN KEY'
             AND i.TABLE_SCHEMA = DATABASE()
-            AND i.TABLE_NAME = '" . $this->table ."'" . "AND k.REFERENCED_COLUMN_NAME = '" . $fieldName ."'";
+            AND i.TABLE_NAME = '" . $this->table . "'" . "AND k.REFERENCED_COLUMN_NAME = '" . $fieldName . "'";
 
         $query = $this->dbHandle->prepare($stmt);
         $query->execute();
         $pk = $query->fetch(PDO::FETCH_ASSOC);
 
-        if(!empty($pk)) {
+        if (!empty($pk)) {
             return $pk;
         }
 
         return false;
     }
 
-    protected function validColumnName($name) {
+    protected function validColumnName($name)
+    {
         $fields = $this->getColumnNames();
-        foreach($fields as $field) {
-            if($name == $field) {
+        foreach ($fields as $field) {
+            if ($name == $field) {
                 return true;
             }
         }
         return false;
     }
 
-    protected function freeResult() {}
+    protected function freeResult()
+    {
+    }
 
-    protected function getError() {}
+    protected function getError()
+    {
+    }
 
-    public function tableInit() {
-        if(!$this->tableExists()) {
-            if(isset($this->scriptFileName)) {
+    protected function tableInit()
+    {
+        if (!$this->tableExists()) {
+            if (isset($this->scriptFileName)) {
                 $query = file_get_contents(ROOT . 'assets' . DS . 'sql' . DS . strtolower($this->scriptFileName));
-            }
-            else {
+            } else {
                 $query = file_get_contents(ROOT . 'assets' . DS . 'sql' . DS . $this->table . '.sql');
             }
             $results = $this->dbHandle->prepare($query);
@@ -153,15 +169,31 @@ class Db_Model_SQLQuery extends Core_Model_Singleton {
         }
     }
 
-    protected function tableExists() {
+    protected function tableExists()
+    {
         try {
             $results = $this->dbHandle->query('SELECT 1 FROM ' . $this->table);
-            if(count($results) > 0) {
+            if (count($results) > 0) {
                 return true;
             }
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    protected function isRequired($name)
+    {
+        $module = App::getHelper()->getModule();
+        $db = App::getHelper()->getDbCredentials($module);
+        $stmt = "SELECT TABLE_CATALOG AS Database_Name, TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, IS_NULLABLE FROM INFORMATION_SCHEMA . COLUMNS WHERE TABLE_SCHEMA = '" . $db['name'] . "' AND TABLE_NAME = '" . $this->table ."'AND IS_NULLABLE = 'NO'";
+        $results = $this->query($stmt);
+
+        foreach($results as $row) {
+            if($row['COLUMN_NAME'] == $name) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

@@ -62,12 +62,6 @@ abstract Class Core_Controller_Base {
      */
     protected function redirect($url) {
 
-        $request = $this->getRequest();
-
-        if($request->isPost() && $request->getParam('FORM_STATUS') == INVALID_FORM_DATA) {
-            return;
-        }
-
         # Clean up the url
         $cleanedUrl = ltrim($url, '/');
         $cleanedUrl = rtrim($cleanedUrl, '/');
@@ -122,6 +116,7 @@ abstract Class Core_Controller_Base {
         else {
             throw new Exception("In method " . get_class($this) . "::redirect(): '" . $url . "' is not a valid url.");
         }
+
     }
 
     /**
@@ -174,6 +169,43 @@ abstract Class Core_Controller_Base {
             }
         } catch (Exception $e) {
             echo 'Caught exception: ' . $e->getMessage() . '<br />';
+        }
+    }
+
+    final protected function loadLayoutAlt() {
+        # Get help quick
+        $helper = App::getHelper();
+
+        # Get the calling action method name
+        $this->_action = $helper->getCallingMethodName();
+
+        # Build the layout handle
+        $layoutHandle = $this->_module . '_' . $this->_name . '_' . $this->_action;
+
+        # Get the config file
+        $config = $helper->getConfig($this->_module);
+
+        # Generate the layout XML
+        # Validate the existence of the config file before building
+        # the layout object
+        if($config) {
+            $layout = App::getLayout('core/base');
+            $customLayoutXmlNode = $config->layout->$layoutHandle;
+            $defaultLayoutXmlNode = $config->layout->default;
+
+            if($customLayoutXmlNode && $defaultLayoutXmlNode) {
+                $finalLayoutXmlNode = $layout->mergeBlocks($defaultLayoutXmlNode->block,$customLayoutXmlNode);
+                $finalLayoutXmlStr = '<default>' . $finalLayoutXmlNode->asXML() . '</default>';
+                $blocks = new SimpleXMLIterator($finalLayoutXmlStr);
+                $blocks = new SimpleXMLIterator($blocks->asXML());
+            } else if ($customLayoutXmlNode) {
+                $blocks = new SimpleXMLIterator($customLayoutXmlNode->asXML());
+            } else if ($defaultLayoutXmlNode) {
+                $blocks = new SimpleXMLIterator($defaultLayoutXmlNode->asXML());
+            }
+
+            # Load the blocks
+            $layout->loadBlocks($blocks);
         }
     }
 

@@ -7,33 +7,53 @@
     <layout>
         <default>
             <block type="contact/customer" name="root" template="page.phtml">
-                <block type="core/header" name="header" template="contact-header.phtml"></block>
+                <block type="core/header" name="header" template="contact-header.phtml"/>
             </block>
         </default>
+
         <contact_index_index>
-            <block type="contact/customer" name="content" template="contact-list.phtml"></block>
+            <block type="contact/customer" name="root" template="page.phtml">
+                <block type="core/header" name="header" template="contact-header.phtml"></block>
+                <block type="contact/customer" name="content" template="contact-list.phtml"/>
+            </block>
         </contact_index_index>
+
         <contact_customer_create>
-            <block type="contact/customer" name="content" template="contact-create-page.phtml">
-                <block type="contact/customer" name="form" template="contact-create-form.phtml">
-                    <block type="contact/customer" name="button" template="contact-create-button.phtml"/>
+            <block type="contact/customer" name="root" template="page.phtml">
+                <block type="core/header" name="header" template="contact-header.phtml"/>
+                <block type="contact/customer" name="content" template="contact-create-page.phtml">
+                    <block type="contact/customer" name="form" template="contact-create-form.phtml">
+                        <block type="contact/customer" name="button" template="contact-create-button.phtml"/>
+                    </block>
                 </block>
             </block>
         </contact_customer_create>
+
         <contact_customer_read>
-            <block type="contact/customer" name="content" template="contact-read-page.phtml">
+            <block type="contact/customer" name="root" template="page.phtml">
+                <block type="core/header" name="header" template="contact-header.phtml"/>
+                <block type="contact/customer" name="content" template="contact-read-page.phtml">
+                </block>
             </block>
         </contact_customer_read>
+
         <contact_customer_update>
-            <block type="core/page" name="content" template="contact-update-page.phtml">
-                <block type="contact/customer" name="form" template="contact-create-form.phtml">
-                    <block type="contact/customer" name="button" template="contact-update-button.phtml"/>
+            <block type="contact/customer" name="root" template="page.phtml">
+                <block type="core/header" name="header" template="contact-header.phtml"/>
+                <block type="core/page" name="content" template="contact-update-page.phtml">
+                    <block type="contact/customer" name="form" template="contact-create-form.phtml">
+                        <block type="contact/customer" name="button" template="contact-update-button.phtml"/>
+                    </block>
                 </block>
             </block>
         </contact_customer_update>
+
         <contact_customer_delete>
-            <block type="core/page" name="content" template="contact-delete-page.phtml">
-                <block type="contact/customer" name="form" template="contact-delete-form.phtml"/>
+            <block type="contact/customer" name="root" template="page.phtml">
+                <block type="core/header" name="header" template="contact-header.phtml"/>
+                <block type="core/page" name="content" template="contact-delete-page.phtml">
+                    <block type="contact/customer" name="form" template="contact-delete-form.phtml"/>
+                </block>
             </block>
         </contact_customer_delete>
     </layout>

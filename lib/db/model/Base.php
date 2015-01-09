@@ -61,6 +61,23 @@ class Db_Model_Base extends Db_Model_SQLQuery {
         }
     }
 
+    protected function _beforeSave(){
+
+        # Validating the data before it is save
+        foreach($this->data as $colName => $attribute){
+            if(empty($attribute)) {
+                if($this->isRequired($colName)){
+
+                    # Set the status if the form data is invalid;
+                    App::getModel('core/request')->setParam('FORM_STATUS',INVALID_FORM_DATA);
+                    return false;
+                }
+            }
+        }
+    }
+
+    protected function _afterSave(){}
+
     public function save() {
 
         # Format column order

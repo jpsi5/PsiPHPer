@@ -3,6 +3,7 @@
 # Configuration variables
 
 define ('DEVELOPMENT_ENVIRONMENT',true);
+define ('INVALID_FORM_DATA', 800);
 
 define('DB_NAME', 'todo');
 define('DB_USER', 'root');
