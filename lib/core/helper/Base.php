@@ -27,10 +27,10 @@ class Core_Helper_Base extends Core_Model_Singleton{
      * @param string $module String used to find appropriate config file
      * @return SimpleXMLElement $config, NULL if no module is found
      */
-    public function getConfig($module) {
-
+    public function getConfig($module = false) {
+        $targetModule = ($module) ? $module : $this->_workingModule;
         foreach($this->_allConfigs as $config) {
-            if(strtolower($module) == strtolower($config->route->uri)) {
+            if(strtolower($targetModule) == strtolower($config->route->uri)) {
                 return $config;
             }
         }
@@ -91,6 +91,13 @@ class Core_Helper_Base extends Core_Model_Singleton{
      */
     public function getModule() {
         return $this->_workingModule;
+    }
+
+    public function getTrueModule() {
+        $config = $this->getConfig();
+        $dir = explode('/',$config->route->dir);
+        $trueModule = strtolower($dir[0]);
+        return $trueModule;
     }
 
     /**

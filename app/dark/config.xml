@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <route>
+        <dir>dark/controller</dir>
+        <uri>love-tree</uri>
+    </route>
+    <layout>
+        <default>
+            <block type="core/page" name="root" template="dark-page.phtml"/>
+        </default>
+        <dark_index_index>
+            <block type="core/page" name="root" template="dark-page.phtml">
+                <block type="core/header" name="header" template="dark-header.phtml"/>
+                <block type="core/content" name="content" template="dark-index.phtml"/>
+            </block>
+        </dark_index_index>
+    </layout>
+    <events>
+        <uri_not_found>
+            <class>DarkBaggage_Controller_Event_Observer</class>
+            <method>redirectTo404</method>
+        </uri_not_found>
+    </events>
+</config>

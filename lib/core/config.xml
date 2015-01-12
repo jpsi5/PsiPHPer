@@ -15,4 +15,10 @@
             </block>
         </default>
     </layout>
+    <events>
+        <uri_not_found>
+            <class>Core_Controller_Event_Observer</class>
+            <method>redirectTo404</method>
+        </uri_not_found>
+    </events>
 </config>

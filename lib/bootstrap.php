@@ -35,6 +35,10 @@ class App {
         return self::_getClass($path,'Model');
     }
 
+    public static function getRequest() {
+        return self::_getClass('core/request','Model');
+    }
+
     public static function getHelper($path = false) {
         return $path ? self::_getClass($path,'Helper') : self::_getClass('core/base','Helper');
     }
@@ -91,13 +95,44 @@ class App {
      * @return string The directory of the module
      */
     public static function getModuleDirectory($moduleName) {
+
         $modulePath = glob('[app|lib]*' . DS . $moduleName . DS);
+        $trueModulePath = glob('[app|lib]*' . DS . self::getHelper()->getTrueModule() . DS);
         if(count($modulePath) == 1) {
             return ROOT . $modulePath[0];
+        } else if(count($trueModulePath) == 1) {
+            return ROOT . $trueModulePath[0];
         }
         return null;
     }
 
-    public static function fireEvent($eventName = false) {}
+    /**
+     * Triggers an event based on the $eventName
+     *
+     * @param string $eventName
+     */
+    public static function fireEvent($eventName = null) {
+        # Retrieve the configuration files for the current module
+        # and the core module. Events should only be concerned with
+        # configurations in the core and current module
+        try {
+            if(is_null($eventName)) {
+                throw new Exception('App::fireEvent(string $eventName): Must specify an event name parameter.');
+            }
+            $modConfig = self::getHelper()->getConfig();
+            $coreConfig = self::getHelper()->getConfig('core');
+
+            # Get the event class and method
+            $eventClass = ($modConfig->events->$eventName) ? $modConfig->events->$eventName->class->__toString() : $coreConfig->events->$eventName->class->__toString();
+            $eventMethod = ($modConfig->events->$eventName) ? $modConfig->events->$eventName->method->__toString() : $coreConfig->events->$eventName->method->__toString();
+
+            # Instantiate the class and call its method
+            $eventInstance = new $eventClass;
+            $eventInstance->$eventMethod();
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . '<br/>';
+        }
+
+    }
 }
 

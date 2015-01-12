@@ -20,7 +20,7 @@ class Db_Model_Base extends Db_Model_SQLQuery {
         # name.
         $matches = preg_split('#([A-Z][^A-Z]*)#', $name , null, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
         $method = array_shift($matches);
-        $property = '';
+        //$property = '';
 
         # Formatting the property name of the object to match the column field
         # name format in a database

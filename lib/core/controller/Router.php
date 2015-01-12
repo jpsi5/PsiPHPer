@@ -11,7 +11,7 @@ class Core_Controller_Router {
         try {
             $urlArray = explode('/', $url);
             $helper = App::getHelper();
-            $request = App::getModel('core/request');
+            $request = App::getRequest();
 
             # The first part of the url is the module
             $module = !empty($urlArray[0]) ? ucfirst(strtolower($urlArray[0])) : 'Admin';
@@ -42,8 +42,9 @@ class Core_Controller_Router {
                 $actionController = $module . '_Controller_' . $controllerName;
                 if(!class_exists($actionController)) {
                     # Don't know what the fuck to do here
-                    header('Location: /admin');
-                    die();
+                    App::fireEvent('uri_not_found');
+                    //header('Location: /admin');
+                    //die();
                 }
             }
 

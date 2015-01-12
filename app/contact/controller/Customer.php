@@ -106,7 +106,7 @@ class Contact_Controller_Customer extends Core_Controller_Base {
 
             if($valid) {
                 $customer->save();
-                $this->redirect('contact');
+                $this->redirect('*');
             }
         }
         $this->loadLayout();
