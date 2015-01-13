@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 # Set error reporting if the environment is development
 error_reporting(E_ALL);

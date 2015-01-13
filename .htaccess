@@ -12,13 +12,13 @@ RewriteCond %{THE_REQUEST} favicon\.ico [NC]
 RewriteRule ^(.+)$ assets/favicon.ico [R=301,L]
 
 # REDIRECT ASSETS
-RewriteCond %{THE_REQUEST} !^/bootstrap\.min\.css [NC]
-RewriteCond %{THE_REQUEST} bootstrap\.min\.css [NC]
-RewriteRule ^(.+)$ assets/css/bootstrap.min.css [L]
+#RewriteCond %{THE_REQUEST} !^/bootstrap\.min\.css [NC]
+#RewriteCond %{THE_REQUEST} bootstrap\.min\.css [NC]
+#RewriteRule ^(.+)$ assets/dist/css/bootstrap.min.css [L]
 
-RewriteCond %{THE_REQUEST} !^/bootstrap\.min\.js [NC]
-RewriteCond %{THE_REQUEST} bootstrap\.min\.js [NC]
-RewriteRule ^(.+)$ assets/js/bootstrap.min.js [L]
+#RewriteCond %{THE_REQUEST} !^/bootstrap\.min\.js [NC]
+#RewriteCond %{THE_REQUEST} bootstrap\.min\.js [NC]
+#RewriteRule ^(.+)$ assets/dist/js/bootstrap.min.js [L]
 
 #RewriteCond $1 !\.(js|ico|gif|jpg|png|css|html|swf|mp3|wav|txt)$
 #RewriteCond %{THE_REQUEST} !^bg\.jpg [NC]

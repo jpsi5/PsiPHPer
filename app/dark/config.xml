@@ -2,7 +2,7 @@
 <config>
     <route>
         <dir>dark/controller</dir>
-        <uri>love-tree</uri>
+        <uri>dark-baggage</uri>
     </route>
     <layout>
         <default>
