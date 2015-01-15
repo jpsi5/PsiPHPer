@@ -2,10 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: jsimon
- * Date: 1/13/15
- * Time: 2:02 PM
+ * Date: 1/14/15
+ * Time: 9:48 AM
  */
 
+# Sorry, we have to use namespaces
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
@@ -20,7 +21,7 @@ use Facebook\HttpClients\FacebookHttpable;
 use Facebook\HttpClients\FacebookCurlHttpClient;
 use Facebook\HttpClients\FacebookCurl;
 
-class Dark_Controller_Login extends Core_Controller_Base {
+class Dark_Model_Facebook extends Core_Model_Singleton {
 
     private $app_id = '375318869339641';
     private $app_secret = '85f888030bd5418062f728462e028f17';
@@ -29,34 +30,36 @@ class Dark_Controller_Login extends Core_Controller_Base {
     private $session;
     private $graph;
 
-    public function indexAction() {
+    protected function _init() {
+        if(isset($_REQUEST['logout']))
+        {
+            unset($_SESSION['fb_token']);
+        }
 
         FacebookSession::setDefaultApplication($this->app_id,$this->app_secret);
         $this->fbHelper = new FacebookRedirectLoginHelper($this->redirect_url);
+        $this->session = $this->fbHelper->getSessionFromRedirect();
 
         if(isset($_SESSION['fb_token'])) {
             $this->session = new FacebookSession($_SESSION['fb_token']);
-        } else {
-            $this->session = $this->fbHelper->getSessionFromRedirect();
         }
-
-        $logout = 'http://psiphper.dev/dark-baggage/logout';
 
         if(isset($this->session)) {
             $_SESSION['fb_token'] = $this->session->getToken();
             $request = new FacebookRequest($this->session, 'GET', '/me');
             $response = $request->execute();
             $this->graph = $response->getGraphObject(GraphUser::className());
-            $name = $this->graph->getName();
-            $id = $this->graph->getId();
-            $image = 'https://graph.facebook.com/' . $id . '/picture?width=300';
-            $email = $this->graph->getProperty('email');
-            echo "Hi $name <br>";
-            echo "your email is $email <br><br>";
-            echo "<img src='$image' /><br><br>";
-            echo "<a href='" . $logout . "'><button>Logout</button>";
-        } else {
-            header('Location: ' . $this->fbHelper->getLoginUrl(array('email')));
         }
+        else {
+            header('Location: ' . $this->getLoginUrl());
+        }
+    }
+
+    public function getLoginUrl() {
+        return $this->fbHelper->getLoginUrl();
+    }
+
+    public function getGraph() {
+        return $this->graph;
     }
 }
