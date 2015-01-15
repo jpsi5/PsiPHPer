@@ -10,7 +10,12 @@ class Dark_Controller_Index extends Core_Controller_Base {
 
     public function indexAction() {
 
-        $this->loadLayout();
-        $this->renderLayout();
+        if(isset($_SESSION['fb_token'])) {
+            $this->redirect('/*/home/');
+        } else {
+            $this->redirect('/*/login');
+        }
+//        $this->loadLayout();
+//        $this->renderLayout();
     }
 }
