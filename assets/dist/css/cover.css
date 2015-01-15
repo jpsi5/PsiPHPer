@@ -116,14 +116,36 @@ body {
 .form-cover {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: rgba(255, 255, 255, .75);
-    border-radius: 5px;
+    /*background-color: rgba(255, 255, 255, .75);*/
+    /*border-radius: 5px;*/
 }
 
 .form-cover > p {
     color: #999;
     text-align: center;
     text-shadow: none;
+}
+
+.btn-fb {
+    font-size: 14px;
+    background-color: rgba(58, 89, 152, .65);
+    border-radius: 1px;
+}
+
+.btn-fb:hover {
+    color: #fff;
+    background-color: rgba(38, 69, 132, .75);
+}
+
+.btn-email {
+    font-size: 14px;
+    background-color: rgba(150, 150, 150, .65);
+    border-radius: 1px;
+}
+
+.btn-email:hover {
+    color: #fff;
+    background-color: rgba(112, 112, 112, .75);
 }
 
 @media (min-width: 768px) {

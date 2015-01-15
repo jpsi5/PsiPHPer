@@ -7,6 +7,7 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton
     protected $table;
     protected $primaryKey;
     protected $scriptFileName;
+    protected $duplicatesAllowed;
 
     public function insert()
     {
@@ -194,6 +195,14 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton
             }
         }
         return false;
+    }
+
+    protected function enableDuplicates() {
+        $this->duplicatesAllowed = true;
+    }
+
+    protected function disableDuplicates() {
+        $this->duplicatesAllowed = false;
     }
 
 

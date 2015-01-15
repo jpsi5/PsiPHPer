@@ -1,0 +1,66 @@
+<?php //$fbHelper = $this->getFacebookModel(); ?>
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+            <!--            <div class="masthead clearfix">-->
+            <!--                <div class="inner">-->
+            <!--                    <h3 class="masthead-brand">Dark Baggage</h3>-->
+            <!--                    <nav>-->
+            <!--                        <ul class="nav masthead-nav">-->
+            <!--                            <li class="active"><a href="/dark-baggage">Home</a></li>-->
+            <!--                            <li><a href="/dark-baggage/web/view">Features</a></li>-->
+            <!--                            <li><a href="#">Contact</a></li>-->
+            <!--                        </ul>-->
+            <!--                    </nav>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+            <div class="inner cover">
+                <h1 class="cover-heading">Dark Baggage</h1>
+
+                <div class="row">
+                    <div class="form-cover col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4 col-md-6 col-md-offset-3">
+<!--                        <p class="lead">Login Form</p>-->
+
+                        <p class="">
+                            <a href="/dark-baggage/login" class="btn btn-md btn-block btn-social btn-facebook">
+                                <i class="fa fa-facebook"></i> Sign in with Facebook
+                            </a>
+                        </p>
+
+                        <p class="lead">or</p>
+
+                        <form>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Log in</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Designed and developed at <a href="http://www.blueacorn.com/">Blue Acorn</a>, by <a
+                            href="https://twitter.com/jpsi5">Justin Simon</a>.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
