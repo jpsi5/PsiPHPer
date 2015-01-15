@@ -8,6 +8,15 @@
 
 class Dark_Controller_Home extends Core_Controller_Base {
     public function indexAction() {
+        if(isset ($_SESSION['fb_token'])) {
+            $currentUser = App::getModel('dark/Facebook_User')->getGraph();
+            $logout = 'http://psiphper.dev/dark-baggage/logout';
+            echo 'Hello '. $currentUser->getName() . '<br>';
+            echo "<a href='" . $logout . "'><button>Logout</button><br>";
+            echo "<a href='/dark-baggage/login/'><button>Back</button>";
+        } else {
+            $this->redirect('*/login');
+        }
 
     }
 }

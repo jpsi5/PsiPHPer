@@ -7,5 +7,8 @@
  */
 
 class Dark_Model_Connection extends Db_Model_Base {
-
+    protected function _init() {
+        $this->scriptFileName = 'dark.sql';
+        parent::_init();
+    }
 }

@@ -15,7 +15,5 @@ class Dark_Controller_Index extends Core_Controller_Base {
         } else {
             $this->redirect('/*/login');
         }
-//        $this->loadLayout();
-//        $this->renderLayout();
     }
 }

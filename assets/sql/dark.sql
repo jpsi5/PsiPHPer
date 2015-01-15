@@ -3,7 +3,7 @@
 # One connection can have one vote from a user
 # One connection can have many votes
 
-CREATE TABLE  users (
+CREATE TABLE IF NOT EXISTS  users (
   user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   facebook_id VARCHAR( 100 ) NOT NULL UNIQUE,
   gender ENUM('male','female') NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE  users (
   login_password VARCHAR( 30 )
 ) ENGINE = INNODB;
 
-CREATE TABLE connections (
+CREATE TABLE IF NOT EXISTS connections (
   connection_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
   linked_user_id INT NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE connections (
   FOREIGN KEY (linked_user_id) REFERENCES users(user_id)
 )ENGINE = INNODB;
 
-CREATE TABLE votes (
+CREATE TABLE IF NOT EXISTS votes (
   connection_id INT NOT NULL,
   user_id INT NOT NULL,
   vote BOOLEAN NOT NULL,
@@ -29,10 +29,6 @@ CREATE TABLE votes (
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   CONSTRAINT pk_UserConnection PRIMARY KEY (connection_id,user_id)
 )ENGINE = INNODB;
-
-# ALTER TABLE users ADD UNIQUE INDEX (facebook_id);
-# ALTER TABLE users ADD UNIQUE INDEX (email_address);
-# ALTER TABLE votes ADD UNIQUE INDEX (connection_id,user_id);
 
 
 
