@@ -68,7 +68,12 @@ class App {
                 }
 
                 # Build the name of the model
-                $className = ucfirst(strtolower($pathArray[0])) . '_' . ucfirst($type) . '_' . ucfirst($pathArray[1]);
+                //$className = ucfirst(strtolower($pathArray[0])) . '_' . ucfirst($type) . '_' . ucfirst($pathArray[1]);
+                $className = ucfirst(strtolower($pathArray[0])) . '_' . ucfirst($type);
+                array_shift($pathArray);
+                foreach($pathArray as $p) {
+                    $className = $className . '_' . ucfirst($p);
+                }
 
                 # Verify that $model is a valid class name.
                 if (class_exists($className)) {
