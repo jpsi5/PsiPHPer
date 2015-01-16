@@ -7,11 +7,21 @@
  */
 
 class Dark_View_Block_Content extends Core_View_Block_Content {
-    public function getFacebookModel() {
-        return $this->_getFacebookModel();
+    public function getFacebookUser() {
+        return $this->_getFacebookUser();
     }
 
-    protected function _getFacebookModel() {
-        return App::getModel('dark/facebook');
+    protected function _getFacebookUser() {
+        return App::getModel('dark/facebook/user');
+    }
+
+    public function getFbImageUrl() {
+        return $this->_getFbImageUrl();
+    }
+
+    protected function _getFbImageUrl(){
+        $fbUserInfo = App::getModel('dark/facebook/user')->getGraph();
+        $imageUrl = 'https://graph.facebook.com/' . $fbUserInfo->getId() . '/picture?width=150';
+        return $imageUrl;
     }
 }

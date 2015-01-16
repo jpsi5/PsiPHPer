@@ -8,6 +8,7 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton
     protected $primaryKey;
     protected $scriptFileName;
     protected $duplicatesAllowed;
+    protected $optionalFields = array();
 
     public function insert()
     {
@@ -22,7 +23,8 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton
         foreach ($table_fields as $key => $table_field) {
             if ($table_field == $this->primaryKey) {
                 unset($table_fields[$key]);
-                break;
+            } else if(array_key_exists($table_field,$this->optionalFields)) {
+                unset($table_fields[$key]);
             }
         }
         $fields = implode(",", $table_fields);
@@ -91,16 +93,21 @@ abstract class Db_Model_SQLQuery extends Core_Model_Singleton
     protected function query($query, $singleResult = 0)
     {
 
-        # SELECT statement
-        if (preg_match("/select/i", $query)) {
-            $this->result = $this->dbHandle->prepare($query);
-            $this->result->execute();
-            $result = $this->result->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            $affected_rows = $this->dbHandle->exec($query);
-            return ($affected_rows);
+        try {
+            # SELECT statement
+            if (preg_match("/select/i", $query)) {
+                $this->result = $this->dbHandle->prepare($query);
+                $this->result->execute();
+                $result = $this->result->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                $affected_rows = $this->dbHandle->exec($query);
+                return ($affected_rows);
+            }
+            return ($result);
+
+        } catch (Exception $e) {
+            //Do nothing
         }
-        return ($result);
     }
 
     protected function getColumnNames()

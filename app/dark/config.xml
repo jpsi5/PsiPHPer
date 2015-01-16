@@ -6,14 +6,38 @@
     </route>
     <layout>
         <default>
-            <block type="core/page" name="root" template="dark-page.phtml"/>
+            <block type="dark/page" name="root" template="dark-page.phtml"/>
         </default>
         <dark_login_index>
-            <block type="core/page" name="root" template="dark-page.phtml">
+            <block type="dark/page" name="root" template="dark-page.phtml">
                 <block type="core/header" name="header" template="dark-header.phtml"/>
                 <block type="dark/content" name="content" template="dark-index.phtml"/>
             </block>
         </dark_login_index>
+        <dark_home_index>
+            <block type="dark/page" name="root" template="dark-page.phtml">
+                <block type="core/header" name="header" template="dark-header.phtml"/>
+                <block type="dark/content" name="content" template="dark-home.phtml">
+                    <block type="core/header" name="navbar" template="dark-nav.phtml"/>
+                </block>
+            </block>
+        </dark_home_index>
+        <dark_connect_index>
+            <block type="dark/page" name="root" template="dark-page.phtml">
+                <block type="core/header" name="header" template="dark-header.phtml"/>
+                <block type="dark/content" name="content" template="dark-connect.phtml">
+                    <block type="core/header" name="navbar" template="dark-nav.phtml"/>
+                </block>
+            </block>
+        </dark_connect_index>
+        <dark_web_index>
+            <block type="dark/page" name="root" template="dark-page.phtml">
+                <block type="core/header" name="header" template="dark-header.phtml"/>
+                <block type="dark/content" name="content" template="dark-connect.phtml">
+                    <block type="core/header" name="navbar" template="dark-nav.phtml"/>
+                </block>
+            </block>
+        </dark_web_index>
     </layout>
     <events>
         <uri_not_found>

@@ -1,0 +1,18 @@
+<?php
+$request = App::getRequest();
+$controller = $request->getControllerName();
+?>
+
+<div class="masthead clearfix">
+    <div class="inner">
+        <h3 class="masthead-brand">Dark Baggage</h3>
+        <nav>
+            <ul class="nav masthead-nav">
+                <li class="<?php echo $controller == 'home' ? 'active' : '';?>"><a href="/dark-baggage/home">Profile</a></li>
+                <li class="<?php echo $controller == 'connect' ? 'active' : '';?>"><a href="/dark-baggage/connect">Add</a></li>
+                <li class="<?php echo $controller == 'web' ? 'active' : '';?>"><a href="/dark-baggage/web">Web</a></li>
+                <li class="<?php echo $controller == 'logout' ? 'active' : '';?>"><a href="/dark-baggage/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

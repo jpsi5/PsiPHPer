@@ -84,7 +84,12 @@ class Db_Model_Base extends Db_Model_SQLQuery {
         $fields = $this->getColumnNames();
         $args = array();
         foreach($fields as $field) {
-            $args[$field] = htmlspecialchars($this->data[$field]);
+            if(array_key_exists($field,$this->data)) {
+                $args[$field] = htmlspecialchars($this->data[$field]);
+            }
+            else {
+                $this->optionalFields[$field] = '';
+            }
         }
 
         # Remove the primary key

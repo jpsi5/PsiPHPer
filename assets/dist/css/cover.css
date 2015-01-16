@@ -26,18 +26,20 @@ a:hover {
 html,
 body {
     height: 100%;
-    /*background-color: #333;*/
-    background: url(/assets/img/bg.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: #333;
 }
 
 body {
     color: #fff;
     text-align: center;
     text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+.cover-bg {
+    background: url(/assets/img/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -69,6 +71,7 @@ body {
  * Header
  */
 .masthead-brand {
+    font-family: 'Permanent Marker', cursive;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -106,7 +109,6 @@ body {
 }
 
 .cover-heading {
-    /*font-family: 'Walter Turncoat', cursive;*/
     font-family: 'Permanent Marker', cursive;
     font-size: 5.1rem;
     margin-bottom: 20px;

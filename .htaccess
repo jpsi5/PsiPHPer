@@ -9,7 +9,7 @@ RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 # REDIRECT FAVICON
 RewriteCond %{THE_REQUEST} !^/favicon\.ico [NC]
 RewriteCond %{THE_REQUEST} favicon\.ico [NC]
-RewriteRule ^(.+)$ assets/favicon.ico [R=301,L]
+RewriteRule ^(.+)$ assets/img/favicon.ico [R=301,L]
 
 # REDIRECT ASSETS
 #RewriteCond %{THE_REQUEST} !^/bootstrap\.min\.css [NC]
