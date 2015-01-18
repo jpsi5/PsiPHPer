@@ -7,6 +7,7 @@
  */
 
 class Dark_Model_User extends Db_Model_Base {
+
     public function exists($id) {
         $result = $this->select('facebook_id',$id);
         if(!empty($result)) {

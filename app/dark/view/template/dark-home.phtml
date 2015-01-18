@@ -1,3 +1,5 @@
+<?php $imageUrl = $this->getFbImageUrl(); ?>
+
 <div class="site-wrapper">
 
     <div class="site-wrapper-inner">
@@ -9,9 +11,23 @@
             <div class="inner cover">
                <div class="row">
                    <div class="col-xs-10 col-xs-offset-1">
-<!--                       <img src="">-->
+                       <img class="img-circle fa-img-border" src="<?php echo $imageUrl; ?>" alt="">
                    </div>
                </div>
+                <div class="row stats">
+                    <div class="col-xs-4 stats-border-bottom stats-container">
+                        <p class="stats-title">Connections</p>
+                        <p class="">33</p>
+                    </div>
+                    <div class="col-xs-4 stats-border-bottom stats-border-left stats-container">
+                        <p class="stats-title">Confirmed</p>
+                        <p class="">14</p>
+                    </div>
+                    <div class="col-xs-4 stats-border-bottom stats-border-left stats-container">
+                        <p class="stats-title">Suspect</p>
+                        <p class="">16</p>
+                    </div>
+                </div>
             </div>
 
             <div class="mastfoot">

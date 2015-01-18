@@ -34,13 +34,7 @@ body {
     text-align: center;
     text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
 }
-.cover-bg {
-    background: url(/assets/img/bg.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -48,8 +42,8 @@ body {
     width: 100%;
     height: 100%; /* For at least Firefox */
     min-height: 100%;
-    -webkit-box-shadow: inset 0 0 80px rgba(0, 0, 0, .94);
-    box-shadow: inset 0 0 80px rgba(0, 0, 0, .94);
+    /*-webkit-box-shadow: inset 0 0 80px rgba(0, 0, 0, .94);*/
+    /*box-shadow: inset 0 0 80px rgba(0, 0, 0, .94);*/
 }
 
 .site-wrapper-inner {
@@ -173,6 +167,14 @@ body {
     font-weight: bold;
 }
 
+.cover-bg {
+    background: url(/assets/img/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 /*
  * Footer
  */
@@ -180,6 +182,39 @@ body {
 .mastfoot {
     color: #999; /* IE8 proofing */
     color: rgba(255, 255, 255, .5);
+}
+
+/*
+ * Custom CSS
+ */
+
+.fa-img-border {
+    /*padding: .2em .25em .15em;*/
+    border: solid 0.36em #fff;
+    border-radius: 50%;
+    /*box-shadow: 0 0 80px rgba(0, 0, 0, .94);*/
+}
+
+
+.stats {
+    /*padding-top: 5px;*/
+    margin-top: 30px;
+}
+
+.stats-container {
+    /*box-shadow:  0 0 80px rgba(0, 0, 0, .94);*/
+}
+
+.stats-border-bottom{
+    border-bottom: 2px solid #222;
+}
+
+.stats-border-left {
+    border-left: 2px solid #222;
+}
+
+.stats-title {
+    padding-top: 10px;
 }
 
 /*

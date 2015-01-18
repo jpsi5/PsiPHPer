@@ -7,11 +7,11 @@
  */
 
 class Dark_View_Block_Content extends Core_View_Block_Content {
-    public function getFacebookUser() {
-        return $this->_getFacebookUser();
+    public function getCurrentFacebookUser() {
+        return $this->_getCurrentFacebookUser();
     }
 
-    protected function _getFacebookUser() {
+    protected function _getCurrentFacebookUser() {
         return App::getModel('dark/facebook/user');
     }
 

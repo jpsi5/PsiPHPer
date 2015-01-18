@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/assets/sql/connections.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/assets/sql/customers.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/assets/sql/dark.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/assets/sql/ecommerce.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assets/sql/users.sql" dialect="MySQL" />
   </component>
 </project>
 

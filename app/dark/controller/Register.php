@@ -55,7 +55,15 @@ class Dark_Controller_Register extends Core_Controller_Base {
             # You don't have to go home but you gotta get the f*** out of here
             $this->redirect('*/home');
         } else {
-            header('Location: ' . $this->fbHelper->getLoginUrl(array('email')));
+            if(!isset($_SESSION['db_redirect'])) {
+                $_SESSION['db_redirect'] = true;
+                header('Location: ' . $this->fbHelper->getLoginUrl(array('email')));
+            }
+            else {
+                unset($_SESSION['db_redirect']);
+                $this->redirect('*/login');
+            }
+
         }
     }
 }
