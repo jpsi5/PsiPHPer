@@ -4,24 +4,5 @@
 
 <body>
    <?php $this->getChildHtml('content'); ?>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-   <script src="<?php echo DS . 'assets' . DS . 'dist' . DS . 'js' . DS . 'bootstrap.min.js'?>"></script>
-   <script>
-       window.fbAsyncInit = function() {
-           FB.init({
-               appId      : '375318869339641',
-               xfbml      : false,
-               version    : 'v2.1'
-           });
-       };
-
-       (function(d, s, id){
-           var js, fjs = d.getElementsByTagName(s)[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement(s); js.id = id;
-           js.src = "//connect.facebook.net/en_US/sdk.js";
-           fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-   </script>
 </body>
 </html>

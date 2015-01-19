@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aae62f24-98de-4543-8347-90b6b8096b9b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dark/controller/Home.php" afterPath="$PROJECT_DIR$/app/dark/controller/Home.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dark/controller/Index.php" afterPath="$PROJECT_DIR$/app/dark/controller/Index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dark/config.xml" afterPath="$PROJECT_DIR$/app/dark/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dark/view/template/dark-header.phtml" afterPath="$PROJECT_DIR$/app/dark/view/template/dark-header.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dark/view/template/dark-login.phtml" afterPath="$PROJECT_DIR$/app/dark/view/template/dark-login.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dark/view/template/dark-page.phtml" afterPath="$PROJECT_DIR$/app/dark/view/template/dark-page.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="psiphper.dev.iws" />
@@ -28,15 +33,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Register.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/dark/controller/Register.php">
+      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/dark/controller/Index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-32.666668" vertical-offset="216" max-vertical-offset="1368">
-              <caret line="61" column="93" selection-start-line="61" selection-start-column="93" selection-end-line="61" selection-end-column="93" />
-              <folding>
-                <element signature="e#6#87#0#PHP" expanded="true" />
-                <element signature="e#89#118#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="270">
+              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dark-login.phtml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-login.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.59179264" vertical-offset="1540" max-vertical-offset="2466">
+              <caret line="116" column="4" selection-start-line="116" selection-start-column="4" selection-end-line="127" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -44,18 +56,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/dark/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="954">
-              <caret line="13" column="78" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dark-header.phtml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-header.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2937063" vertical-offset="0" max-vertical-offset="858">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="1062">
+              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -64,7 +66,7 @@
       <file leaf-file-name="dark-home.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-home.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6666667" vertical-offset="0" max-vertical-offset="1044">
+            <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="1044">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
@@ -74,18 +76,8 @@
       <file leaf-file-name="cover.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/dist/css/cover.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.2" vertical-offset="0" max-vertical-offset="5040">
+            <state vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="5040">
               <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Facebook_User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/dark/model/Facebook_User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="576">
-              <caret line="26" column="74" selection-start-line="26" selection-start-column="74" selection-end-line="26" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -101,11 +93,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Home.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/dark/controller/Home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="342">
+              <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="dark-page.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-page.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="576">
-              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="24" selection-end-column="12" />
+            <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="234">
+              <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -124,7 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/contact/controller/Customer.php" />
         <option value="$PROJECT_DIR$/lib/core/controller/Event_Observer.php" />
         <option value="$PROJECT_DIR$/lib/core/controller/Router.php" />
         <option value="$PROJECT_DIR$/app/darkb/config.xml" />
@@ -142,7 +143,6 @@
         <option value="$PROJECT_DIR$/app/dark/controller/Login.php" />
         <option value="$PROJECT_DIR$/app/dark/model/Facebook.php" />
         <option value="$PROJECT_DIR$/app/dark/model/FacebookUser.php" />
-        <option value="$PROJECT_DIR$/app/dark/controller/Index.php" />
         <option value="$PROJECT_DIR$/app/dark/model/Facebook_User.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/lib/bootstrap.php" />
@@ -153,7 +153,6 @@
         <option value="$PROJECT_DIR$/app/dark/controller/Connect.php" />
         <option value="$PROJECT_DIR$/app/dark/view/template/dark-web.phtml" />
         <option value="$PROJECT_DIR$/app/dark/controller/Web.php" />
-        <option value="$PROJECT_DIR$/app/dark/controller/Home.php" />
         <option value="$PROJECT_DIR$/lib/db/model/Base.php" />
         <option value="$PROJECT_DIR$/lib/db/model/SQLQuery.php" />
         <option value="$PROJECT_DIR$/app/config.xml" />
@@ -166,15 +165,18 @@
         <option value="$PROJECT_DIR$/app/dark/model/Connection.php" />
         <option value="$PROJECT_DIR$/assets/sql/dark.sql" />
         <option value="$PROJECT_DIR$/assets/bootstrap-social-gh-pages/assets/css/font-awesome.css" />
-        <option value="$PROJECT_DIR$/app/dark/view/template/dark-page.phtml" />
         <option value="$PROJECT_DIR$/app/dark/controller/Logout.php" />
         <option value="$PROJECT_DIR$/app/dark/view/block/Content.php" />
         <option value="$PROJECT_DIR$/app/dark/view/template/dark-nav.phtml" />
         <option value="$PROJECT_DIR$/app/dark/controller/Register.php" />
         <option value="$PROJECT_DIR$/app/dark/view/template/dark-home.phtml" />
         <option value="$PROJECT_DIR$/assets/dist/css/cover.css" />
-        <option value="$PROJECT_DIR$/app/dark/config.xml" />
         <option value="$PROJECT_DIR$/app/dark/view/template/dark-header.phtml" />
+        <option value="$PROJECT_DIR$/app/dark/controller/Home.php" />
+        <option value="$PROJECT_DIR$/app/dark/config.xml" />
+        <option value="$PROJECT_DIR$/app/dark/controller/Index.php" />
+        <option value="$PROJECT_DIR$/app/dark/view/template/dark-page.phtml" />
+        <option value="$PROJECT_DIR$/app/dark/view/template/dark-login.phtml" />
       </list>
     </option>
   </component>
@@ -217,7 +219,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -340,6 +341,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -415,19 +417,19 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22395833" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22395833" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -489,14 +491,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/db/model/SQLQuery.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1944" max-vertical-offset="3690">
-          <caret line="108" column="24" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/core/model/Request.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-24.666666" vertical-offset="1026" max-vertical-offset="3384">
@@ -706,17 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24601367" vertical-offset="0" max-vertical-offset="2232">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/dark/controller/Home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22551253" vertical-offset="0" max-vertical-offset="878">
-          <caret line="11" column="74" selection-start-line="11" selection-start-column="74" selection-end-line="11" selection-end-column="74" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -746,15 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-29.62963" vertical-offset="406" max-vertical-offset="1332">
           <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/dark/controller/Logout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="252">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,27 +740,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dark/view/block/Content.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="486">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-page.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="576">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="24" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/facebook/src/Facebook/GraphObject.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.1387347" vertical-offset="1026" max-vertical-offset="2790">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,15 +765,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-home.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6666667" vertical-offset="0" max-vertical-offset="1044">
+        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="1044">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-header.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2526998" vertical-offset="0" max-vertical-offset="926">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/dark/model/Facebook_User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="576">
+        <state vertical-scroll-proportion="0.36933047" vertical-offset="0" max-vertical-offset="926">
           <caret line="26" column="74" selection-start-line="26" selection-start-column="74" selection-end-line="26" selection-end-column="74" />
           <folding />
         </state>
@@ -824,23 +789,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/dist/css/cover.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.2" vertical-offset="0" max-vertical-offset="5040">
+        <state vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="5040">
           <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dark/controller/Index.php">
+    <entry file="file://$PROJECT_DIR$/app/dark/view/block/Content.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19977802" vertical-offset="0" max-vertical-offset="901">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        <state vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="486">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dark/controller/Home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="342">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dark/controller/Logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07775378" vertical-offset="0" max-vertical-offset="926">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dark/controller/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="953">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/dark/controller/Register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.666668" vertical-offset="216" max-vertical-offset="1368">
+        <state vertical-scroll-proportion="1.1166307" vertical-offset="64" max-vertical-offset="1368">
           <caret line="61" column="93" selection-start-line="61" selection-start-column="93" selection-end-line="61" selection-end-column="93" />
           <folding>
             <element signature="e#6#87#0#PHP" expanded="true" />
@@ -849,26 +838,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-login.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5472973" vertical-offset="0" max-vertical-offset="888">
-          <caret line="27" column="161" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="161" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/dark/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="954">
-          <caret line="13" column="78" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="1062">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-header.phtml">
+    <entry file="file://$PROJECT_DIR$/app/dark/controller/Index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2937063" vertical-offset="0" max-vertical-offset="858">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        <state vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="270">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-page.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="234">
+          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dark/view/template/dark-login.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59179264" vertical-offset="1540" max-vertical-offset="2466">
+          <caret line="116" column="4" selection-start-line="116" selection-start-column="4" selection-end-line="127" selection-end-column="6" />
           <folding />
         </state>
       </provider>

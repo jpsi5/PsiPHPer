@@ -9,7 +9,6 @@
 class Dark_Controller_Home extends Core_Controller_Base {
     public function indexAction() {
         if(isset ($_SESSION['fb_token'])) {
-            $userFbInfo = App::getModel('dark/facebook/user')->getGraph();
             $this->loadLayout();
             $this->renderLayout();
         } else {
