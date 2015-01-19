@@ -8,12 +8,7 @@
 
 class Dark_Controller_Home extends Core_Controller_Base {
     public function indexAction() {
-        if(isset ($_SESSION['fb_token'])) {
-            $this->loadLayout();
-            $this->renderLayout();
-        } else {
-            $this->redirect('*/login');
-        }
-
+        $this->loadLayout();
+        $this->renderLayout();
     }
 }

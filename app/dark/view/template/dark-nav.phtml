@@ -11,7 +11,7 @@ $controller = $request->getControllerName();
                 <li class="<?php echo $controller == 'home' ? 'active' : '';?>"><a href="/dark-baggage/home">Profile</a></li>
                 <li class="<?php echo $controller == 'connect' ? 'active' : '';?>"><a href="/dark-baggage/connect">Add</a></li>
                 <li class="<?php echo $controller == 'web' ? 'active' : '';?>"><a href="/dark-baggage/web">Web</a></li>
-                <li class="<?php echo $controller == 'logout' ? 'active' : '';?>"><a href="/dark-baggage/logout">Logout</a></li>
+                <li class="<?php echo $controller == 'logout' ? 'active' : '';?>"><a class="logout-btn" href="#">Logout</a></li>
             </ul>
         </nav>
     </div>

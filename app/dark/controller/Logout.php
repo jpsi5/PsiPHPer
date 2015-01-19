@@ -8,7 +8,6 @@
 
 class Dark_Controller_Logout extends Core_Controller_Base {
     public function indexAction() {
-        unset($_SESSION['fb_token']);
-        $this->redirect('*');
+
     }
 }
