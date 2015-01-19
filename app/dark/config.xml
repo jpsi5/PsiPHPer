@@ -11,7 +11,7 @@
         <dark_login_index>
             <block type="dark/page" name="root" template="dark-page.phtml">
                 <block type="core/header" name="header" template="dark-header.phtml"/>
-                <block type="dark/content" name="content" template="dark-index.phtml"/>
+                <block type="dark/content" name="content" template="dark-login.phtml"/>
             </block>
         </dark_login_index>
         <dark_home_index>

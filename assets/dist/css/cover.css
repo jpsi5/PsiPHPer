@@ -26,7 +26,9 @@ a:hover {
 html,
 body {
     height: 100%;
+    /*background-color: #6F879E;*/
     background-color: #333;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -188,16 +190,19 @@ body {
  * Custom CSS
  */
 
+
 .fa-img-border {
-    /*padding: .2em .25em .15em;*/
+    /*padding: .20em;*/
     border: solid 0.36em #fff;
     border-radius: 50%;
-    /*box-shadow: 0 0 80px rgba(0, 0, 0, .94);*/
+    box-shadow: 0 0 10px rgba(0, 0, 0, .94);
 }
 
 
 .stats {
     /*padding-top: 5px;*/
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
     margin-top: 30px;
 }
 
@@ -206,15 +211,29 @@ body {
 }
 
 .stats-border-bottom{
-    border-bottom: 2px solid #222;
+    border-bottom: 1px solid #fff;
 }
 
 .stats-border-left {
-    border-left: 2px solid #222;
+    border-left: 1px solid #fff;
 }
 
-.stats-title {
+.stats-value {
+    font-size: 18px;
+    font-weight: 800;
     padding-top: 10px;
+    margin-bottom: 0px;
+}
+.stats-title {
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Lora', serif;
+    letter-spacing: .03em;
 }
 
 /*

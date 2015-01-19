@@ -12,7 +12,7 @@ class Dark_View_Block_Content extends Core_View_Block_Content {
     }
 
     protected function _getCurrentFacebookUser() {
-        return App::getModel('dark/facebook/user');
+        return App::getModel('dark/facebook/user')->getGraph();
     }
 
     public function getFbImageUrl() {
@@ -21,7 +21,7 @@ class Dark_View_Block_Content extends Core_View_Block_Content {
 
     protected function _getFbImageUrl(){
         $fbUserInfo = App::getModel('dark/facebook/user')->getGraph();
-        $imageUrl = 'https://graph.facebook.com/' . $fbUserInfo->getId() . '/picture?width=150';
+        $imageUrl = 'https://graph.facebook.com/' . $fbUserInfo->getId() . '/picture?width=125';
         return $imageUrl;
     }
 }

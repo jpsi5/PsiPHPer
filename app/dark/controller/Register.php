@@ -10,6 +10,7 @@ use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
 use Facebook\GraphUser;
+use Facebook\GraphLocation;
 
 class Dark_Controller_Register extends Core_Controller_Base {
 
@@ -33,6 +34,7 @@ class Dark_Controller_Register extends Core_Controller_Base {
 
         # Send the request for the login information
         if(isset($this->session)) {
+            unset($_SESSION['db_redirect']);
             $_SESSION['fb_token'] = $this->session->getToken();
             $request = new FacebookRequest($this->session, 'GET', '/me');
             $response = $request->execute();
@@ -57,7 +59,7 @@ class Dark_Controller_Register extends Core_Controller_Base {
         } else {
             if(!isset($_SESSION['db_redirect'])) {
                 $_SESSION['db_redirect'] = true;
-                header('Location: ' . $this->fbHelper->getLoginUrl(array('email')));
+                header('Location: ' . $this->fbHelper->getLoginUrl(array('email,user_hometown')));
             }
             else {
                 unset($_SESSION['db_redirect']);
