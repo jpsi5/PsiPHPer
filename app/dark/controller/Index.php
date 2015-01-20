@@ -30,6 +30,8 @@ class Dark_Controller_Index extends Core_Controller_Base {
             $response = curl_exec($curl);
             curl_close($curl);
 
+            # Using graph api to inspect the the tokens
+
         } else {
             $this->loadLayout();
             $this->renderLayout();
