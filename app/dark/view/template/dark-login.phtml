@@ -1,3 +1,10 @@
+<?php $requestUri =
+    "https://www.facebook.com/dialog/oauth?" .
+    "client_id=375318869339641".
+    "&redirect_uri=http://psiphper.dev/dark-baggage/".
+    "&scope=email,public_profile,user_friends";
+?>
+
 <div class="site-wrapper cover-bg">
 
     <div class="site-wrapper-inner">
@@ -10,7 +17,7 @@
                     <div class="form-cover col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4 col-md-6 col-md-offset-3">
 
                         <p class="lead">
-                            <a href="#" class="login-btn btn btn-lg btn-block btn-fb">Register with Facebook</a>
+                            <a href="<?php echo $requestUri; ?>" class="login-btn btn btn-lg btn-block btn-fb">Register with Facebook</a>
                         </p>
 
                         <p class="lead">
