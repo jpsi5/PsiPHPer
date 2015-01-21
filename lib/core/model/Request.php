@@ -65,6 +65,17 @@ class Core_Model_Request extends Core_Model_Singleton{
         return empty($this->data['_GET']) ? false : true;
     }
 
+    public function getSession($name) {
+        return array_key_exists($name,$this->data['_SESSION']) ? $this->data['_SESSION'][$name] : false;
+    }
+
+    public function setSession($name,$value) {
+        if(isset($name) && isset($value)) {
+            $_SESSION[$name] = $value;
+            $this->data['_SESSION'][$name] = $value;
+        }
+    }
+
     public function getControllerName() {
         return $this->controllerName;
     }
@@ -112,6 +123,10 @@ class Core_Model_Request extends Core_Model_Singleton{
             return $this->data['_GET'];
         }
 
+    }
+
+    public function getData($key = false) {
+        return $this->data;
     }
 
     public function setParams(array $array) {}

@@ -8,6 +8,11 @@
 
 class Dark_Controller_Logout extends Core_Controller_Base {
     public function indexAction() {
+        $requestData = App::getRequest()->getData();
+        if($requestData['_SESSION']['access_token']) {
+            unset($_SESSION['access_token']);
+            $this->redirect('*');
+        }
 
     }
 }

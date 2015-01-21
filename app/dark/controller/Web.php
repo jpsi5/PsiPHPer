@@ -8,7 +8,12 @@
 
 class Dark_Controller_Web extends Core_Controller_Base{
     public function indexAction() {
-        $this->loadLayout();
-        $this->renderLayout();
+        $requestData = App::getRequest()->getData();
+        if($requestData['_SESSION']['access_token']) {
+            $this->loadLayout();
+            $this->renderLayout();
+        } else {
+            $this->redirect('*');
+        }
     }
 }
